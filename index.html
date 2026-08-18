@@ -77,7 +77,6 @@
             border: none;
 
             padding: 0;
-
             margin: 0;
 
             background: transparent;
@@ -94,10 +93,9 @@
         }
 
 
-        /*
-         * Pozycje zostały ustalone na podstawie
-         * współrzędnych z mapy.
-         */
+        /* =========================
+           POZYCJE LOKACJI
+        ========================= */
 
         #forest {
             left: 35.45%;
@@ -111,9 +109,23 @@
         }
 
 
+        /*
+         * CASTLE
+         *
+         * Większy hotspot.
+         * Rozszerza się tylko w prawo
+         * i w dół od punktu Castle.
+         */
+
         #castle {
+
             left: 75.23%;
             top: 50.92%;
+
+            width: 140px;
+            height: 140px;
+
+            transform: translate(0, 0);
         }
 
 
@@ -147,7 +159,7 @@
 
 
         /* =========================
-           PUDEŁKO
+           PUDEŁKO ZAGADKI
         ========================= */
 
         #puzzle-box {
