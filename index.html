@@ -12,10 +12,6 @@
 
 <style>
 
-/* ==================================================
-   PODSTAWY
-================================================== */
-
 * {
     box-sizing: border-box;
 }
@@ -34,10 +30,6 @@ body {
 }
 
 
-/* ==================================================
-   GRA
-================================================== */
-
 #game {
     position: fixed;
     inset: 0;
@@ -50,10 +42,6 @@ body {
     background: black;
 }
 
-
-/* ==================================================
-   ŚWIAT
-================================================== */
 
 #world {
 
@@ -73,10 +61,6 @@ body {
     will-change: transform;
 }
 
-
-/* ==================================================
-   MAPA
-================================================== */
 
 #game-map {
 
@@ -334,12 +318,11 @@ body {
 
 /* ==================================================
    DOMEK
-   WSPÓŁRZĘDNE Z MAPY
 ================================================== */
 
 #house {
 
-    left: 14.336%;
+    left: 15.336%;
     top: 69.797%;
 
 }
@@ -565,7 +548,7 @@ body {
 
 
 /* ==================================================
-   JEZIORO — ODPOWIEDZI
+   JEZIORO
 ================================================== */
 
 .lake-option {
@@ -613,7 +596,7 @@ body {
 
 
 /* ==================================================
-   ZAMEK — LICZBY ZESPOLONE
+   ZAMEK
 ================================================== */
 
 .complex-puzzle {
@@ -880,14 +863,9 @@ body {
 <body>
 
 
-<!-- ==================================================
-     ŚWIAT
-================================================== -->
-
 <div id="game">
 
     <div id="world">
-
 
         <img
             id="game-map"
@@ -895,24 +873,11 @@ body {
             alt="Mapa gry"
         >
 
+        <div id="cloud1" class="cloud"></div>
 
-        <div
-            id="cloud1"
-            class="cloud">
-        </div>
+        <div id="cloud2" class="cloud"></div>
 
-
-        <div
-            id="cloud2"
-            class="cloud">
-        </div>
-
-
-        <div
-            id="cloud3"
-            class="cloud">
-        </div>
-
+        <div id="cloud3" class="cloud"></div>
 
         <div id="day-night"></div>
 
@@ -961,33 +926,23 @@ body {
             onclick="openCave()">
         </button>
 
-
     </div>
 
 </div>
 
 
 
-<!-- ==================================================
-     OKNO ZAGADKI
-================================================== -->
-
 <div id="puzzle-screen">
 
     <div id="puzzle-box">
 
-
         <h1 id="puzzle-title"></h1>
-
 
         <p id="puzzle-description"></p>
 
-
         <div id="puzzle-question"></div>
 
-
         <p id="puzzle-instruction"></p>
-
 
         <input
             id="answer"
@@ -996,9 +951,7 @@ body {
             autocomplete="off"
         >
 
-
         <br>
-
 
         <button
             id="check-button"
@@ -1006,28 +959,20 @@ body {
             Sprawdź
         </button>
 
-
         <button
             id="hint-button"
             class="puzzle-button"
             onclick="showHint()">
-
             💭 „Coś mi to przypomina…”
-
         </button>
-
 
         <button
             class="puzzle-button"
             onclick="closePuzzle()">
-
             Wróć
-
         </button>
 
-
         <div id="hint-box"></div>
-
 
         <div id="hint-question">
 
@@ -1049,19 +994,13 @@ body {
 
         </div>
 
-
         <div id="message"></div>
-
 
     </div>
 
 </div>
 
 
-
-<!-- ==================================================
-     JASKINIA
-================================================== -->
 
 <div id="cave-screen">
 
@@ -1097,18 +1036,15 @@ function openHouse() {
 
     resetPuzzle();
 
-
     document
         .getElementById("puzzle-title")
         .textContent =
         "🏠 Domek";
 
-
     document
         .getElementById("puzzle-description")
         .textContent =
         "";
-
 
     document
         .getElementById("puzzle-question")
@@ -1127,36 +1063,30 @@ function openHouse() {
         </div>
         `;
 
-
     document
         .getElementById("puzzle-instruction")
         .textContent =
         "";
-
 
     document
         .getElementById("answer")
         .style.display =
         "none";
 
-
     document
         .getElementById("check-button")
         .style.display =
         "none";
-
 
     document
         .getElementById("hint-button")
         .style.display =
         "none";
 
-
     document
         .getElementById("puzzle-screen")
         .style.display =
         "flex";
-
 }
 
 
@@ -1190,13 +1120,12 @@ document.addEventListener(
                 ${moveY}px,
                 0
             )`;
-
     }
 );
 
 
 /* ==================================================
-   AUTOMATYCZNE FORMATOWANIE LICZB
+   FORMATOWANIE LICZB
 ================================================== */
 
 document
@@ -1209,52 +1138,44 @@ document
                 this.value
                 .replace(/\D/g, "");
 
-
             this.value =
                 value.replace(
                     /\B(?=(\d{3})+(?!\d))/g,
                     " "
                 );
-
         }
     );
 
 
 /* ==================================================
-   RESET ZAGADKI
+   RESET
 ================================================== */
 
 function resetPuzzle() {
 
     hintStage = 0;
 
-
     document
         .getElementById("hint-box")
         .style.display =
         "none";
-
 
     document
         .getElementById("hint-box")
         .textContent =
         "";
 
-
     hideHintQuestion();
-
 
     document
         .getElementById("message")
         .textContent =
         "";
 
-
     document
         .getElementById("answer")
         .value =
         "";
-
 
     document
         .querySelectorAll(".lake-option")
@@ -1262,7 +1183,6 @@ function resetPuzzle() {
             element =>
                 element.remove()
         );
-
 }
 
 
@@ -1277,18 +1197,15 @@ function openForest() {
 
     resetPuzzle();
 
-
     document
         .getElementById("puzzle-title")
         .textContent =
         "🌲 Las";
 
-
     document
         .getElementById("puzzle-description")
         .textContent =
         "W lesie znajdujesz dziwną tabliczkę.";
-
 
     document
         .getElementById("puzzle-question")
@@ -1304,48 +1221,40 @@ function openForest() {
         </strong>
         `;
 
-
     document
         .getElementById("puzzle-instruction")
         .textContent =
         "Jaka liczba powinna pojawić się jako następna?";
 
-
     document
         .getElementById("answer")
         .style.display =
         "inline-block";
-
 
     document
         .getElementById("answer")
         .placeholder =
         "Wpisz liczbę";
 
-
     document
         .getElementById("check-button")
         .style.display =
         "inline-block";
-
 
     document
         .getElementById("check-button")
         .onclick =
         checkForestAnswer;
 
-
     document
         .getElementById("hint-button")
         .style.display =
         "inline-block";
 
-
     document
         .getElementById("puzzle-screen")
         .style.display =
         "flex";
-
 }
 
 
@@ -1361,7 +1270,6 @@ function checkForestAnswer() {
             .value
             .replace(/\s/g,"");
 
-
     if (
         answer ===
         "196418"
@@ -1370,18 +1278,15 @@ function checkForestAnswer() {
         lakeUnlocked =
             true;
 
-
         document
             .getElementById("lake")
             .style.display =
             "block";
 
-
         document
             .getElementById("message")
             .textContent =
             "✓ Poprawnie! Ścieżka prowadzi dalej...";
-
 
         setTimeout(
             closePuzzle,
@@ -1398,7 +1303,6 @@ function checkForestAnswer() {
             "✗ Spróbuj jeszcze raz.";
 
     }
-
 }
 
 
@@ -1413,57 +1317,47 @@ function openLake() {
 
     resetPuzzle();
 
-
     document
         .getElementById("puzzle-title")
         .textContent =
         "🌊 Jezioro";
-
 
     document
         .getElementById("puzzle-description")
         .textContent =
         "Przy jeziorze znajduje się most. Musisz znaleźć właściwy podział.";
 
-
     document
         .getElementById("puzzle-question")
         .innerHTML =
         "<strong>Most ma 1309 jednostek.</strong>";
-
 
     document
         .getElementById("puzzle-instruction")
         .textContent =
         "Wybierz właściwy podział:";
 
-
     document
         .getElementById("answer")
         .style.display =
         "none";
-
 
     document
         .getElementById("check-button")
         .style.display =
         "none";
 
-
     document
         .getElementById("hint-button")
         .style.display =
         "inline-block";
 
-
     createLakeOptions();
-
 
     document
         .getElementById("puzzle-screen")
         .style.display =
         "flex";
-
 }
 
 
@@ -1472,7 +1366,6 @@ function createLakeOptions() {
     const question =
         document
             .getElementById("puzzle-question");
-
 
     [
         "700 + 609",
@@ -1486,14 +1379,11 @@ function createLakeOptions() {
             const button =
                 document.createElement("button");
 
-
             button.className =
                 "lake-option";
 
-
             button.textContent =
                 option;
-
 
             button.onclick =
                 function() {
@@ -1504,16 +1394,13 @@ function createLakeOptions() {
 
                 };
 
-
             question
                 .insertAdjacentElement(
                     "afterend",
                     button
                 );
-
         }
     );
-
 }
 
 
@@ -1527,18 +1414,15 @@ function checkLakeAnswer(option) {
         castleUnlocked =
             true;
 
-
         document
             .getElementById("castle")
             .style.display =
             "block";
 
-
         document
             .getElementById("message")
             .textContent =
             "✓ Poprawnie! Most się otwiera...";
-
 
         setTimeout(
             closePuzzle,
@@ -1555,7 +1439,6 @@ function checkLakeAnswer(option) {
             "✗ Spróbuj jeszcze raz.";
 
     }
-
 }
 
 
@@ -1570,18 +1453,15 @@ function openCastle() {
 
     resetPuzzle();
 
-
     document
         .getElementById("puzzle-title")
         .textContent =
         "🏰 Zamek";
 
-
     document
         .getElementById("puzzle-description")
         .textContent =
         "Docierasz do zamku. Przed Tobą ostatnia główna zagadka.";
-
 
     document
         .getElementById("puzzle-question")
@@ -1589,30 +1469,22 @@ function openCastle() {
         `
         <div class="complex-puzzle">
 
-
             <div class="complex-equation">
-
                 <strong>
                     (4 + 3i)(4 − 3i) − 6 = ?
                 </strong>
-
             </div>
 
-
             <div class="complex-equation">
-
                 <strong>
                     (3 + i)(3 − i) = ?
                 </strong>
-
             </div>
-
 
             <p>
                 Pamiętaj:
                 <strong>i² = −1</strong>
             </p>
-
 
             <div class="complex-answer-row">
 
@@ -1624,11 +1496,9 @@ function openCastle() {
                     autocomplete="off"
                 >
 
-
                 <span class="complex-dot">
                     .
                 </span>
-
 
                 <input
                     id="complex-answer-2"
@@ -1643,42 +1513,35 @@ function openCastle() {
         </div>
         `;
 
-
     document
         .getElementById("puzzle-instruction")
         .textContent =
         "Oblicz oba działania i wpisz wyniki.";
-
 
     document
         .getElementById("answer")
         .style.display =
         "none";
 
-
     document
         .getElementById("check-button")
         .style.display =
         "inline-block";
-
 
     document
         .getElementById("check-button")
         .onclick =
         checkCastleAnswer;
 
-
     document
         .getElementById("hint-button")
         .style.display =
         "inline-block";
 
-
     document
         .getElementById("puzzle-screen")
         .style.display =
         "flex";
-
 }
 
 
@@ -1696,7 +1559,6 @@ function checkCastleAnswer() {
             .value
             .replace(/\s/g,"");
 
-
     const second =
         document
             .getElementById(
@@ -1704,7 +1566,6 @@ function checkCastleAnswer() {
             )
             .value
             .replace(/\s/g,"");
-
 
     if (
         first === "19"
@@ -1715,18 +1576,15 @@ function checkCastleAnswer() {
         caveUnlocked =
             true;
 
-
         document
             .getElementById("cave")
             .style.display =
             "block";
 
-
         document
             .getElementById("message")
             .textContent =
             "✓ Poprawnie! Otworzyła się droga dalej...";
-
 
         setTimeout(
             closePuzzle,
@@ -1743,7 +1601,6 @@ function checkCastleAnswer() {
             "✗ Spróbuj jeszcze raz.";
 
     }
-
 }
 
 
@@ -1756,43 +1613,36 @@ function openCave() {
     if (!caveUnlocked)
         return;
 
-
     document
         .getElementById("puzzle-screen")
         .style.display =
         "none";
-
 
     document
         .getElementById("game")
         .style.display =
         "none";
 
-
     const caveScreen =
         document
             .getElementById("cave-screen");
 
-
     caveScreen.style.display =
         "flex";
-
 
     const finalText =
 `Tutaj pojawi się tekst finałowy.
 
 Wymyślimy go razem.`;
 
-
     typeCaveText(
         finalText
     );
-
 }
 
 
 /* ==================================================
-   POWOLNE PISANIE TEKSTU
+   POWOLNE PISANIE
 ================================================== */
 
 function typeCaveText(text) {
@@ -1801,14 +1651,11 @@ function typeCaveText(text) {
         document
             .getElementById("cave-text");
 
-
     element.textContent =
         "";
 
-
     let index =
         0;
-
 
     function writeNext() {
 
@@ -1821,17 +1668,13 @@ function typeCaveText(text) {
 
         }
 
-
         element.textContent +=
             text[index];
 
-
         index++;
-
 
         let delay =
             45;
-
 
         if (
             text[index - 1] === "."
@@ -1846,7 +1689,6 @@ function typeCaveText(text) {
 
         }
 
-
         if (
             text[index - 1] === "\n"
         ) {
@@ -1856,17 +1698,13 @@ function typeCaveText(text) {
 
         }
 
-
         setTimeout(
             writeNext,
             delay
         );
-
     }
 
-
     writeNext();
-
 }
 
 
@@ -2005,17 +1843,15 @@ function showHintText(text) {
         .textContent =
         text;
 
-
     document
         .getElementById("hint-box")
         .style.display =
         "block";
-
 }
 
 
 /* ==================================================
-   PYTANIE O KOLEJNĄ PODPOWIEDŹ
+   PYTANIE O PODPOWIEDŹ
 ================================================== */
 
 function askForHint(
@@ -2030,36 +1866,30 @@ function askForHint(
         .textContent =
         text;
 
-
     document
         .getElementById("hint-yes")
         .textContent =
         yesText;
-
 
     document
         .getElementById("hint-no")
         .textContent =
         "Nie";
 
-
     document
         .getElementById("hint-question")
         .style.display =
         "block";
-
 
     document
         .getElementById("hint-yes")
         .style.display =
         "inline-block";
 
-
     document
         .getElementById("hint-no")
         .style.display =
         "inline-block";
-
 }
 
 
@@ -2139,7 +1969,6 @@ function answerHintYes() {
 
         return;
     }
-
 }
 
 
@@ -2156,7 +1985,6 @@ function hideHintQuestion() {
         .style.display =
         "none";
 
-
     document
         .getElementById(
             "hint-yes"
@@ -2164,19 +1992,17 @@ function hideHintQuestion() {
         .style.display =
         "none";
 
-
     document
         .getElementById(
             "hint-no"
         )
         .style.display =
         "none";
-
 }
 
 
 /* ==================================================
-   ZAMKNIĘCIE OKNA
+   ZAMKNIĘCIE
 ================================================== */
 
 function closePuzzle() {
@@ -2188,14 +2014,12 @@ function closePuzzle() {
         .style.display =
         "none";
 
-
     document
         .getElementById(
             "message"
         )
         .textContent =
         "";
-
 }
 
 </script>
