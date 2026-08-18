@@ -74,9 +74,9 @@ body {
     position: fixed;
 
     top: 20px;
-    left: 25px;
+    right: 25px;
 
-    z-index: 50;
+    z-index: 60;
 
     font-size: 32px;
 
@@ -88,20 +88,98 @@ body {
     border-radius:
         14px;
 
-    background:
-        rgba(0,0,0,0.45);
+    /* CAŁKOWICIE NIEPRZEZROCZYSTE TŁO */
 
-    backdrop-filter:
-        blur(4px);
+    background:
+        #171717;
+
+    border:
+        2px solid
+        rgba(255,255,255,0.25);
+
+    box-shadow:
+        0 4px 15px
+        rgba(0,0,0,0.7);
 
     text-shadow:
-        0 0 10px rgba(0,0,0,0.8);
+        0 0 8px
+        rgba(0,0,0,0.8);
 
     pointer-events:
         none;
 
     user-select:
         none;
+}
+
+
+/* ==================================================
+   EKRAN KOŃCA GRY
+================================================== */
+
+#game-over {
+    position: fixed;
+
+    inset: 0;
+
+    display: none;
+
+    align-items: center;
+
+    justify-content: center;
+
+    flex-direction: column;
+
+    background:
+        #000000;
+
+    color:
+        white;
+
+    z-index:
+        1000;
+
+    text-align:
+        center;
+
+    padding:
+        30px;
+}
+
+#game-over h1 {
+
+    font-size:
+        52px;
+
+    margin:
+        0 0 20px;
+
+}
+
+#game-over p {
+
+    font-size:
+        21px;
+
+    margin:
+        0;
+
+    opacity:
+        0.85;
+
+    line-height:
+        1.6;
+
+}
+
+.game-over-heart {
+
+    font-size:
+        60px;
+
+    margin-bottom:
+        20px;
+
 }
 
 
@@ -334,10 +412,12 @@ body {
 ================================================== */
 
 #forest {
+
     left: 35.45%;
     top: 45.08%;
 
-    display: none;
+    display:
+        none;
 }
 
 
@@ -346,10 +426,12 @@ body {
 ================================================== */
 
 #lake {
+
     left: 54.85%;
     top: 44.54%;
 
-    display: none;
+    display:
+        none;
 }
 
 
@@ -358,6 +440,7 @@ body {
 ================================================== */
 
 #castle {
+
     left: 72.727%;
     top: 44.541%;
 
@@ -376,7 +459,8 @@ body {
         6.757% 100%
     );
 
-    display: none;
+    display:
+        none;
 }
 
 
@@ -385,10 +469,12 @@ body {
 ================================================== */
 
 #cave {
+
     left: 86.82%;
     top: 22.81%;
 
-    display: none;
+    display:
+        none;
 }
 
 
@@ -397,12 +483,15 @@ body {
 ================================================== */
 
 #puzzle-screen {
+
     position: fixed;
+
     inset: 0;
 
     display: none;
 
     align-items: center;
+
     justify-content: center;
 
     padding: 20px;
@@ -419,6 +508,7 @@ body {
 ================================================== */
 
 #puzzle-box {
+
     width:
         min(680px,92vw);
 
@@ -452,13 +542,21 @@ body {
 }
 
 #puzzle-box h1 {
-    margin-top: 0;
-    font-size: 36px;
+
+    margin-top:
+        0;
+
+    font-size:
+        36px;
 }
 
 #puzzle-box p {
-    font-size: 18px;
-    line-height: 1.6;
+
+    font-size:
+        18px;
+
+    line-height:
+        1.6;
 }
 
 
@@ -467,22 +565,30 @@ body {
 ================================================== */
 
 #answer {
-    width: 220px;
 
-    padding: 12px;
+    width:
+        220px;
 
-    margin-top: 10px;
+    padding:
+        12px;
+
+    margin-top:
+        10px;
 
     border:
         2px solid white;
 
-    border-radius: 8px;
+    border-radius:
+        8px;
 
-    font-size: 18px;
+    font-size:
+        18px;
 
-    text-align: center;
+    text-align:
+        center;
 
-    outline: none;
+    outline:
+        none;
 }
 
 
@@ -491,6 +597,7 @@ body {
 ================================================== */
 
 .puzzle-button {
+
     margin:
         15px 5px 0;
 
@@ -522,6 +629,7 @@ body {
 }
 
 .puzzle-button:hover {
+
     transform:
         translateY(-2px);
 
@@ -538,6 +646,7 @@ body {
 ================================================== */
 
 .lake-option {
+
     display:
         block;
 
@@ -570,6 +679,7 @@ body {
 }
 
 .lake-option:hover {
+
     background:
         black;
 
@@ -583,6 +693,7 @@ body {
 ================================================== */
 
 .complex-puzzle {
+
     margin:
         25px auto;
 
@@ -601,6 +712,7 @@ body {
 }
 
 .complex-equation {
+
     font-size:
         21px;
 
@@ -612,6 +724,7 @@ body {
 }
 
 .complex-answer-row {
+
     display:
         flex;
 
@@ -626,6 +739,7 @@ body {
 }
 
 .complex-input {
+
     width:
         90px;
 
@@ -649,6 +763,7 @@ body {
 }
 
 .complex-dot {
+
     font-size:
         28px;
 
@@ -665,6 +780,7 @@ body {
 ================================================== */
 
 #hint-box {
+
     display:
         none;
 
@@ -692,6 +808,7 @@ body {
 }
 
 #hint-question {
+
     display:
         none;
 
@@ -707,6 +824,7 @@ body {
 
 #hint-yes,
 #hint-no {
+
     display:
         none;
 
@@ -737,6 +855,7 @@ body {
 
 #hint-yes:hover,
 #hint-no:hover {
+
     background:
         black;
 
@@ -750,6 +869,7 @@ body {
 ================================================== */
 
 #message {
+
     min-height:
         28px;
 
@@ -766,6 +886,7 @@ body {
 ================================================== */
 
 #cave-screen {
+
     position:
         fixed;
 
@@ -798,6 +919,7 @@ body {
 }
 
 #cave-text {
+
     width:
         min(800px,90vw);
 
@@ -909,6 +1031,28 @@ body {
 
 <div id="lives">
     ❤️ ❤️
+</div>
+
+
+<!-- ==================================================
+     EKRAN KOŃCA GRY
+================================================== -->
+
+<div id="game-over">
+
+    <div class="game-over-heart">
+        💔
+    </div>
+
+    <h1>
+        Koniec gry
+    </h1>
+
+    <p>
+        Straciłeś wszystkie życia.<br>
+        Odśwież stronę, aby spróbować ponownie.
+    </p>
+
 </div>
 
 
@@ -1044,7 +1188,6 @@ function updateLives() {
 
         livesElement.textContent =
             "♡ ♡";
-
     }
 }
 
@@ -1076,15 +1219,10 @@ function loseLife() {
             .style.display =
             "none";
 
-        setTimeout(
-            function() {
-
-                window.location.href =
-                    "about:blank";
-
-            },
-            500
-        );
+        document
+            .getElementById("game-over")
+            .style.display =
+            "flex";
 
         return true;
     }
@@ -1272,7 +1410,6 @@ function openForest() {
     if (!houseVisited) {
 
         return;
-
     }
 
     currentLocation =
@@ -1765,7 +1902,6 @@ function typeCaveText(text) {
         ) {
 
             return;
-
         }
 
         element.textContent +=
@@ -1786,7 +1922,6 @@ function typeCaveText(text) {
 
             delay =
                 500;
-
         }
 
         if (
@@ -1795,7 +1930,6 @@ function typeCaveText(text) {
 
             delay =
                 700;
-
         }
 
         setTimeout(
@@ -2124,7 +2258,7 @@ function closePuzzle() {
 
 
 /* ==================================================
-   START
+   START GRY
 ================================================== */
 
 updateLives();
