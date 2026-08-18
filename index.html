@@ -109,30 +109,40 @@
         }
 
 
-        /*
-         * CASTLE
-         *
-         * Jeden duży hotspot obejmujący
-         * wskazany obszar zamku.
-         *
-         * Współrzędne:
-         * 963,444
-         * 1033,444
-         * 965,496
-         * 1037,496
-         */
+        /* =========================
+           CASTLE
+           
+           Punkty:
+           965,501
+           1035,499
+           1039,412
+           960,420
+
+           Przy rozdzielczości mapy:
+           1320 × 925
+
+           Hotspot jest skalowany razem
+           z mapą dzięki wartościom %.
+        ========================= */
 
         #castle {
 
-            left: 963px;
-            top: 444px;
+            left: 72.727%;
+            top: 44.541%;
 
-            width: 74px;
-            height: 52px;
+            width: 5.985%;
+            height: 9.622%;
 
             transform: translate(0, 0);
 
             border-radius: 0;
+
+            clip-path: polygon(
+                0% 9.091%,
+                93.151% 0%,
+                100% 98.966%,
+                6.757% 100%
+            );
         }
 
 
