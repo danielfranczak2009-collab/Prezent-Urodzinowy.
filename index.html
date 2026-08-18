@@ -13,24 +13,166 @@
             height: 100%;
             background: black;
             overflow: hidden;
+            font-family: Arial, sans-serif;
+        }
+
+        #game {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
         }
 
         #game-map {
             display: block;
-            width: 100vw;
-            height: 100vh;
+            width: 100%;
+            height: 100%;
             object-fit: contain;
+        }
+
+        /* Tymczasowy przycisk lasu */
+        #forest-button {
+            position: absolute;
+            left: 20%;
+            top: 30%;
+            width: 120px;
+            height: 120px;
+            border: 3px solid rgba(255,255,255,0.8);
+            border-radius: 50%;
+            background: rgba(0,0,0,0.15);
+            cursor: pointer;
+            color: white;
+            font-size: 18px;
+        }
+
+        #forest-button:hover {
+            background: rgba(255,255,255,0.2);
+        }
+
+        /* Ekran zagadki */
+        #puzzle-screen {
+            display: none;
+            position: absolute;
+            inset: 0;
+            background: rgba(0,0,0,0.88);
+            color: white;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            z-index: 10;
+        }
+
+        #puzzle-box {
+            width: min(600px, 85%);
+            padding: 35px;
+            border-radius: 20px;
+            background: #151515;
+            box-shadow: 0 0 30px rgba(255,255,255,0.15);
+        }
+
+        input {
+            padding: 12px;
+            font-size: 18px;
+            width: 150px;
+            text-align: center;
+            margin-top: 15px;
+        }
+
+        button {
+            padding: 12px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 10px;
+        }
+
+        #message {
+            min-height: 25px;
+            margin-top: 15px;
         }
     </style>
 </head>
 
 <body>
 
+<div id="game">
+
     <img
         id="game-map"
         src="Storybook-World-Map.png"
         alt="Mapa gry"
     >
+
+    <!-- LAS -->
+    <button id="forest-button" onclick="openForest()">
+        🌲 LAS
+    </button>
+
+    <!-- ZAGADKA -->
+    <div id="puzzle-screen">
+
+        <div id="puzzle-box">
+
+            <h1>🌲 Las</h1>
+
+            <p>
+                W lesie znajdujesz dziwną tabliczkę.
+            </p>
+
+            <p>
+                <strong>1, 1, 2, 3, 5, 8, ?, ?</strong>
+            </p>
+
+            <p>
+                Uporządkuj ciąg i wpisz <strong>dwie kolejne liczby</strong>.
+            </p>
+
+            <input id="answer" type="text" placeholder="np. 13, 21">
+
+            <br>
+
+            <button onclick="checkAnswer()">Sprawdź</button>
+            <button onclick="closePuzzle()">Wróć na mapę</button>
+
+            <div id="message"></div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+
+function openForest() {
+    document.getElementById("puzzle-screen").style.display = "flex";
+}
+
+function closePuzzle() {
+    document.getElementById("puzzle-screen").style.display = "none";
+    document.getElementById("message").textContent = "";
+}
+
+function checkAnswer() {
+
+    const answer = document
+        .getElementById("answer")
+        .value
+        .replace(/\s/g, "");
+
+    if (answer === "13,21") {
+
+        document.getElementById("message").textContent =
+            "✓ Poprawnie! Ścieżka prowadzi dalej...";
+
+        // Następny etap dodamy później.
+
+    } else {
+
+        document.getElementById("message").textContent =
+            "✗ To nie jest właściwa odpowiedź. Spróbuj jeszcze raz.";
+    }
+}
+
+</script>
 
 </body>
 </html>
