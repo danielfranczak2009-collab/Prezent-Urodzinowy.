@@ -72,9 +72,7 @@ body {
 ================================================== */
 
 #day-night {
-
     position: absolute;
-
     inset: 0;
 
     pointer-events: none;
@@ -124,7 +122,6 @@ body {
 ================================================== */
 
 .cloud {
-
     position: absolute;
 
     z-index: 10;
@@ -146,7 +143,6 @@ body {
 
 .cloud::before,
 .cloud::after {
-
     content: "";
 
     position: absolute;
@@ -158,7 +154,6 @@ body {
 }
 
 .cloud::before {
-
     width: 75px;
     height: 75px;
 
@@ -167,7 +162,6 @@ body {
 }
 
 .cloud::after {
-
     width: 95px;
     height: 95px;
 
@@ -176,7 +170,6 @@ body {
 }
 
 #cloud1 {
-
     top: 12%;
     left: -220px;
 
@@ -187,7 +180,6 @@ body {
 }
 
 #cloud2 {
-
     top: 25%;
     left: -300px;
 
@@ -200,7 +192,6 @@ body {
 }
 
 #cloud3 {
-
     top: 8%;
     left: -400px;
 
@@ -296,14 +287,12 @@ body {
 }
 
 .heart {
-
     transition:
         opacity 0.3s ease,
         transform 0.3s ease;
 }
 
 .heart.lost {
-
     opacity: 0.15;
 
     transform:
@@ -353,6 +342,7 @@ body {
 
     left: 15.536%;
     top: 69.797%;
+
 }
 
 
@@ -1521,7 +1511,7 @@ body {
 
 
 /* ==================================================
-   MUZYKA — CYKL 60 SEKUND
+   MUZYKA — CYKL DNIA I NOCY
 ================================================== */
 
 const dayMusic =
@@ -1532,43 +1522,31 @@ const nightMusic =
 
 
 /*
-   Maksymalna głośność.
-   ZOSTAWIONE 0.1 — tak jak chciałeś.
-*/
-
-const MUSIC_VOLUME = 0.1;
-
-
-/*
-   Cały cykl trwa dokładnie 60 sekund.
-*/
-
-const MUSIC_CYCLE = 60000;
-
-
-/*
-   Fade trwa 5 sekund.
-*/
-
-const FADE_TIME = 5000;
-
-
-let musicStarted = false;
-
-
-/*
-   Ustawienie początkowej głośności.
+   Głośność zostaje taka jak wcześniej.
 */
 
 dayMusic.volume = 0;
 nightMusic.volume = 0;
 
 
+let musicStarted = false;
+
+
 /*
-   Uruchomienie obu utworów.
-   Przeglądarki pozwalają na play()
-   po kliknięciu użytkownika.
+   CAŁY CYKL = 60 SEKUND
+
+   0–20 s   = DZIEŃ
+   20–30 s  = FADE DZIEŃ → NOC
+   30–50 s  = NOC
+   50–60 s  = FADE NOC → DZIEŃ
+
+   Fade trwa dokładnie 10 sekund.
 */
+
+const MUSIC_CYCLE = 60000;
+
+const MUSIC_VOLUME = 0.18;
+
 
 function startMusic() {
 
@@ -1589,23 +1567,11 @@ function startMusic() {
 }
 
 
-/*
-   Synchronizacja muzyki z cyklem dnia/nocy.
-
-   00–25 s = dzień
-   25–30 s = fade dzień → noc
-   30–55 s = noc
-   55–60 s = fade noc → dzień
-*/
-
 function updateMusic() {
 
-    if (!musicStarted)
-        return;
-
-
     const time =
-        Date.now() % MUSIC_CYCLE;
+        (Date.now() % MUSIC_CYCLE)
+        / MUSIC_CYCLE;
 
 
     let dayVolume = 0;
@@ -1613,106 +1579,153 @@ function updateMusic() {
 
 
     /*
-       DZIEŃ
-       0–25 sekund
+       0–20 SEKUND
+       CZYSTY DZIEŃ
     */
 
-    if (time < 25000) {
+    if (time < 1 / 3) {
 
         dayVolume =
             MUSIC_VOLUME;
 
         nightVolume =
             0;
+
     }
 
 
     /*
-       DZIEŃ → NOC
-       25–30 sekund
+       20–30 SEKUND
+       FADE DZIEŃ → NOC
+
+       Najpierw dzień schodzi do 0,
+       a dopiero potem noc zaczyna
+       się pojawiać.
     */
 
-    else if (time < 30000) {
+    else if (time < 0.5) {
 
         const progress =
-            (time - 25000) / FADE_TIME;
+            (time - 1 / 3) / (1 / 6);
 
 
-        dayVolume =
-            MUSIC_VOLUME *
-            (1 - progress);
+        if (progress < 0.5) {
 
-        nightVolume =
-            MUSIC_VOLUME *
-            progress;
+            /*
+               Pierwsze 5 sekund:
+               dzień → 0
+            */
+
+            dayVolume =
+                MUSIC_VOLUME *
+                (1 - progress * 2);
+
+            nightVolume =
+                0;
+
+        }
+
+        else {
+
+            /*
+               Drugie 5 sekund:
+               noc → pełna głośność
+            */
+
+            dayVolume =
+                0;
+
+            nightVolume =
+                MUSIC_VOLUME *
+                ((progress - 0.5) * 2);
+
+        }
+
     }
 
 
     /*
-       NOC
-       30–55 sekund
+       30–50 SEKUND
+       CZYSTA NOC
     */
 
-    else if (time < 55000) {
+    else if (time < 5 / 6) {
 
         dayVolume =
             0;
 
         nightVolume =
             MUSIC_VOLUME;
+
     }
 
 
     /*
-       NOC → DZIEŃ
-       55–60 sekund
+       50–60 SEKUND
+       FADE NOC → DZIEŃ
+
+       Tak samo:
+       najpierw noc całkowicie
+       się wycisza, potem dzień
+       zaczyna się pojawiać.
     */
 
     else {
 
         const progress =
-            (time - 55000) / FADE_TIME;
+            (time - 5 / 6) / (1 / 6);
 
 
-        dayVolume =
-            MUSIC_VOLUME *
-            progress;
+        if (progress < 0.5) {
 
-        nightVolume =
-            MUSIC_VOLUME *
-            (1 - progress);
+            /*
+               Pierwsze 5 sekund:
+               noc → 0
+            */
+
+            dayVolume =
+                0;
+
+            nightVolume =
+                MUSIC_VOLUME *
+                (1 - progress * 2);
+
+        }
+
+        else {
+
+            /*
+               Drugie 5 sekund:
+               dzień → pełna głośność
+            */
+
+            dayVolume =
+                MUSIC_VOLUME *
+                ((progress - 0.5) * 2);
+
+            nightVolume =
+                0;
+
+        }
+
     }
 
 
     dayMusic.volume =
-        Math.max(
-            0,
-            Math.min(
-                MUSIC_VOLUME,
-                dayVolume
-            )
-        );
-
+        Math.max(0, Math.min(1, dayVolume));
 
     nightMusic.volume =
-        Math.max(
-            0,
-            Math.min(
-                MUSIC_VOLUME,
-                nightVolume
-            )
-        );
+        Math.max(0, Math.min(1, nightVolume));
 }
 
 
 /*
-   Aktualizacja 20 razy na sekundę,
-   dzięki czemu fade jest płynny.
+   Aktualizacja 10 razy na sekundę.
 */
 
 setInterval(
     updateMusic,
-    50
+    100
 );
 
 
