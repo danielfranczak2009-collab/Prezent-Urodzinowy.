@@ -12,6 +12,10 @@
 
 <style>
 
+/* ==================================================
+   PODSTAWY
+================================================== */
+
 * {
     box-sizing: border-box;
 }
@@ -371,12 +375,13 @@ body {
 
 /* ==================================================
    DOMEK
-   POZYCJA: 204 × 669
+   X = 500px
+   Y = 669px
 ================================================== */
 
 #house {
 
-    left: 204px;
+    left: 500px;
     top: 669px;
 
     width: 80px;
@@ -385,7 +390,7 @@ body {
 
 
 /* ==================================================
-   LOKACJE
+   LAS
 ================================================== */
 
 #forest {
@@ -395,6 +400,10 @@ body {
 }
 
 
+/* ==================================================
+   JEZIORO
+================================================== */
+
 #lake {
 
     left: 54.85%;
@@ -403,6 +412,10 @@ body {
     display: none;
 }
 
+
+/* ==================================================
+   ZAMEK
+================================================== */
 
 #castle {
 
@@ -427,6 +440,10 @@ body {
     display: none;
 }
 
+
+/* ==================================================
+   JASKINIA
+================================================== */
 
 #cave {
 
@@ -606,7 +623,8 @@ body {
 
     margin-top: 10px;
 
-    border: 2px solid white;
+    border:
+        2px solid white;
 
     border-radius: 8px;
 
@@ -669,7 +687,7 @@ body {
 
 
 /* ==================================================
-   JEZIORO
+   JEZIORO — ODPOWIEDZI
 ================================================== */
 
 .lake-option {
@@ -717,7 +735,7 @@ body {
 
 
 /* ==================================================
-   ZAMEK
+   ZAMEK — LICZBY ZESPOLONE
 ================================================== */
 
 .complex-puzzle {
@@ -1062,6 +1080,7 @@ body {
 
     <div id="world">
 
+
         <img
             id="game-map"
             src="Storybook-World-Map.png"
@@ -1090,7 +1109,9 @@ body {
         <div id="day-night"></div>
 
 
-        <!-- DOMEK -->
+        <!-- ==================================================
+             DOMEK
+        ================================================== -->
 
         <button
             id="house"
@@ -1099,7 +1120,9 @@ body {
         </button>
 
 
-        <!-- LAS -->
+        <!-- ==================================================
+             LAS
+        ================================================== -->
 
         <button
             id="forest"
@@ -1108,7 +1131,9 @@ body {
         </button>
 
 
-        <!-- JEZIORO -->
+        <!-- ==================================================
+             JEZIORO
+        ================================================== -->
 
         <button
             id="lake"
@@ -1117,7 +1142,9 @@ body {
         </button>
 
 
-        <!-- ZAMEK -->
+        <!-- ==================================================
+             ZAMEK
+        ================================================== -->
 
         <button
             id="castle"
@@ -1126,13 +1153,16 @@ body {
         </button>
 
 
-        <!-- JASKINIA -->
+        <!-- ==================================================
+             JASKINIA
+        ================================================== -->
 
         <button
             id="cave"
             class="location"
             onclick="openCave()">
         </button>
+
 
     </div>
 
@@ -1146,6 +1176,7 @@ body {
 <div id="house-screen">
 
     <div id="house-text"></div>
+
 
     <button
         id="house-back"
@@ -1166,13 +1197,18 @@ body {
 
     <div id="puzzle-box">
 
+
         <h1 id="puzzle-title"></h1>
+
 
         <p id="puzzle-description"></p>
 
+
         <div id="puzzle-question"></div>
 
+
         <p id="puzzle-instruction"></p>
+
 
         <input
             id="answer"
@@ -1180,6 +1216,7 @@ body {
             inputmode="numeric"
             autocomplete="off"
         >
+
 
         <br>
 
@@ -1243,6 +1280,7 @@ body {
 
 
         <div id="message"></div>
+
 
     </div>
 
@@ -1342,14 +1380,6 @@ function loseLife() {
     lives--;
 
     updateLives();
-
-    if (lives <= 0) {
-
-        return true;
-
-    }
-
-    return false;
 
 }
 
@@ -1494,6 +1524,10 @@ Tam rozpoczniesz swoją przygodę...`;
 }
 
 
+/* ==================================================
+   ZAMKNIĘCIE DOMKU
+================================================== */
+
 function closeHouse() {
 
     document
@@ -1511,7 +1545,7 @@ function closeHouse() {
 
 
 /* ==================================================
-   PISANIE TEKSTU DOMKU
+   TEKST DOMKU
 ================================================== */
 
 function typeHouseText(text) {
@@ -1847,6 +1881,10 @@ function openLake() {
 }
 
 
+/* ==================================================
+   ODPOWIEDZI JEZIORA
+================================================== */
+
 function createLakeOptions() {
 
     const question =
@@ -1896,6 +1934,10 @@ function createLakeOptions() {
 
 }
 
+
+/* ==================================================
+   JEZIORO — SPRAWDZANIE
+================================================== */
 
 function checkLakeAnswer(option) {
 
@@ -2184,7 +2226,7 @@ Wymyślimy go razem.`;
 
 
 /* ==================================================
-   POWOLNE PISANIE TEKSTU
+   POWOLNE PISANIE TEKSTU JASKINI
 ================================================== */
 
 function typeCaveText(text) {
@@ -2268,6 +2310,9 @@ function typeCaveText(text) {
 
 function showHint() {
 
+
+    /* LAS — pierwsza */
+
     if (
         currentLocation === "forest"
         &&
@@ -2285,6 +2330,8 @@ function showHint() {
         return;
     }
 
+
+    /* LAS — pytanie o drugą */
 
     if (
         currentLocation === "forest"
@@ -2305,6 +2352,8 @@ function showHint() {
     }
 
 
+    /* LAS — pytanie o ostatnią */
+
     if (
         currentLocation === "forest"
         &&
@@ -2324,6 +2373,8 @@ function showHint() {
     }
 
 
+    /* JEZIORO — pierwsza */
+
     if (
         currentLocation === "lake"
         &&
@@ -2341,6 +2392,8 @@ function showHint() {
         return;
     }
 
+
+    /* JEZIORO — ostatnia */
 
     if (
         currentLocation === "lake"
@@ -2361,6 +2414,8 @@ function showHint() {
     }
 
 
+    /* ZAMEK — pierwsza */
+
     if (
         currentLocation === "castle"
         &&
@@ -2378,6 +2433,8 @@ function showHint() {
         return;
     }
 
+
+    /* ZAMEK — ostatnia */
 
     if (
         currentLocation === "castle"
@@ -2475,6 +2532,9 @@ function askForHint(
 
 function answerHintYes() {
 
+
+    /* LAS — druga */
+
     if (
         currentLocation === "forest"
         &&
@@ -2495,6 +2555,8 @@ function answerHintYes() {
         return;
     }
 
+
+    /* LAS — ostatnia */
 
     if (
         currentLocation === "forest"
@@ -2517,6 +2579,8 @@ function answerHintYes() {
     }
 
 
+    /* JEZIORO — ostatnia */
+
     if (
         currentLocation === "lake"
         &&
@@ -2537,6 +2601,8 @@ function answerHintYes() {
         return;
     }
 
+
+    /* ZAMEK — ostatnia */
 
     if (
         currentLocation === "castle"
@@ -2594,7 +2660,7 @@ function hideHintQuestion() {
 
 
 /* ==================================================
-   ZAMKNIĘCIE OKNA
+   ZAMKNIĘCIE ZAGADKI
 ================================================== */
 
 function closePuzzle() {
