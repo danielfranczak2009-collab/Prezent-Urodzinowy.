@@ -2852,20 +2852,6 @@ function closePuzzle() {
 ================================================== */
 
 updateLives();
-      document.addEventListener("click", function () {
-
-    const music = document.getElementById("dayMusic");
-
-    music.play()
-        .then(() => {
-            alert("MUZYKA ZNALEZIONA I URUCHOMIONA");
-        })
-        .catch((error) => {
-            alert("BŁĄD: " + error);
-        });
-
-}, { once: true });
-
 </script>
 
 </body>
