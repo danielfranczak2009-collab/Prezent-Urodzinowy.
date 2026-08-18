@@ -120,9 +120,6 @@
 
            Przy rozdzielczości mapy:
            1320 × 925
-
-           Hotspot jest skalowany razem
-           z mapą dzięki wartościom %.
         ========================= */
 
         #castle {
@@ -257,6 +254,69 @@
 
 
         /* =========================
+           PODPOWIEDŹ
+        ========================= */
+
+        #hint-button {
+
+            background: #252525;
+
+            color: white;
+
+            display: inline-block;
+        }
+
+
+        #hint-box {
+
+            display: none;
+
+            margin-top: 20px;
+
+            padding: 18px;
+
+            border-radius: 14px;
+
+            background: #222;
+
+            font-size: 17px;
+
+            line-height: 1.6;
+        }
+
+
+        #hint-question {
+
+            display: none;
+
+            margin-top: 18px;
+
+            font-size: 17px;
+
+            line-height: 1.5;
+        }
+
+
+        #hint-yes,
+        #hint-no {
+
+            display: none;
+
+            margin: 8px 4px 0;
+
+            padding: 9px 18px;
+
+            border: none;
+
+            border-radius: 9px;
+
+            cursor: pointer;
+
+            font-size: 15px;
+        }
+
+
+        /* =========================
            WIADOMOŚĆ
         ========================= */
 
@@ -366,21 +426,23 @@
             <p id="puzzle-question">
 
                 <strong>
-                    1, 1, 2, 3, 5, 8, ?, ?
+                    46 368 &nbsp;&nbsp; 10 946 &nbsp;&nbsp; 121 393
+                    &nbsp;&nbsp; 28 657 &nbsp;&nbsp; 75 025
+                    &nbsp;&nbsp; 17 711
                 </strong>
 
             </p>
 
 
             <p id="puzzle-instruction">
-                Uzupełnij dwie kolejne liczby.
+                Jaka liczba powinna pojawić się jako następna?
             </p>
 
 
             <input
                 id="answer"
                 type="text"
-                placeholder="13, 21"
+                placeholder="Wpisz liczbę"
             >
 
 
@@ -397,11 +459,43 @@
 
 
             <button
+                id="hint-button"
+                class="puzzle-button"
+                onclick="showHint()"
+            >
+                💭 „Coś mi to przypomina…”
+            </button>
+
+
+            <button
                 class="puzzle-button"
                 onclick="closePuzzle()"
             >
                 Wróć
             </button>
+
+
+            <div id="hint-box"></div>
+
+
+            <div id="hint-question">
+                Chcesz drugą podpowiedź?
+                <br>
+
+                <button
+                    id="hint-yes"
+                    onclick="showSecondHint()"
+                >
+                    Tak
+                </button>
+
+                <button
+                    id="hint-no"
+                    onclick="hideHintQuestion()"
+                >
+                    Nie
+                </button>
+            </div>
 
 
             <div id="message"></div>
@@ -436,13 +530,17 @@
             document
                 .getElementById("puzzle-question")
                 .innerHTML =
-                "<strong>1, 1, 2, 3, 5, 8, ?, ?</strong>";
+                "<strong>" +
+                "46 368 &nbsp;&nbsp; 10 946 &nbsp;&nbsp; 121 393" +
+                "&nbsp;&nbsp; 28 657 &nbsp;&nbsp; 75 025" +
+                "&nbsp;&nbsp; 17 711" +
+                "</strong>";
 
 
             document
                 .getElementById("puzzle-instruction")
                 .textContent =
-                "Uzupełnij dwie kolejne liczby.";
+                "Jaka liczba powinna pojawić się jako następna?";
 
 
             document
@@ -453,7 +551,7 @@
             document
                 .getElementById("answer")
                 .placeholder =
-                "13, 21";
+                "Wpisz liczbę";
 
 
             document
@@ -469,6 +567,41 @@
 
 
             document
+                .getElementById("hint-button")
+                .style.display =
+                "inline-block";
+
+
+            document
+                .getElementById("hint-box")
+                .style.display =
+                "none";
+
+
+            document
+                .getElementById("hint-box")
+                .textContent = "";
+
+
+            document
+                .getElementById("hint-question")
+                .style.display =
+                "none";
+
+
+            document
+                .getElementById("hint-yes")
+                .style.display =
+                "none";
+
+
+            document
+                .getElementById("hint-no")
+                .style.display =
+                "none";
+
+
+            document
                 .getElementById("message")
                 .textContent = "";
 
@@ -477,6 +610,119 @@
                 .getElementById("puzzle-screen")
                 .style.display =
                 "flex";
+
+        }
+
+
+
+        /* =========================
+           PIERWSZA PODPOWIEDŹ
+        ========================= */
+
+        function showHint() {
+
+            const hintBox =
+                document.getElementById("hint-box");
+
+            const hintQuestion =
+                document.getElementById("hint-question");
+
+            const hintYes =
+                document.getElementById("hint-yes");
+
+            const hintNo =
+                document.getElementById("hint-no");
+
+
+            if (hintBox.style.display !== "block") {
+
+                hintBox.textContent =
+                    "„Kiedyś powiedziałeś mi, że najlepiej wszystko sobie po kolei ułożyć, zanim ruszysz na głęboką wodę.”";
+
+                hintBox.style.display =
+                    "block";
+
+            }
+
+            else {
+
+                hintQuestion.style.display =
+                    "block";
+
+                hintYes.style.display =
+                    "inline-block";
+
+                hintNo.style.display =
+                    "inline-block";
+
+            }
+
+        }
+
+
+
+        /* =========================
+           DRUGA PODPOWIEDŹ
+        ========================= */
+
+        function showSecondHint() {
+
+            document
+                .getElementById("hint-question")
+                .style.display =
+                "none";
+
+
+            document
+                .getElementById("hint-yes")
+                .style.display =
+                "none";
+
+
+            document
+                .getElementById("hint-no")
+                .style.display =
+                "none";
+
+
+            document
+                .getElementById("hint-box")
+                .textContent =
+                "Zacznij od najmniejszej liczby i ułóż wszystkie liczby od najmniejszej do największej.";
+
+
+            document
+                .getElementById("hint-box")
+                .style.display =
+                "block";
+
+        }
+
+
+
+        /* =========================
+           UKRYCIE PYTANIA O DRUGĄ
+           PODPOWIEDŹ
+        ========================= */
+
+        function hideHintQuestion() {
+
+            document
+                .getElementById("hint-question")
+                .style.display =
+                "none";
+
+
+            document
+                .getElementById("hint-yes")
+                .style.display =
+                "none";
+
+
+            document
+                .getElementById("hint-no")
+                .style.display =
+                "none";
 
         }
 
@@ -523,6 +769,36 @@
 
 
             document
+                .getElementById("hint-button")
+                .style.display =
+                "none";
+
+
+            document
+                .getElementById("hint-box")
+                .style.display =
+                "none";
+
+
+            document
+                .getElementById("hint-question")
+                .style.display =
+                "none";
+
+
+            document
+                .getElementById("hint-yes")
+                .style.display =
+                "none";
+
+
+            document
+                .getElementById("hint-no")
+                .style.display =
+                "none";
+
+
+            document
                 .getElementById("message")
                 .textContent = "";
 
@@ -557,6 +833,30 @@
                 .getElementById("answer")
                 .value = "";
 
+
+            document
+                .getElementById("hint-box")
+                .style.display =
+                "none";
+
+
+            document
+                .getElementById("hint-question")
+                .style.display =
+                "none";
+
+
+            document
+                .getElementById("hint-yes")
+                .style.display =
+                "none";
+
+
+            document
+                .getElementById("hint-no")
+                .style.display =
+                "none";
+
         }
 
 
@@ -574,7 +874,7 @@
                     .replace(/\s/g, "");
 
 
-            if (answer === "13,21") {
+            if (answer === "196418") {
 
                 document
                     .getElementById("message")
