@@ -88,8 +88,6 @@ body {
     border-radius:
         14px;
 
-    /* CAŁKOWICIE NIEPRZEZROCZYSTE TŁO */
-
     background:
         #171717;
 
@@ -882,7 +880,7 @@ body {
 
 
 /* ==================================================
-   JASKINIA
+   JASKINIA — FINAŁ
 ================================================== */
 
 #cave-screen {
@@ -902,6 +900,9 @@ body {
     justify-content:
         center;
 
+    flex-direction:
+        column;
+
     background:
         black;
 
@@ -918,26 +919,134 @@ body {
         30px;
 }
 
-#cave-text {
+
+/* ==================================================
+   NAPIS KONIEC
+================================================== */
+
+#cave-ending {
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
 
     width:
-        min(800px,90vw);
+        100%;
+
+    height:
+        100%;
+}
+
+#cave-ending h1 {
 
     font-size:
-        24px;
+        clamp(50px,8vw,100px);
+
+    font-weight:
+        300;
+
+    letter-spacing:
+        12px;
+
+    margin:
+        0 0 45px;
+
+    text-shadow:
+        0 0 25px
+        rgba(255,255,255,0.25);
+}
+
+
+/* ==================================================
+   PRZYCISK WIADOMOŚCI
+================================================== */
+
+#message-button {
+
+    padding:
+        15px 28px;
+
+    border:
+        2px solid white;
+
+    border-radius:
+        12px;
+
+    background:
+        white;
+
+    color:
+        black;
+
+    font-size:
+        18px;
+
+    cursor:
+        pointer;
+
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease,
+        color 0.2s ease;
+}
+
+#message-button:hover {
+
+    transform:
+        translateY(-3px);
+
+    background:
+        black;
+
+    color:
+        white;
+}
+
+
+/* ==================================================
+   TEKST FINAŁOWY
+================================================== */
+
+#final-message {
+
+    display:
+        none;
+
+    width:
+        min(850px,90vw);
+
+    max-height:
+        85vh;
+
+    overflow-y:
+        auto;
+
+    font-size:
+        22px;
 
     line-height:
-        1.8;
+        1.9;
+
+    text-align:
+        left;
 
     white-space:
         pre-line;
 
-    min-height:
-        200px;
+    padding:
+        20px;
 
     text-shadow:
         0 0 12px
-        rgba(255,255,255,0.25);
+        rgba(255,255,255,0.20);
 }
 
 </style>
@@ -1130,12 +1239,26 @@ body {
 
 
 <!-- ==================================================
-     JASKINIA
+     JASKINIA / FINAŁ
 ================================================== -->
 
 <div id="cave-screen">
 
-    <div id="cave-text"></div>
+    <div id="cave-ending">
+
+        <h1>
+            KONIEC
+        </h1>
+
+        <button
+            id="message-button"
+            onclick="showFinalMessage()">
+            Wiadomość ode mnie…
+        </button>
+
+    </div>
+
+    <div id="final-message"></div>
 
 </div>
 
@@ -1408,7 +1531,6 @@ function resetPuzzle() {
 function openForest() {
 
     if (!houseVisited) {
-
         return;
     }
 
@@ -1860,6 +1982,11 @@ function openCave() {
         .style.display =
         "none";
 
+    document
+        .getElementById("lives")
+        .style.display =
+        "none";
+
     const caveScreen =
         document
             .getElementById("cave-screen");
@@ -1867,26 +1994,68 @@ function openCave() {
     caveScreen.style.display =
         "flex";
 
-    const finalText =
-`Tutaj pojawi się tekst finałowy.
+    document
+        .getElementById("cave-ending")
+        .style.display =
+        "flex";
 
-Wymyślimy go razem.`;
+    document
+        .getElementById("final-message")
+        .style.display =
+        "none";
+}
 
-    typeCaveText(
-        finalText
+
+/* ==================================================
+   POKAZANIE WIADOMOŚCI
+================================================== */
+
+function showFinalMessage() {
+
+    document
+        .getElementById("cave-ending")
+        .style.display =
+        "none";
+
+    const finalMessage =
+        document
+            .getElementById("final-message");
+
+    finalMessage.style.display =
+        "block";
+
+    const text =
+`Byłem pogubionym nastolatkiem, kiedy Cię pierwszy raz spotkałem. Dalej pamiętam jak stałeś w moich drzwiach, kiedy się obudziłem XD. Wtedy jeszcze kompletnie nie wiedziałem, że poznaję kogoś, kto z czasem będzie dla mnie tak ważny.
+
+Z czasem trochę się do mnie otworzyłeś, chociaż tak szczerze to chyba bardziej ja otworzyłem się przed Tobą. Zacząłem Ci mówić o różnych rzeczach, o których wcześniej raczej z nikim nie rozmawiałem. O problemach, które mnie męczyły, o tym co siedziało mi w głowie i o różnych rzeczach, z którymi sam nie do końca wiedziałem co zrobić.
+
+I pomogłeś mi z większością tych problemów. Czasami coś mi doradziłeś, czasami po prostu mnie wysłuchałeś, a czasami wystarczyło, że po prostu byłeś. I może dla Ciebie niektóre z tych rzeczy były zwykłymi rozmowami, ale dla mnie naprawdę dużo znaczyły.
+
+Dzięki Tobie zacząłem trochę inaczej patrzeć na niektóre rzeczy i chyba też trochę inaczej patrzeć na samego siebie. I wiem, że nie zawsze Ci to pokazuję albo mówię Ci wprost, ale naprawdę jestem Ci za to wszystko wdzięczny.
+
+Bo nie chodzi tylko o to, że pomogłeś mi z problemami. Po prostu przez ten cały czas miałem obok siebie osobę, przy której mogłem być sobą i nie musiałem udawać, że wszystko jest okej.
+
+Dziękuję Ci za to, że byłeś wtedy, kiedy najbardziej Cię potrzebowałem — nawet jeśli sam nie wiedziałem, że Cię potrzebuję.
+
+I niezależnie od tego, gdzie nas dalej życie zabierze, mam nadzieję, że kiedyś spojrzysz na mnie i pomyślisz: „Kurwa, dobrze, że zgodziłem się pojechać z Anią XD”.
+
+Bo ja wiem jedno — poznanie Ciebie było jedną z najlepszych rzeczy, jakie mnie w życiu spotkały. ❤️`;
+
+    typeFinalText(
+        text
     );
 }
 
 
 /* ==================================================
-   POWOLNE PISANIE TEKSTU
+   POWOLNE PISANIE WIADOMOŚCI
 ================================================== */
 
-function typeCaveText(text) {
+function typeFinalText(text) {
 
     const element =
         document
-            .getElementById("cave-text");
+            .getElementById("final-message");
 
     element.textContent =
         "";
@@ -1900,7 +2069,6 @@ function typeCaveText(text) {
             index >=
             text.length
         ) {
-
             return;
         }
 
@@ -1910,7 +2078,7 @@ function typeCaveText(text) {
         index++;
 
         let delay =
-            45;
+            38;
 
         if (
             text[index - 1] === "."
@@ -1921,7 +2089,7 @@ function typeCaveText(text) {
         ) {
 
             delay =
-                500;
+                450;
         }
 
         if (
@@ -1929,7 +2097,7 @@ function typeCaveText(text) {
         ) {
 
             delay =
-                700;
+                800;
         }
 
         setTimeout(
