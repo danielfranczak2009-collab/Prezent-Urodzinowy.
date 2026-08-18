@@ -130,6 +130,7 @@
             100% {
                 background: rgba(0, 0, 0, 0);
             }
+
         }
 
 
@@ -245,6 +246,7 @@
                     translateX(calc(100vw + 500px))
                     scale(0.9);
             }
+
         }
 
 
@@ -259,6 +261,7 @@
                     translateX(calc(100vw + 600px))
                     scale(0.65);
             }
+
         }
 
 
@@ -273,6 +276,7 @@
                     translateX(calc(100vw + 700px))
                     scale(0.45);
             }
+
         }
 
 
@@ -308,17 +312,25 @@
         }
 
 
+        /* =========================
+           LOKACJE
+        ========================= */
+
         #forest {
+
             left: 35.45%;
             top: 45.08%;
+
         }
 
 
         #lake {
+
             left: 54.85%;
             top: 44.54%;
 
             display: none;
+
         }
 
 
@@ -340,12 +352,17 @@
                 100% 98.966%,
                 6.757% 100%
             );
+
+            display: none;
         }
 
 
         #cave {
+
             left: 86.82%;
             top: 22.81%;
+
+            display: none;
         }
 
 
@@ -397,7 +414,8 @@
             box-shadow:
                 0 0 40px rgba(0, 0, 0, 0.8);
 
-            border: 1px solid rgba(255, 255, 255, 0.12);
+            border:
+                1px solid rgba(255, 255, 255, 0.12);
         }
 
 
@@ -481,10 +499,11 @@
 
 
         /* =========================
-           PODPOWIEDŹ
+           PODPOWIEDZI
         ========================= */
 
         #hint-button {
+
             display: inline-block;
         }
 
@@ -501,7 +520,8 @@
 
             background: #222;
 
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border:
+                1px solid rgba(255, 255, 255, 0.2);
 
             font-size: 17px;
 
@@ -580,8 +600,6 @@
     <div id="world">
 
 
-        <!-- MAPA -->
-
         <img
             id="game-map"
             src="Storybook-World-Map.png"
@@ -589,21 +607,15 @@
         >
 
 
-        <!-- CHMURY -->
-
         <div id="cloud1" class="cloud"></div>
         <div id="cloud2" class="cloud"></div>
         <div id="cloud3" class="cloud"></div>
 
 
-        <!-- CYKL DNIA I NOCY -->
-
         <div id="day-night"></div>
 
 
-        <!-- =========================
-             FOREST
-        ========================= -->
+        <!-- LAS -->
 
         <button
             id="forest"
@@ -613,9 +625,7 @@
         ></button>
 
 
-        <!-- =========================
-             LAKE + BRIDGE
-        ========================= -->
+        <!-- JEZIORO -->
 
         <button
             id="lake"
@@ -625,9 +635,7 @@
         ></button>
 
 
-        <!-- =========================
-             CASTLE
-        ========================= -->
+        <!-- ZAMEK -->
 
         <button
             id="castle"
@@ -637,9 +645,7 @@
         ></button>
 
 
-        <!-- =========================
-             CAVE
-        ========================= -->
+        <!-- JASKINIA -->
 
         <button
             id="cave"
@@ -737,16 +743,20 @@
 
         <div id="hint-question">
 
-            Chcesz drugą podpowiedź?
+            <span id="hint-question-text">
+                Chcesz trzecią podpowiedź?
+            </span>
 
             <br>
 
+
             <button
                 id="hint-yes"
-                onclick="showSecondHint()"
+                onclick="showThirdHint()"
             >
-                Tak
+                Napewno
             </button>
+
 
             <button
                 id="hint-no"
@@ -771,10 +781,15 @@
 
 
     /* =========================
-       STAN GRY
+       POSTĘP GRY
     ========================= */
 
     let lakeUnlocked = false;
+
+    let castleUnlocked = false;
+
+    let caveUnlocked = false;
+
 
     let hintStage = 0;
 
@@ -784,25 +799,36 @@
        RUCH MAPY ZA MYSZKĄ
     ========================= */
 
-    document.addEventListener("mousemove", function(event) {
+    document.addEventListener(
+        "mousemove",
+        function(event) {
 
-        const x =
-            (event.clientX / window.innerWidth) - 0.5;
-
-        const y =
-            (event.clientY / window.innerHeight) - 0.5;
-
-
-        const moveX = x * 28;
-        const moveY = y * 22;
+            const x =
+                (event.clientX /
+                window.innerWidth) - 0.5;
 
 
-        document
-            .getElementById("world")
-            .style.transform =
-            `translate3d(${moveX}px, ${moveY}px, 0)`;
+            const y =
+                (event.clientY /
+                window.innerHeight) - 0.5;
 
-    });
+
+            const moveX = x * 28;
+
+            const moveY = y * 22;
+
+
+            document
+                .getElementById("world")
+                .style.transform =
+                `translate3d(
+                    ${moveX}px,
+                    ${moveY}px,
+                    0
+                )`;
+
+        }
+    );
 
 
 
@@ -813,27 +839,30 @@
 
     document
         .getElementById("answer")
-        .addEventListener("input", function() {
+        .addEventListener(
+            "input",
+            function() {
 
-            let value =
-                this.value.replace(/\D/g, "");
-
-
-            value =
-                value.replace(
-                    /\B(?=(\d{3})+(?!\d))/g,
-                    " "
-                );
+                let value =
+                    this.value.replace(/\D/g, "");
 
 
-            this.value = value;
+                value =
+                    value.replace(
+                        /\B(?=(\d{3})+(?!\d))/g,
+                        " "
+                    );
 
-        });
+
+                this.value = value;
+
+            }
+        );
 
 
 
     /* =========================
-       FOREST
+       LAS
     ========================= */
 
     function openForest() {
@@ -843,7 +872,8 @@
 
         document
             .getElementById("puzzle-title")
-            .textContent = "🌲 Las";
+            .textContent =
+            "🌲 Las";
 
 
         document
@@ -856,11 +886,11 @@
             .getElementById("puzzle-question")
             .innerHTML =
             "<strong>" +
-            "46 368 &nbsp;&nbsp; " +
-            "10 946 &nbsp;&nbsp; " +
-            "121 393 &nbsp;&nbsp; " +
-            "28 657 &nbsp;&nbsp; " +
-            "75 025 &nbsp;&nbsp; " +
+            "46 368 &nbsp;&nbsp;" +
+            "10 946 &nbsp;&nbsp;" +
+            "121 393 &nbsp;&nbsp;" +
+            "28 657 &nbsp;&nbsp;" +
+            "75 025 &nbsp;&nbsp;" +
             "17 711" +
             "</strong>";
 
@@ -874,12 +904,6 @@
         document
             .getElementById("answer")
             .value = "";
-
-
-        document
-            .getElementById("answer")
-            .placeholder =
-            "Wpisz liczbę";
 
 
         document
@@ -907,11 +931,6 @@
 
 
         document
-            .getElementById("hint-box")
-            .textContent = "";
-
-
-        document
             .getElementById("hint-question")
             .style.display =
             "none";
@@ -931,7 +950,8 @@
 
         document
             .getElementById("message")
-            .textContent = "";
+            .textContent =
+            "";
 
 
         document
@@ -950,17 +970,29 @@
     function showHint() {
 
         const hintBox =
-            document.getElementById("hint-box");
+            document.getElementById(
+                "hint-box"
+            );
 
         const hintQuestion =
-            document.getElementById("hint-question");
+            document.getElementById(
+                "hint-question"
+            );
 
         const hintYes =
-            document.getElementById("hint-yes");
+            document.getElementById(
+                "hint-yes"
+            );
 
         const hintNo =
-            document.getElementById("hint-no");
+            document.getElementById(
+                "hint-no"
+            );
 
+
+        /*
+         * Pierwsze kliknięcie
+         */
 
         if (hintStage === 0) {
 
@@ -978,6 +1010,10 @@
             return;
         }
 
+
+        /*
+         * Drugie kliknięcie
+         */
 
         if (hintStage === 1) {
 
@@ -1002,37 +1038,47 @@
 
 
     /* =========================
-       DRUGA PODPOWIEDŹ
+       TRZECIA PODPOWIEDŹ
     ========================= */
 
-    function showSecondHint() {
+    function showThirdHint() {
 
         document
-            .getElementById("hint-question")
+            .getElementById(
+                "hint-question"
+            )
             .style.display =
             "none";
 
 
         document
-            .getElementById("hint-yes")
+            .getElementById(
+                "hint-yes"
+            )
             .style.display =
             "none";
 
 
         document
-            .getElementById("hint-no")
+            .getElementById(
+                "hint-no"
+            )
             .style.display =
             "none";
 
 
         document
-            .getElementById("hint-box")
+            .getElementById(
+                "hint-box"
+            )
             .textContent =
-            "Zacznij od najmniejszej liczby i ułóż wszystkie liczby od najmniejszej do największej.";
+            "Fibonacci";
 
 
         document
-            .getElementById("hint-box")
+            .getElementById(
+                "hint-box"
+            )
             .style.display =
             "block";
 
@@ -1044,68 +1090,31 @@
 
 
     /* =========================
-       TRZECIA PODPOWIEDŹ
-    ========================= */
-
-    function showThirdHint() {
-
-        document
-            .getElementById("hint-box")
-            .textContent =
-            "Fibonacci";
-
-
-        document
-            .getElementById("hint-box")
-            .style.display =
-            "block";
-
-
-        hintStage = 4;
-
-    }
-
-
-
-    /* =========================
-       DODATKOWY KLIK PO DRUGIEJ
-       → TRZECIA PODPOWIEDŹ
-    ========================= */
-
-    document
-        .getElementById("hint-button")
-        .addEventListener("dblclick", function() {
-
-            if (hintStage >= 3) {
-
-                showThirdHint();
-
-            }
-
-        });
-
-
-
-    /* =========================
        NIE
     ========================= */
 
     function hideHintQuestion() {
 
         document
-            .getElementById("hint-question")
+            .getElementById(
+                "hint-question"
+            )
             .style.display =
             "none";
 
 
         document
-            .getElementById("hint-yes")
+            .getElementById(
+                "hint-yes"
+            )
             .style.display =
             "none";
 
 
         document
-            .getElementById("hint-no")
+            .getElementById(
+                "hint-no"
+            )
             .style.display =
             "none";
 
@@ -1120,76 +1129,89 @@
     function openLocation(name) {
 
         document
-            .getElementById("puzzle-title")
-            .textContent = name;
+            .getElementById(
+                "puzzle-title"
+            )
+            .textContent =
+            name;
 
 
         document
-            .getElementById("puzzle-description")
+            .getElementById(
+                "puzzle-description"
+            )
             .textContent =
             "Ta lokacja jest jeszcze zamknięta.";
 
 
         document
-            .getElementById("puzzle-question")
+            .getElementById(
+                "puzzle-question"
+            )
             .innerHTML =
             "Wkrótce znajdzie się tutaj zagadka.";
 
 
         document
-            .getElementById("puzzle-instruction")
-            .textContent = "";
+            .getElementById(
+                "puzzle-instruction"
+            )
+            .textContent =
+            "";
 
 
         document
-            .getElementById("answer")
+            .getElementById(
+                "answer"
+            )
             .style.display =
             "none";
 
 
         document
-            .getElementById("check-button")
+            .getElementById(
+                "check-button"
+            )
             .style.display =
             "none";
 
 
         document
-            .getElementById("hint-button")
+            .getElementById(
+                "hint-button"
+            )
             .style.display =
             "none";
 
 
         document
-            .getElementById("hint-box")
+            .getElementById(
+                "hint-box"
+            )
             .style.display =
             "none";
 
 
         document
-            .getElementById("hint-question")
+            .getElementById(
+                "hint-question"
+            )
             .style.display =
             "none";
 
 
         document
-            .getElementById("hint-yes")
-            .style.display =
-            "none";
+            .getElementById(
+                "message"
+            )
+            .textContent =
+            "";
 
 
         document
-            .getElementById("hint-no")
-            .style.display =
-            "none";
-
-
-        document
-            .getElementById("message")
-            .textContent = "";
-
-
-        document
-            .getElementById("puzzle-screen")
+            .getElementById(
+                "puzzle-screen"
+            )
             .style.display =
             "flex";
 
@@ -1204,41 +1226,57 @@
     function closePuzzle() {
 
         document
-            .getElementById("puzzle-screen")
+            .getElementById(
+                "puzzle-screen"
+            )
             .style.display =
             "none";
 
 
         document
-            .getElementById("message")
-            .textContent = "";
+            .getElementById(
+                "message"
+            )
+            .textContent =
+            "";
 
 
         document
-            .getElementById("answer")
-            .value = "";
+            .getElementById(
+                "answer"
+            )
+            .value =
+            "";
 
 
         document
-            .getElementById("hint-box")
+            .getElementById(
+                "hint-box"
+            )
             .style.display =
             "none";
 
 
         document
-            .getElementById("hint-question")
+            .getElementById(
+                "hint-question"
+            )
             .style.display =
             "none";
 
 
         document
-            .getElementById("hint-yes")
+            .getElementById(
+                "hint-yes"
+            )
             .style.display =
             "none";
 
 
         document
-            .getElementById("hint-no")
+            .getElementById(
+                "hint-no"
+            )
             .style.display =
             "none";
 
@@ -1250,14 +1288,16 @@
 
 
     /* =========================
-       SPRAWDZANIE ODPOWIEDZI
+       SPRAWDZANIE
     ========================= */
 
     function checkAnswer() {
 
         const answer =
             document
-                .getElementById("answer")
+                .getElementById(
+                    "answer"
+                )
                 .value
                 .replace(/\s/g, "");
 
@@ -1267,30 +1307,47 @@
             lakeUnlocked = true;
 
 
+            /*
+             * Odblokowanie kolejnej lokacji
+             */
+
             document
-                .getElementById("lake")
+                .getElementById(
+                    "lake"
+                )
                 .style.display =
                 "block";
 
 
             document
-                .getElementById("message")
+                .getElementById(
+                    "message"
+                )
                 .textContent =
                 "✓ Poprawnie! Ścieżka prowadzi dalej...";
 
 
-            setTimeout(function() {
+            /*
+             * Zamknięcie okna
+             */
 
-                closePuzzle();
+            setTimeout(
+                function() {
 
-            }, 900);
+                    closePuzzle();
+
+                },
+                900
+            );
 
         }
 
         else {
 
             document
-                .getElementById("message")
+                .getElementById(
+                    "message"
+                )
                 .textContent =
                 "✗ Spróbuj jeszcze raz.";
 
