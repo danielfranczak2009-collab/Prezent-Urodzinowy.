@@ -39,7 +39,9 @@ body {
 ================================================== */
 
 #game {
+
     position: fixed;
+
     inset: 0;
 
     width: 100vw;
@@ -65,7 +67,8 @@ body {
     width: 108vw;
     height: 108vh;
 
-    transform: translate3d(0, 0, 0);
+    transform:
+        translate3d(0, 0, 0);
 
     transition:
         transform 0.15s ease-out;
@@ -100,7 +103,6 @@ body {
 
 /* ==================================================
    CYKL DNIA I NOCY
-   ZMIANA CO MINUTĘ
 ================================================== */
 
 #day-night {
@@ -217,7 +219,8 @@ body {
     top: 12%;
     left: -220px;
 
-    transform: scale(0.9);
+    transform:
+        scale(0.9);
 
     animation:
         cloudMove1 75s linear infinite;
@@ -229,7 +232,8 @@ body {
     top: 25%;
     left: -300px;
 
-    transform: scale(0.65);
+    transform:
+        scale(0.65);
 
     opacity: 0.5;
 
@@ -243,7 +247,8 @@ body {
     top: 8%;
     left: -400px;
 
-    transform: scale(0.45);
+    transform:
+        scale(0.45);
 
     opacity: 0.4;
 
@@ -301,6 +306,46 @@ body {
 
 
 /* ==================================================
+   ŻYCIA
+================================================== */
+
+#lives {
+
+    position: fixed;
+
+    top: 18px;
+    right: 22px;
+
+    z-index: 200;
+
+    padding:
+        9px 15px;
+
+    border-radius:
+        14px;
+
+    background:
+        rgba(0,0,0,0.55);
+
+    border:
+        1px solid
+        rgba(255,255,255,0.18);
+
+    color: white;
+
+    font-size: 24px;
+
+    letter-spacing: 3px;
+
+    pointer-events: none;
+
+    text-shadow:
+        0 0 8px
+        rgba(255,0,0,0.45);
+}
+
+
+/* ==================================================
    HOTSPOTY
 ================================================== */
 
@@ -319,7 +364,8 @@ body {
     padding: 0;
     margin: 0;
 
-    background: transparent;
+    background:
+        transparent;
 
     cursor: pointer;
 
@@ -334,55 +380,200 @@ body {
 
 
 /* ==================================================
+   DOMEK
+   WSPÓŁRZĘDNE:
+   164 × 656
+   przy 1320 × 925
+================================================== */
+
+#house {
+
+    left:
+        12.4242%;
+
+    top:
+        70.9189%;
+
+    width:
+        80px;
+
+    height:
+        80px;
+}
+
+
+/* ==================================================
    LOKACJE
 ================================================== */
 
 #forest {
 
-    left: 35.45%;
-    top: 45.08%;
+    left:
+        35.45%;
+
+    top:
+        45.08%;
 }
 
 
 #lake {
 
-    left: 54.85%;
-    top: 44.54%;
+    left:
+        54.85%;
 
-    display: none;
+    top:
+        44.54%;
+
+    display:
+        none;
 }
 
 
 #castle {
 
-    left: 72.727%;
-    top: 44.541%;
+    left:
+        72.727%;
 
-    width: 5.985%;
-    height: 9.622%;
+    top:
+        44.541%;
+
+    width:
+        5.985%;
+
+    height:
+        9.622%;
 
     transform:
         translate(0,0);
 
-    border-radius: 0;
+    border-radius:
+        0;
 
-    clip-path: polygon(
-        0% 9.091%,
-        93.151% 0%,
-        100% 98.966%,
-        6.757% 100%
-    );
+    clip-path:
+        polygon(
+            0% 9.091%,
+            93.151% 0%,
+            100% 98.966%,
+            6.757% 100%
+        );
 
-    display: none;
+    display:
+        none;
 }
 
 
 #cave {
 
-    left: 86.82%;
-    top: 22.81%;
+    left:
+        86.82%;
 
-    display: none;
+    top:
+        22.81%;
+
+    display:
+        none;
+}
+
+
+/* ==================================================
+   EKRAN DOMKU
+================================================== */
+
+#house-screen {
+
+    position:
+        fixed;
+
+    inset:
+        0;
+
+    display:
+        none;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    flex-direction:
+        column;
+
+    background:
+        black;
+
+    z-index:
+        400;
+
+    color:
+        white;
+
+    text-align:
+        center;
+
+    padding:
+        30px;
+}
+
+
+#house-text {
+
+    width:
+        min(800px,90vw);
+
+    font-size:
+        28px;
+
+    line-height:
+        1.7;
+
+    text-shadow:
+        0 0 15px
+        rgba(255,255,255,0.25);
+
+    min-height:
+        120px;
+}
+
+
+#house-back {
+
+    margin-top:
+        30px;
+
+    padding:
+        12px 25px;
+
+    border:
+        2px solid white;
+
+    border-radius:
+        10px;
+
+    background:
+        white;
+
+    color:
+        black;
+
+    font-size:
+        17px;
+
+    cursor:
+        pointer;
+
+    transition:
+        0.15s;
+}
+
+
+#house-back:hover {
+
+    background:
+        black;
+
+    color:
+        white;
 }
 
 
@@ -392,21 +583,29 @@ body {
 
 #puzzle-screen {
 
-    position: fixed;
+    position:
+        fixed;
 
-    inset: 0;
+    inset:
+        0;
 
-    display: none;
+    display:
+        none;
 
-    align-items: center;
-    justify-content: center;
+    align-items:
+        center;
 
-    padding: 20px;
+    justify-content:
+        center;
+
+    padding:
+        20px;
 
     background:
         rgba(0,0,0,0.82);
 
-    z-index: 100;
+    z-index:
+        100;
 }
 
 
@@ -441,7 +640,8 @@ body {
         center;
 
     box-shadow:
-        0 0 40px rgba(0,0,0,0.8);
+        0 0 40px
+        rgba(0,0,0,0.8);
 
     border:
         1px solid
@@ -451,17 +651,21 @@ body {
 
 #puzzle-box h1 {
 
-    margin-top: 0;
+    margin-top:
+        0;
 
-    font-size: 36px;
+    font-size:
+        36px;
 }
 
 
 #puzzle-box p {
 
-    font-size: 18px;
+    font-size:
+        18px;
 
-    line-height: 1.6;
+    line-height:
+        1.6;
 }
 
 
@@ -471,22 +675,29 @@ body {
 
 #answer {
 
-    width: 220px;
+    width:
+        220px;
 
-    padding: 12px;
+    padding:
+        12px;
 
-    margin-top: 10px;
+    margin-top:
+        10px;
 
     border:
         2px solid white;
 
-    border-radius: 8px;
+    border-radius:
+        8px;
 
-    font-size: 18px;
+    font-size:
+        18px;
 
-    text-align: center;
+    text-align:
+        center;
 
-    outline: none;
+    outline:
+        none;
 }
 
 
@@ -541,7 +752,7 @@ body {
 
 
 /* ==================================================
-   JEZIORO — ODPOWIEDZI
+   JEZIORO
 ================================================== */
 
 .lake-option {
@@ -789,6 +1000,67 @@ body {
 
 
 /* ==================================================
+   EKRAN GAME OVER
+================================================== */
+
+#game-over {
+
+    position:
+        fixed;
+
+    inset:
+        0;
+
+    display:
+        none;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    flex-direction:
+        column;
+
+    background:
+        black;
+
+    z-index:
+        1000;
+
+    color:
+        white;
+
+    text-align:
+        center;
+
+    padding:
+        30px;
+}
+
+
+#game-over h1 {
+
+    font-size:
+        42px;
+
+    margin:
+        0 0 20px;
+}
+
+
+#game-over p {
+
+    font-size:
+        20px;
+
+    line-height:
+        1.6;
+}
+
+
+/* ==================================================
    JASKINIA
 ================================================== */
 
@@ -857,7 +1129,16 @@ body {
 
 
 <!-- ==================================================
-     ŚWIAT
+     ŻYCIA
+================================================== -->
+
+<div id="lives">
+    ❤️ ❤️ ❤️
+</div>
+
+
+<!-- ==================================================
+     GRA
 ================================================== -->
 
 <div id="game">
@@ -891,6 +1172,15 @@ body {
 
 
         <div id="day-night"></div>
+
+
+        <!-- DOMEK -->
+
+        <button
+            id="house"
+            class="location"
+            onclick="openHouse()">
+        </button>
 
 
         <!-- LAS -->
@@ -934,6 +1224,24 @@ body {
 </div>
 
 
+<!-- ==================================================
+     EKRAN DOMKU
+================================================== -->
+
+<div id="house-screen">
+
+    <div id="house-text"></div>
+
+    <button
+        id="house-back"
+        onclick="closeHouse()">
+
+        Wróć na mapę
+
+    </button>
+
+</div>
+
 
 <!-- ==================================================
      OKNO ZAGADKI
@@ -970,7 +1278,9 @@ body {
         <button
             id="check-button"
             class="puzzle-button">
+
             Sprawdź
+
         </button>
 
 
@@ -1005,13 +1315,18 @@ body {
             <button
                 id="hint-yes"
                 onclick="answerHintYes()">
+
                 Tak
+
             </button>
+
 
             <button
                 id="hint-no"
                 onclick="hideHintQuestion()">
+
                 Nie
+
             </button>
 
         </div>
@@ -1024,6 +1339,21 @@ body {
 
 </div>
 
+
+<!-- ==================================================
+     GAME OVER
+================================================== -->
+
+<div id="game-over">
+
+    <h1>💔 Koniec gry</h1>
+
+    <p>
+        Straciłeś wszystkie swoje życia.<br>
+        Odśwież stronę i spróbuj ponownie.
+    </p>
+
+</div>
 
 
 <!-- ==================================================
@@ -1044,6 +1374,8 @@ body {
    STAN GRY
 ================================================== */
 
+let lives = 3;
+
 let lakeUnlocked = false;
 let castleUnlocked = false;
 let caveUnlocked = false;
@@ -1051,6 +1383,110 @@ let caveUnlocked = false;
 let currentLocation = "";
 
 let hintStage = 0;
+
+
+/* ==================================================
+   AKTUALIZACJA ŻYĆ
+================================================== */
+
+function updateLives() {
+
+    const livesElement =
+        document.getElementById("lives");
+
+
+    let hearts = "";
+
+
+    for (
+        let i = 0;
+        i < lives;
+        i++
+    ) {
+
+        hearts += "❤️ ";
+
+    }
+
+
+    livesElement.textContent =
+        hearts.trim();
+
+
+    if (lives <= 0) {
+
+        gameOver();
+
+    }
+
+}
+
+
+/* ==================================================
+   UTRATA ŻYCIA
+================================================== */
+
+function loseLife() {
+
+    lives--;
+
+    updateLives();
+
+
+    if (lives <= 0) {
+
+        return true;
+
+    }
+
+
+    return false;
+
+}
+
+
+/* ==================================================
+   GAME OVER
+================================================== */
+
+function gameOver() {
+
+    document
+        .getElementById("puzzle-screen")
+        .style.display =
+        "none";
+
+
+    document
+        .getElementById("house-screen")
+        .style.display =
+        "none";
+
+
+    document
+        .getElementById("cave-screen")
+        .style.display =
+        "none";
+
+
+    document
+        .getElementById("game")
+        .style.display =
+        "none";
+
+
+    document
+        .getElementById("lives")
+        .style.display =
+        "none";
+
+
+    document
+        .getElementById("game-over")
+        .style.display =
+        "flex";
+
+}
 
 
 /* ==================================================
@@ -1065,15 +1501,19 @@ document.addEventListener(
             (event.clientX /
             window.innerWidth) - 0.5;
 
+
         const y =
             (event.clientY /
             window.innerHeight) - 0.5;
 
+
         const moveX =
             x * 28;
 
+
         const moveY =
             y * 22;
+
 
         document
             .getElementById("world")
@@ -1090,7 +1530,6 @@ document.addEventListener(
 
 /* ==================================================
    AUTOMATYCZNE FORMATOWANIE LICZB
-   196418 → 196 418
 ================================================== */
 
 document
@@ -1112,6 +1551,133 @@ document
 
         }
     );
+
+
+/* ==================================================
+   DOMEK
+================================================== */
+
+function openHouse() {
+
+    document
+        .getElementById("game")
+        .style.display =
+        "none";
+
+
+    document
+        .getElementById("house-screen")
+        .style.display =
+        "flex";
+
+
+    const text =
+`Witaj.
+
+Twoja przygoda właśnie się zaczyna.
+
+Idź do lasu.
+Tam rozpoczniesz swoją przygodę...`;
+
+
+    typeHouseText(text);
+
+}
+
+
+function closeHouse() {
+
+    document
+        .getElementById("house-screen")
+        .style.display =
+        "none";
+
+
+    document
+        .getElementById("game")
+        .style.display =
+        "block";
+
+}
+
+
+/* ==================================================
+   PISANIE TEKSTU DOMKU
+================================================== */
+
+function typeHouseText(text) {
+
+    const element =
+        document
+            .getElementById("house-text");
+
+
+    element.textContent =
+        "";
+
+
+    let index =
+        0;
+
+
+    function writeNext() {
+
+        if (
+            index >=
+            text.length
+        ) {
+
+            return;
+
+        }
+
+
+        element.textContent +=
+            text[index];
+
+
+        index++;
+
+
+        let delay =
+            45;
+
+
+        if (
+            text[index - 1] === "."
+            ||
+            text[index - 1] === "!"
+            ||
+            text[index - 1] === "?"
+        ) {
+
+            delay =
+                500;
+
+        }
+
+
+        if (
+            text[index - 1] === "\n"
+        ) {
+
+            delay =
+                700;
+
+        }
+
+
+        setTimeout(
+            writeNext,
+            delay
+        );
+
+    }
+
+
+    writeNext();
+
+}
 
 
 /* ==================================================
@@ -1168,6 +1734,7 @@ function openForest() {
 
     currentLocation =
         "forest";
+
 
     resetPuzzle();
 
@@ -1289,7 +1856,16 @@ function checkForestAnswer() {
         document
             .getElementById("message")
             .textContent =
-            "✗ Spróbuj jeszcze raz.";
+            "✗ Błędna odpowiedź. Straciłeś jedno życie.";
+
+
+        document
+            .getElementById("answer")
+            .value =
+            "";
+
+
+        loseLife();
 
     }
 
@@ -1304,6 +1880,7 @@ function openLake() {
 
     currentLocation =
         "lake";
+
 
     resetPuzzle();
 
@@ -1446,7 +2023,10 @@ function checkLakeAnswer(option) {
         document
             .getElementById("message")
             .textContent =
-            "✗ Spróbuj jeszcze raz.";
+            "✗ Błędna odpowiedź. Straciłeś jedno życie.";
+
+
+        loseLife();
 
     }
 
@@ -1461,6 +2041,7 @@ function openCastle() {
 
     currentLocation =
         "castle";
+
 
     resetPuzzle();
 
@@ -1482,7 +2063,6 @@ function openCastle() {
         .innerHTML =
         `
         <div class="complex-puzzle">
-
 
             <div class="complex-equation">
 
@@ -1634,7 +2214,10 @@ function checkCastleAnswer() {
         document
             .getElementById("message")
             .textContent =
-            "✗ Spróbuj jeszcze raz.";
+            "✗ Błędna odpowiedź. Straciłeś jedno życie.";
+
+
+        loseLife();
 
     }
 
@@ -1663,6 +2246,12 @@ function openCave() {
         "none";
 
 
+    document
+        .getElementById("lives")
+        .style.display =
+        "none";
+
+
     const caveScreen =
         document
             .getElementById("cave-screen");
@@ -1671,11 +2260,6 @@ function openCave() {
     caveScreen.style.display =
         "flex";
 
-
-    /*
-       TEKST FINAŁOWY
-       ZMIENIMY PÓŹNIEJ RAZEM.
-    */
 
     const finalText =
 `Tutaj pojawi się tekst finałowy.
@@ -1775,7 +2359,6 @@ function typeCaveText(text) {
 
 function showHint() {
 
-
     /* LAS — pierwsza */
 
     if (
@@ -1793,6 +2376,7 @@ function showHint() {
 
 
         return;
+
     }
 
 
@@ -1814,6 +2398,7 @@ function showHint() {
 
 
         return;
+
     }
 
 
@@ -1835,6 +2420,7 @@ function showHint() {
 
 
         return;
+
     }
 
 
@@ -1855,6 +2441,7 @@ function showHint() {
 
 
         return;
+
     }
 
 
@@ -1876,6 +2463,7 @@ function showHint() {
 
 
         return;
+
     }
 
 
@@ -1896,6 +2484,7 @@ function showHint() {
 
 
         return;
+
     }
 
 
@@ -1917,6 +2506,7 @@ function showHint() {
 
 
         return;
+
     }
 
 }
@@ -1997,7 +2587,6 @@ function askForHint(
 
 function answerHintYes() {
 
-
     /* LAS — druga */
 
     if (
@@ -2018,6 +2607,7 @@ function answerHintYes() {
 
 
         return;
+
     }
 
 
@@ -2041,6 +2631,7 @@ function answerHintYes() {
 
 
         return;
+
     }
 
 
@@ -2064,6 +2655,7 @@ function answerHintYes() {
 
 
         return;
+
     }
 
 
@@ -2087,6 +2679,7 @@ function answerHintYes() {
 
 
         return;
+
     }
 
 }
@@ -2146,6 +2739,13 @@ function closePuzzle() {
         "";
 
 }
+
+
+/* ==================================================
+   START
+================================================== */
+
+updateLives();
 
 </script>
 
