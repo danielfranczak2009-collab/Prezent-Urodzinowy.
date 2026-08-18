@@ -334,15 +334,13 @@ body {
 
 /* ==================================================
    DOMEK
-   ŚRODEK: X = 165 PX
-   ŚRODEK: Y = 659 PX
-   DLA 1320 × 925
+   WSPÓŁRZĘDNE Z MAPY
 ================================================== */
 
 #house {
 
-    left: 165px;
-    top: 659px;
+    left: 14.336%;
+    top: 69.797%;
 
 }
 
@@ -567,7 +565,7 @@ body {
 
 
 /* ==================================================
-   JEZIORO
+   JEZIORO — ODPOWIEDZI
 ================================================== */
 
 .lake-option {
@@ -1178,13 +1176,11 @@ document.addEventListener(
             (event.clientY /
             window.innerHeight) - 0.5;
 
-
         const moveX =
             x * 28;
 
         const moveY =
             y * 22;
-
 
         document
             .getElementById("world")
@@ -1880,7 +1876,6 @@ function typeCaveText(text) {
 
 function showHint() {
 
-
     if (
         currentLocation === "forest"
         &&
@@ -1889,11 +1884,9 @@ function showHint() {
 
         hintStage = 1;
 
-
         showHintText(
             "„Kiedyś powiedziałeś mi, że najlepiej wszystko sobie po kolei ułożyć, zanim ruszysz na głęboką wodę.”"
         );
-
 
         return;
     }
@@ -1907,12 +1900,10 @@ function showHint() {
 
         hintStage = 2;
 
-
         askForHint(
             "Chcesz drugą podpowiedź?",
             "Tak"
         );
-
 
         return;
     }
@@ -1926,12 +1917,10 @@ function showHint() {
 
         hintStage = 4;
 
-
         askForHint(
             "Chcesz ostatnią podpowiedź?",
             "Napewno"
         );
-
 
         return;
     }
@@ -1944,13 +1933,11 @@ function showHint() {
     ) {
 
         hintStage = 1;
-
 
         showHintText(
             "„Kiedyś powiedziałeś mi, że we wszystkim trzeba znaleźć odpowiednie proporcje. Chyba pora przypomnieć sobie tę Złotą radę.”"
         );
 
-
         return;
     }
 
@@ -1963,12 +1950,10 @@ function showHint() {
 
         hintStage = 4;
 
-
         askForHint(
             "Chcesz ostatnią podpowiedź?",
             "Napewno"
         );
-
 
         return;
     }
@@ -1982,11 +1967,9 @@ function showHint() {
 
         hintStage = 1;
 
-
         showHintText(
             "„Pamiętaj, wszystko jest możliwe, jeżeli w siebie uwierzysz :)”"
         );
-
 
         return;
     }
@@ -2000,12 +1983,10 @@ function showHint() {
 
         hintStage = 4;
 
-
         askForHint(
             "Chcesz ostatnią podpowiedź?",
             "Napewno"
         );
-
 
         return;
     }
@@ -2088,7 +2069,6 @@ function askForHint(
 
 function answerHintYes() {
 
-
     if (
         currentLocation === "forest"
         &&
@@ -2099,12 +2079,9 @@ function answerHintYes() {
             "Posortuj liczby od najmniejszej."
         );
 
-
         hideHintQuestion();
 
-
         hintStage = 3;
-
 
         return;
     }
@@ -2120,12 +2097,9 @@ function answerHintYes() {
             "Fibonacci"
         );
 
-
         hideHintQuestion();
 
-
         hintStage = 5;
-
 
         return;
     }
@@ -2141,12 +2115,9 @@ function answerHintYes() {
             "Poprawna odpowiedź to ta, z której wychodzi złota proporcja."
         );
 
-
         hideHintQuestion();
 
-
         hintStage = 5;
-
 
         return;
     }
@@ -2162,12 +2133,9 @@ function answerHintYes() {
             "Tym razem musisz spróbować poradzić sobie sam. Niektóre problemy, choć trudne, trzeba rozwiązać własnymi siłami."
         );
 
-
         hideHintQuestion();
 
-
         hintStage = 5;
-
 
         return;
     }
