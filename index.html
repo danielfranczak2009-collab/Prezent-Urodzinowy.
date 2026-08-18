@@ -3,9 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Nasza Gra</title>
 
     <style>
+
         * {
             box-sizing: border-box;
         }
@@ -14,84 +16,175 @@
         body {
             margin: 0;
             padding: 0;
+
             width: 100%;
             height: 100%;
+
             overflow: hidden;
+
             background: black;
         }
 
+
+        /* =========================
+           GRA
+        ========================= */
+
         #game {
             position: fixed;
+
             inset: 0;
+
             width: 100vw;
             height: 100vh;
+
             overflow: hidden;
         }
 
-        /* MAPA */
+
+        /* =========================
+           MAPA
+        ========================= */
+
         #game-map {
+
             position: absolute;
+
             left: 0;
             top: 0;
 
             width: 100vw;
             height: 100vh;
 
-            /*
-             * Celowo rozciągamy obraz na cały ekran.
-             * Dzięki temu NIE MA czarnych pasów.
-             */
             object-fit: fill;
 
             display: block;
         }
 
+
         /* =========================
-           LAS
+           KLIKALNE LOKACJE
         ========================= */
 
-        #forest {
+        .location {
+
             position: absolute;
 
-            /*
-             * Tymczasowa pozycja.
-             * Później ustawimy ją dokładnie na lesie.
-             */
-            left: 20%;
-            top: 30%;
+            width: 70px;
+            height: 70px;
 
-            width: 130px;
-            height: 130px;
+            transform: translate(-50%, -50%);
 
-            border-radius: 50%;
+            border: none;
 
-            border: 3px solid white;
-
-            background: rgba(0, 0, 0, 0.25);
-
-            color: white;
-
-            font-size: 18px;
-            font-weight: bold;
+            background: transparent;
 
             cursor: pointer;
 
             z-index: 5;
 
-            transition: transform 0.2s, background 0.2s;
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            padding: 0;
+
+            border-radius: 50%;
+
+            transition:
+                transform 0.2s ease,
+                background 0.2s ease;
         }
 
-        #forest:hover {
-            transform: scale(1.08);
-            background: rgba(255, 255, 255, 0.2);
+
+        /* IKONKA W ŚRODKU */
+
+        .location-icon {
+
+            width: 42px;
+            height: 42px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            font-size: 30px;
+
+            border-radius: 50%;
+
+            background: rgba(0, 0, 0, 0.18);
+
+            transition:
+                transform 0.2s ease,
+                background 0.2s ease;
         }
+
+
+        /* HOVER */
+
+        .location:hover {
+
+            transform: translate(-50%, -50%) scale(1.12);
+
+            background: rgba(255, 255, 255, 0.12);
+        }
+
+
+        .location:hover .location-icon {
+
+            background: rgba(255, 255, 255, 0.22);
+
+        }
+
+
+        /* =========================
+           POZYCJE LOKACJI
+        ========================= */
+
+        /*
+         * Pozycje zostały obliczone
+         * na podstawie współrzędnych,
+         * które podaliśmy z mapy.
+         */
+
+        #forest {
+
+            left: 35.45%;
+            top: 45.08%;
+        }
+
+
+        #lake {
+
+            left: 54.85%;
+            top: 44.54%;
+        }
+
+
+        #castle {
+
+            left: 75.23%;
+            top: 50.92%;
+        }
+
+
+        #cave {
+
+            left: 86.82%;
+            top: 22.81%;
+        }
+
 
         /* =========================
            EKRAN ZAGADKI
         ========================= */
 
         #puzzle-screen {
+
             position: fixed;
+
             inset: 0;
 
             display: none;
@@ -106,7 +199,13 @@
             z-index: 100;
         }
 
+
+        /* =========================
+           PUDEŁKO ZAGADKI
+        ========================= */
+
         #puzzle-box {
+
             width: min(600px, 90vw);
 
             padding: 40px;
@@ -119,22 +218,33 @@
 
             text-align: center;
 
-            box-shadow: 0 0 40px rgba(0, 0, 0, 0.8);
+            box-shadow:
+                0 0 40px rgba(0, 0, 0, 0.8);
         }
 
+
         #puzzle-box h1 {
+
             margin-top: 0;
+
             font-size: 36px;
         }
 
+
         #puzzle-box p {
+
             font-size: 18px;
+
             line-height: 1.6;
         }
 
-        /* ODPOWIEDŹ */
+
+        /* =========================
+           ODPOWIEDŹ
+        ========================= */
 
         #answer {
+
             width: 200px;
 
             padding: 12px;
@@ -142,6 +252,7 @@
             margin-top: 10px;
 
             border: none;
+
             border-radius: 8px;
 
             font-size: 18px;
@@ -149,14 +260,19 @@
             text-align: center;
         }
 
-        /* PRZYCISKI */
+
+        /* =========================
+           PRZYCISKI
+        ========================= */
 
         .puzzle-button {
+
             margin: 15px 5px 0;
 
             padding: 12px 22px;
 
             border: none;
+
             border-radius: 10px;
 
             font-size: 16px;
@@ -164,57 +280,151 @@
             cursor: pointer;
         }
 
+
+        /* =========================
+           WIADOMOŚĆ
+        ========================= */
+
         #message {
+
             min-height: 28px;
+
             margin-top: 18px;
+
             font-size: 18px;
         }
+
     </style>
+
 </head>
+
 
 <body>
 
+
     <div id="game">
 
-        <!-- MAPA -->
+
+        <!-- =========================
+             MAPA
+        ========================= -->
+
         <img
             id="game-map"
             src="Storybook-World-Map.png"
             alt="Mapa gry"
         >
 
-        <!-- LAS -->
+
+        <!-- =========================
+             FOREST
+        ========================= -->
+
         <button
             id="forest"
+            class="location"
             onclick="openForest()"
+            aria-label="Forest"
         >
-            🌲 LAS
+
+            <span class="location-icon">
+                🌲
+            </span>
+
         </button>
+
+
+        <!-- =========================
+             LAKE + BRIDGE
+        ========================= -->
+
+        <button
+            id="lake"
+            class="location"
+            onclick="openLocation('Lake + Bridge')"
+            aria-label="Lake + Bridge"
+        >
+
+            <span class="location-icon">
+                🌊
+            </span>
+
+        </button>
+
+
+        <!-- =========================
+             CASTLE
+        ========================= -->
+
+        <button
+            id="castle"
+            class="location"
+            onclick="openLocation('Castle')"
+            aria-label="Castle"
+        >
+
+            <span class="location-icon">
+                🏰
+            </span>
+
+        </button>
+
+
+        <!-- =========================
+             CAVE
+        ========================= -->
+
+        <button
+            id="cave"
+            class="location"
+            onclick="openLocation('Cave')"
+            aria-label="Cave"
+        >
+
+            <span class="location-icon">
+                🕳️
+            </span>
+
+        </button>
+
 
     </div>
 
 
+
     <!-- =========================
-         ZAGADKA LASU
-    ========================== -->
+         EKRAN ZAGADKI
+    ========================= -->
 
     <div id="puzzle-screen">
 
+
         <div id="puzzle-box">
 
-            <h1>🌲 Las</h1>
 
-            <p>
+            <h1 id="puzzle-title">
+                🌲 Las
+            </h1>
+
+
+            <p id="puzzle-description">
                 W lesie znajdujesz dziwną tabliczkę.
             </p>
 
-            <p>
-                <strong>1, 1, 2, 3, 5, 8, ?, ?</strong>
+
+            <p id="puzzle-question">
+
+                <strong>
+                    1, 1, 2, 3, 5, 8, ?, ?
+                </strong>
+
             </p>
 
-            <p>
+
+            <p id="puzzle-instruction">
                 Uzupełnij dwie kolejne liczby.
             </p>
+
 
             <input
                 id="answer"
@@ -222,7 +432,9 @@
                 placeholder="13, 21"
             >
 
+
             <br>
+
 
             <button
                 class="puzzle-button"
@@ -231,6 +443,7 @@
                 Sprawdź
             </button>
 
+
             <button
                 class="puzzle-button"
                 onclick="closePuzzle()"
@@ -238,18 +451,65 @@
                 Wróć
             </button>
 
+
             <div id="message"></div>
+
 
         </div>
 
     </div>
 
 
+
     <script>
 
-        /* OTWIERANIE LASU */
+
+        /* =========================
+           FOREST
+        ========================= */
 
         function openForest() {
+
+            document
+                .getElementById("puzzle-title")
+                .textContent = "🌲 Las";
+
+
+            document
+                .getElementById("puzzle-description")
+                .textContent =
+                "W lesie znajdujesz dziwną tabliczkę.";
+
+
+            document
+                .getElementById("puzzle-question")
+                .innerHTML =
+                "<strong>1, 1, 2, 3, 5, 8, ?, ?</strong>";
+
+
+            document
+                .getElementById("puzzle-instruction")
+                .textContent =
+                "Uzupełnij dwie kolejne liczby.";
+
+
+            document
+                .getElementById("answer")
+                .placeholder =
+                "13, 21";
+
+
+            document
+                .getElementById("answer")
+                .style.display = "inline-block";
+
+
+            document
+                .querySelector(
+                    "#puzzle-box .puzzle-button"
+                )
+                .style.display = "inline-block";
+
 
             document
                 .getElementById("puzzle-screen")
@@ -258,7 +518,59 @@
         }
 
 
-        /* ZAMYKANIE */
+
+        /* =========================
+           POZOSTAŁE LOKACJE
+        ========================= */
+
+        function openLocation(name) {
+
+            document
+                .getElementById("puzzle-title")
+                .textContent = name;
+
+
+            document
+                .getElementById("puzzle-description")
+                .textContent =
+                "Ta lokacja jest jeszcze zamknięta.";
+
+
+            document
+                .getElementById("puzzle-question")
+                .innerHTML =
+                "Wkrótce znajdzie się tutaj zagadka.";
+
+
+            document
+                .getElementById("puzzle-instruction")
+                .textContent =
+                "";
+
+
+            document
+                .getElementById("answer")
+                .style.display = "none";
+
+
+            document
+                .querySelector(
+                    "#puzzle-box .puzzle-button"
+                )
+                .style.display = "none";
+
+
+            document
+                .getElementById("puzzle-screen")
+                .style.display = "flex";
+
+        }
+
+
+
+        /* =========================
+           ZAMYKANIE
+        ========================= */
 
         function closePuzzle() {
 
@@ -266,9 +578,11 @@
                 .getElementById("puzzle-screen")
                 .style.display = "none";
 
+
             document
                 .getElementById("message")
                 .textContent = "";
+
 
             document
                 .getElementById("answer")
@@ -277,14 +591,18 @@
         }
 
 
-        /* SPRAWDZANIE */
+
+        /* =========================
+           SPRAWDZANIE ODPOWIEDZI
+        ========================= */
 
         function checkAnswer() {
 
-            const answer = document
-                .getElementById("answer")
-                .value
-                .replace(/\s/g, "");
+            const answer =
+                document
+                    .getElementById("answer")
+                    .value
+                    .replace(/\s/g, "");
 
 
             if (answer === "13,21") {
@@ -294,7 +612,9 @@
                     .textContent =
                     "✓ Poprawnie! Ścieżka prowadzi dalej...";
 
-            } else {
+            }
+
+            else {
 
                 document
                     .getElementById("message")
@@ -305,7 +625,9 @@
 
         }
 
+
     </script>
+
 
 </body>
 </html>
