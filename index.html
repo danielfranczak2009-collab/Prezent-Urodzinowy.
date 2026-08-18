@@ -37,25 +37,21 @@ body {
 
 #world {
     position: absolute;
-
     left: -4vw;
     top: -4vh;
-
     width: 108vw;
     height: 108vh;
 
-    transform: translate3d(0,0,0);
+    transform: translate3d(0, 0, 0);
 
     transition:
-        transform 0.15s ease-out,
-        opacity 2s ease;
+        transform 0.15s ease-out;
 
-    will-change: transform, opacity;
+    will-change: transform;
 }
 
 #game-map {
     position: absolute;
-
     left: 0;
     top: 0;
 
@@ -63,7 +59,6 @@ body {
     height: 100%;
 
     object-fit: fill;
-
     display: block;
 
     user-select: none;
@@ -76,17 +71,14 @@ body {
 ================================================== */
 
 #day-night {
-
     position: absolute;
-
     inset: 0;
 
     pointer-events: none;
-
     z-index: 20;
 
     background:
-        rgba(0,0,0,0);
+        rgba(0, 0, 0, 0);
 
     animation:
         dayNightCycle 60s linear infinite;
@@ -128,7 +120,6 @@ body {
 ================================================== */
 
 .cloud {
-
     position: absolute;
 
     z-index: 10;
@@ -150,7 +141,6 @@ body {
 
 .cloud::before,
 .cloud::after {
-
     content: "";
 
     position: absolute;
@@ -162,7 +152,6 @@ body {
 }
 
 .cloud::before {
-
     width: 75px;
     height: 75px;
 
@@ -171,7 +160,6 @@ body {
 }
 
 .cloud::after {
-
     width: 95px;
     height: 95px;
 
@@ -180,7 +168,6 @@ body {
 }
 
 #cloud1 {
-
     top: 12%;
     left: -220px;
 
@@ -191,7 +178,6 @@ body {
 }
 
 #cloud2 {
-
     top: 25%;
     left: -300px;
 
@@ -204,7 +190,6 @@ body {
 }
 
 #cloud3 {
-
     top: 8%;
     left: -400px;
 
@@ -263,7 +248,7 @@ body {
 
 
 /* ==================================================
-   ŻYCIA
+   SERCA
 ================================================== */
 
 #lives {
@@ -281,20 +266,19 @@ body {
 
     padding: 10px 14px;
 
-    background:
-        rgba(20,20,20,0.95);
+    background: rgba(20,20,20,0.95);
 
     border:
-        1px solid
+        2px solid
         rgba(255,255,255,0.25);
 
     border-radius: 14px;
 
     box-shadow:
-        0 4px 15px
+        0 5px 20px
         rgba(0,0,0,0.5);
 
-    pointer-events: none;
+    user-select: none;
 }
 
 .heart {
@@ -310,10 +294,10 @@ body {
 
 .heart.lost {
 
-    opacity: 0.2;
+    opacity: 0.18;
 
     transform:
-        scale(0.75);
+        scale(0.85);
 }
 
 
@@ -329,7 +313,7 @@ body {
     height: 80px;
 
     transform:
-        translate(-50%,-50%);
+        translate(-50%, -50%);
 
     border: none;
     padding: 0;
@@ -357,6 +341,7 @@ body {
 
     left: 15.536%;
     top: 69.797%;
+
 }
 
 
@@ -428,7 +413,7 @@ body {
 
 
 /* ==================================================
-   OKNO ZAGADKI
+   EKRAN ZAGADKI
 ================================================== */
 
 #puzzle-screen {
@@ -506,7 +491,7 @@ body {
 
 
 /* ==================================================
-   ODPOWIEDŹ
+   POLE ODPOWIEDZI
 ================================================== */
 
 #answer {
@@ -585,18 +570,23 @@ body {
 
 .lake-option {
 
-    display: block;
+    display:
+        block;
 
-    width: 260px;
+    width:
+        260px;
 
-    margin: 12px auto;
+    margin:
+        12px auto;
 
-    padding: 14px 20px;
+    padding:
+        14px 20px;
 
     border:
         2px solid white;
 
-    border-radius: 12px;
+    border-radius:
+        12px;
 
     background:
         white;
@@ -820,53 +810,43 @@ body {
 
 #game-over {
 
-    position:
-        fixed;
+    position: fixed;
 
-    inset:
-        0;
+    inset: 0;
 
-    z-index:
-        1000;
+    z-index: 1000;
 
-    display:
-        none;
+    display: none;
 
-    align-items:
-        center;
+    align-items: center;
 
-    justify-content:
-        center;
+    justify-content: center;
 
-    flex-direction:
-        column;
+    flex-direction: column;
 
-    background:
-        black;
+    background: black;
 
-    color:
-        white;
+    color: white;
 
-    text-align:
-        center;
+    text-align: center;
+
+    padding: 30px;
 }
 
 #game-over h1 {
 
-    font-size:
-        64px;
+    font-size: 64px;
 
-    margin:
-        0 0 20px;
+    margin: 0 0 25px;
 }
 
 #game-over p {
 
-    font-size:
-        22px;
+    font-size: 22px;
 
-    opacity:
-        0.8;
+    line-height: 1.6;
+
+    margin: 0;
 }
 
 
@@ -891,9 +871,6 @@ body {
     justify-content:
         center;
 
-    flex-direction:
-        column;
-
     background:
         black;
 
@@ -910,22 +887,75 @@ body {
         30px;
 }
 
-#cave-title {
 
-    font-size:
-        64px;
+/* ==================================================
+   EKRAN KONIEC
+================================================== */
 
-    margin-bottom:
-        35px;
-
-    letter-spacing:
-        8px;
-}
-
-#final-message-button {
+#ending-start {
 
     display:
-        none;
+        flex;
+
+    flex-direction:
+        column;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    width:
+        100%;
+
+    height:
+        100%;
+}
+
+#ending-start h1 {
+
+    font-size:
+        72px;
+
+    margin:
+        0 0 35px;
+
+    letter-spacing:
+        5px;
+}
+
+#ending-start button {
+
+    padding:
+        16px 28px;
+
+    font-size:
+        20px;
+
+    border:
+        2px solid white;
+
+    border-radius:
+        12px;
+
+    background:
+        white;
+
+    color:
+        black;
+
+    cursor:
+        pointer;
+}
+
+#ending-start button:hover {
+
+    background:
+        black;
+
+    color:
+        white;
 }
 
 
@@ -933,41 +963,79 @@ body {
    OSTRZEŻENIE
 ================================================== */
 
-#reading-warning {
+#ending-warning {
 
     display:
         none;
 
-    position:
-        fixed;
+    flex-direction:
+        column;
 
-    top:
-        30px;
+    align-items:
+        center;
 
-    left:
-        50%;
+    justify-content:
+        center;
 
-    transform:
-        translateX(-50%);
+    width:
+        100%;
 
-    z-index:
-        800;
+    height:
+        100%;
+}
 
-    padding:
-        12px 22px;
-
-    background:
-        rgba(20,20,20,0.95);
-
-    border:
-        1px solid
-        rgba(255,255,255,0.25);
-
-    border-radius:
-        12px;
+#ending-warning h2 {
 
     font-size:
-        17px;
+        48px;
+
+    margin:
+        0 0 25px;
+}
+
+#ending-warning p {
+
+    font-size:
+        25px;
+
+    line-height:
+        1.6;
+
+    max-width:
+        700px;
+
+    margin:
+        0 0 30px;
+}
+
+#ending-warning button {
+
+    padding:
+        14px 26px;
+
+    font-size:
+        18px;
+
+    border:
+        2px solid white;
+
+    border-radius:
+        10px;
+
+    background:
+        white;
+
+    color:
+        black;
+
+    cursor:
+        pointer;
+}
+
+#ending-warning button:hover {
+
+    background:
+        black;
 
     color:
         white;
@@ -975,68 +1043,99 @@ body {
 
 
 /* ==================================================
-   FINAŁOWY TEKST
+   WŁAŚCIWY TEKST
 ================================================== */
 
-#final-text-screen {
-
-    position:
-        fixed;
-
-    inset:
-        0;
+#ending-text-screen {
 
     display:
         none;
 
+    position:
+        relative;
+
+    width:
+        100%;
+
+    height:
+        100%;
+
     overflow:
         hidden;
+}
 
-    background:
-        black;
+#ending-text-container {
 
-    z-index:
-        700;
+    position:
+        absolute;
 
-    color:
-        white;
+    left:
+        8%;
+
+    right:
+        8%;
+
+    top:
+        50%;
+
+    transform:
+        translateY(-50%);
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    align-items:
+        center;
+
+    gap:
+        18px;
+
+    font-size:
+        clamp(20px,2.2vw,31px);
+
+    line-height:
+        1.55;
 
     text-align:
         center;
 }
 
-#final-text-container {
+.ending-line {
 
-    position:
-        absolute;
-
-    width:
-        min(850px,88vw);
-
-    left:
-        50%;
+    opacity:
+        0;
 
     transform:
-        translateX(-50%);
+        translateY(35px);
 
-    top:
-        100%;
+    transition:
+        opacity 1.3s ease,
+        transform 1.3s ease;
+}
 
-    font-size:
-        25px;
-
-    line-height:
-        1.9;
-
-    white-space:
-        pre-line;
-
-    text-shadow:
-        0 0 12px
-        rgba(255,255,255,0.25);
+.ending-line.visible {
 
     opacity:
         1;
+
+    transform:
+        translateY(0);
+}
+
+.ending-line.fade-away {
+
+    opacity:
+        0;
+
+    transform:
+        translateY(-55px);
+
+    transition:
+        opacity 2s ease,
+        transform 2s ease;
 }
 
 
@@ -1044,7 +1143,10 @@ body {
    KONIEC
 ================================================== */
 
-#final-blackout {
+#ending-black {
+
+    display:
+        none;
 
     position:
         fixed;
@@ -1052,25 +1154,98 @@ body {
     inset:
         0;
 
-    display:
-        none;
+    z-index:
+        900;
 
     background:
         black;
 
-    z-index:
-        900;
+    align-items:
+        center;
+
+    justify-content:
+        center;
 }
 
 
 /* ==================================================
-   MAPA PO FINALE
+   OSTATECZNA WIADOMOŚĆ
 ================================================== */
 
-#game.final-return {
+#final-message {
 
-    opacity:
-        1;
+    display:
+        none;
+
+    position:
+        fixed;
+
+    inset:
+        0;
+
+    z-index:
+        950;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    flex-direction:
+        column;
+
+    background:
+        black;
+
+    color:
+        white;
+
+    text-align:
+        center;
+
+    padding:
+        30px;
+}
+
+#final-message h2 {
+
+    font-size:
+        clamp(30px,5vw,60px);
+
+    margin:
+        0 0 25px;
+}
+
+#final-message p {
+
+    font-size:
+        clamp(19px,2.5vw,28px);
+
+    line-height:
+        1.7;
+
+    margin:
+        0;
+
+    max-width:
+        900px;
+}
+
+
+/* ==================================================
+   ANIMACJE FINAŁOWE
+================================================== */
+
+@keyframes endingFadeIn {
+
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
 }
 
 </style>
@@ -1082,18 +1257,14 @@ body {
 
 
 <!-- ==================================================
-     ŻYCIA
+     SERCA
 ================================================== -->
 
 <div id="lives">
 
-    <span id="heart1" class="heart">
-        ❤️
-    </span>
+    <span id="heart1" class="heart">❤️</span>
 
-    <span id="heart2" class="heart">
-        ❤️
-    </span>
+    <span id="heart2" class="heart">❤️</span>
 
 </div>
 
@@ -1112,11 +1283,20 @@ body {
             alt="Mapa gry"
         >
 
-        <div id="cloud1" class="cloud"></div>
+        <div
+            id="cloud1"
+            class="cloud">
+        </div>
 
-        <div id="cloud2" class="cloud"></div>
+        <div
+            id="cloud2"
+            class="cloud">
+        </div>
 
-        <div id="cloud3" class="cloud"></div>
+        <div
+            id="cloud3"
+            class="cloud">
+        </div>
 
         <div id="day-night"></div>
 
@@ -1171,7 +1351,7 @@ body {
 
 
 <!-- ==================================================
-     ZAGADKA
+     OKNO ZAGADKI
 ================================================== -->
 
 <div id="puzzle-screen">
@@ -1244,66 +1424,89 @@ body {
 
 
 <!-- ==================================================
-     JASKINIA — KONIEC
-================================================== -->
-
-<div id="cave-screen">
-
-    <div id="cave-title">
-        KONIEC
-    </div>
-
-    <button
-        id="final-message-button"
-        class="puzzle-button"
-        onclick="startFinalMessage()">
-        Wiadomość Ode Mnie....
-    </button>
-
-</div>
-
-
-<!-- ==================================================
-     OSTRZEŻENIE
-================================================== -->
-
-<div id="reading-warning">
-
-    ⚠️ Czytaj szybko XD — tekst nie będzie czekał.
-
-</div>
-
-
-<!-- ==================================================
-     TEKST FINAŁOWY
-================================================== -->
-
-<div id="final-text-screen">
-
-    <div id="final-text-container"></div>
-
-</div>
-
-
-<!-- ==================================================
-     CZARNY EKRAN PO TEKŚCIE
-================================================== -->
-
-<div id="final-blackout"></div>
-
-
-<!-- ==================================================
      PRZEGRANA
 ================================================== -->
 
 <div id="game-over">
 
-    <h1>
-        PRZEGRAŁEŚ.
-    </h1>
+    <h1>PRZEGRAŁEŚ.</h1>
 
     <p>
-        Odswierz stronę, aby zagrać ponownie.
+        Straciłeś wszystkie życia.<br>
+        Odśwież stronę, aby zagrać ponownie.
+    </p>
+
+</div>
+
+
+<!-- ==================================================
+     JASKINIA / FINAŁ
+================================================== -->
+
+<div id="cave-screen">
+
+    <!-- POCZĄTEK -->
+
+    <div id="ending-start">
+
+        <h1>KONIEC</h1>
+
+        <button onclick="showEndingWarning()">
+            Wiadomość ode mnie...
+        </button>
+
+    </div>
+
+
+    <!-- OSTRZEŻENIE -->
+
+    <div id="ending-warning">
+
+        <h2>⚠️ CZYTAJ SZYBKO XD</h2>
+
+        <p>
+            Ta wiadomość nie będzie czekać na Ciebie.<br>
+            Czytaj uważnie, ale nie za długo się zastanawiaj XD
+        </p>
+
+        <button onclick="startEndingText()">
+            Jestem gotowy
+        </button>
+
+    </div>
+
+
+    <!-- TEKST -->
+
+    <div id="ending-text-screen">
+
+        <div id="ending-text-container"></div>
+
+    </div>
+
+</div>
+
+
+<!-- ==================================================
+     CZARNY EKRAN
+================================================== -->
+
+<div id="ending-black"></div>
+
+
+<!-- ==================================================
+     OSTATECZNA WIADOMOŚĆ
+================================================== -->
+
+<div id="final-message">
+
+    <h2>
+        Koniec, dałem radę Cię przebić? XD
+    </h2>
+
+    <p>
+        Mam nadzieję, że Ci się podobało.<br>
+        Robiłem to naprawdę sporo czasu...
     </p>
 
 </div>
@@ -1318,7 +1521,7 @@ body {
 
 let lives = 2;
 
-let forestUnlocked = false;
+let houseUnlocked = false;
 let lakeUnlocked = false;
 let castleUnlocked = false;
 let caveUnlocked = false;
@@ -1327,11 +1530,40 @@ let currentLocation = "";
 
 let hintStage = 0;
 
-let finalSequenceStarted = false;
+
+/* ==================================================
+   FINAŁOWY TEKST
+================================================== */
+
+const finalText = [
+
+    "Byłem pogubionym nastolatkiem, kiedy Cię pierwszy raz spotkałem.",
+
+    "Dalej pamiętam, jak stałeś w moich drzwiach, kiedy się obudziłem XD.",
+
+    "Na początku nie wiedziałem nawet, jak to wszystko się potoczy.",
+
+    "Z czasem trochę się do mnie otworzyłeś, no… bardziej ja do Ciebie.",
+
+    "Pomogłeś mi z większością problemów, które wtedy mi doskwierały.",
+
+    "Byłeś przy mnie, kiedy nie zawsze wiedziałem, co właściwie ze sobą zrobić.",
+
+    "I chyba właśnie dlatego z czasem zacząłem Ci ufać coraz bardziej.",
+
+    "Dziękuję Ci za to, że byłeś wtedy, kiedy najbardziej Cię potrzebowałem — nawet jeśli sam nie wiedziałem, że Cię potrzebuję.",
+
+    "I niezależnie od tego, gdzie nas dalej życie zabierze, mam nadzieję, że kiedyś spojrzysz na mnie i pomyślisz:",
+
+    "„Kurwa, dobrze, że zgodziłem się pojechać z Ania XD”",
+
+    "Bo ja wiem jedno — poznanie Ciebie było jedną z najlepszych rzeczy, jakie mnie w życiu spotkały. ❤️"
+
+];
 
 
 /* ==================================================
-   ŻYCIA
+   SERCA
 ================================================== */
 
 function updateLives() {
@@ -1341,6 +1573,7 @@ function updateLives() {
 
     const heart2 =
         document.getElementById("heart2");
+
 
     heart1.classList.toggle(
         "lost",
@@ -1354,20 +1587,23 @@ function updateLives() {
 }
 
 
+/* ==================================================
+   UTRATA ŻYCIA
+================================================== */
+
 function loseLife() {
 
     lives--;
 
     updateLives();
 
+
     if (lives <= 0) {
 
         gameOver();
 
-        return true;
     }
 
-    return false;
 }
 
 
@@ -1409,14 +1645,6 @@ function openHouse() {
         "house";
 
     resetPuzzle();
-
-    forestUnlocked =
-        true;
-
-    document
-        .getElementById("forest")
-        .style.display =
-        "block";
 
     document
         .getElementById("puzzle-title")
@@ -1465,6 +1693,21 @@ function openHouse() {
         .style.display =
         "none";
 
+
+    /*
+       DOPIERO PO WEJŚCIU DO DOMKU
+       ODBLOKOWUJE SIĘ LAS
+    */
+
+    houseUnlocked =
+        true;
+
+    document
+        .getElementById("forest")
+        .style.display =
+        "block";
+
+
     document
         .getElementById("puzzle-screen")
         .style.display =
@@ -1507,7 +1750,7 @@ document.addEventListener(
 
 
 /* ==================================================
-   FORMATOWANIE LICZB
+   AUTOMATYCZNE FORMATOWANIE LICZB
 ================================================== */
 
 document
@@ -1518,13 +1761,14 @@ document
 
             let value =
                 this.value
-                .replace(/\D/g,"");
+                .replace(/\D/g, "");
 
             this.value =
                 value.replace(
                     /\B(?=(\d{3})+(?!\d))/g,
                     " "
                 );
+
         }
     );
 
@@ -1535,8 +1779,7 @@ document
 
 function resetPuzzle() {
 
-    hintStage =
-        0;
+    hintStage = 0;
 
     document
         .getElementById("hint-box")
@@ -1575,7 +1818,7 @@ function resetPuzzle() {
 
 function openForest() {
 
-    if (!forestUnlocked)
+    if (!houseUnlocked)
         return;
 
     currentLocation =
@@ -1656,6 +1899,7 @@ function checkForestAnswer() {
             .value
             .replace(/\s/g,"");
 
+
     if (
         answer ===
         "196418"
@@ -1683,15 +1927,13 @@ function checkForestAnswer() {
 
     else {
 
-        if (
-            loseLife()
-        )
-            return;
-
         document
             .getElementById("message")
             .textContent =
-            "✗ Zła odpowiedź. Straciłeś życie.";
+            "✗ Zła odpowiedź. Tracisz jedno życie.";
+
+        loseLife();
+
     }
 }
 
@@ -1760,6 +2002,7 @@ function createLakeOptions() {
         document
             .getElementById("puzzle-question");
 
+
     [
         "700 + 609",
         "800 + 509",
@@ -1784,6 +2027,7 @@ function createLakeOptions() {
                     checkLakeAnswer(
                         option
                     );
+
                 };
 
             question
@@ -1791,6 +2035,7 @@ function createLakeOptions() {
                     "afterend",
                     button
                 );
+
         }
     );
 }
@@ -1825,15 +2070,13 @@ function checkLakeAnswer(option) {
 
     else {
 
-        if (
-            loseLife()
-        )
-            return;
-
         document
             .getElementById("message")
             .textContent =
-            "✗ Zła odpowiedź. Straciłeś życie.";
+            "✗ Zła odpowiedź. Tracisz jedno życie.";
+
+        loseLife();
+
     }
 }
 
@@ -1970,6 +2213,7 @@ function checkCastleAnswer() {
             .value
             .replace(/\s/g,"");
 
+
     if (
         first === "19"
         &&
@@ -1998,15 +2242,13 @@ function checkCastleAnswer() {
 
     else {
 
-        if (
-            loseLife()
-        )
-            return;
-
         document
             .getElementById("message")
             .textContent =
-            "✗ Zła odpowiedź. Straciłeś życie.";
+            "✗ Zła odpowiedź. Tracisz jedno życie.";
+
+        loseLife();
+
     }
 }
 
@@ -2035,129 +2277,227 @@ function openCave() {
         .style.display =
         "none";
 
-    const cave =
+
+    const caveScreen =
         document
             .getElementById("cave-screen");
 
-    cave.style.display =
+    caveScreen.style.display =
+        "block";
+
+
+    document
+        .getElementById("ending-start")
+        .style.display =
         "flex";
 
     document
-        .getElementById("cave-title")
+        .getElementById("ending-warning")
+        .style.display =
+        "none";
+
+    document
+        .getElementById("ending-text-screen")
+        .style.display =
+        "none";
+}
+
+
+/* ==================================================
+   OSTRZEŻENIE
+================================================== */
+
+function showEndingWarning() {
+
+    document
+        .getElementById("ending-start")
+        .style.display =
+        "none";
+
+    document
+        .getElementById("ending-warning")
+        .style.display =
+        "flex";
+}
+
+
+/* ==================================================
+   START TEKSTU
+================================================== */
+
+function startEndingText() {
+
+    document
+        .getElementById("ending-warning")
+        .style.display =
+        "none";
+
+    document
+        .getElementById("ending-text-screen")
         .style.display =
         "block";
 
-    document
-        .getElementById("final-message-button")
-        .style.display =
-        "none";
+
+    const container =
+        document
+            .getElementById(
+                "ending-text-container"
+            );
+
+    container.innerHTML =
+        "";
+
+
+    /*
+       Każdy wers jest osobnym elementem.
+       Dzięki temu możemy:
+       - pokazać go powoli,
+       - przesunąć go,
+       - a potem wygasić.
+    */
+
+    finalText.forEach(
+        function(line, index) {
+
+            const element =
+                document.createElement("div");
+
+            element.className =
+                "ending-line";
+
+            element.textContent =
+                line;
+
+            container.appendChild(
+                element
+            );
+
+
+            /*
+               Tekst pojawia się stopniowo.
+               Kolejne wersy nie pojawiają się
+               wszystkie naraz.
+            */
+
+            setTimeout(
+                function() {
+
+                    element.classList.add(
+                        "visible"
+                    );
+
+
+                    /*
+                       Kiedy pojawi się kilka
+                       kolejnych wersów,
+                       poprzedni zaczyna znikać.
+                    */
+
+                    if (index >= 2) {
+
+                        const oldLine =
+                            container
+                                .children[
+                                    index - 2
+                                ];
+
+                        oldLine.classList.add(
+                            "fade-away"
+                        );
+                    }
+
+                },
+                index * 2600
+            );
+
+        }
+    );
+
+
+    /*
+       Po pojawieniu się całego tekstu
+       dajemy mu chwilę na przeczytanie,
+       a następnie zaczynamy końcowe
+       znikanie.
+    */
+
+    const totalTime =
+        finalText.length * 2600 + 2500;
+
 
     setTimeout(
         function() {
 
-            document
-                .getElementById(
-                    "final-message-button"
-                )
-                .style.display =
-                "inline-block";
+            fadeEntireEnding();
 
         },
-        1200
+        totalTime
     );
 }
 
 
 /* ==================================================
-   FINAŁOWA WIADOMOŚĆ
+   KOŃCOWE ZNIKANIE TEKSTU
 ================================================== */
 
-function startFinalMessage() {
+function fadeEntireEnding() {
 
-    if (finalSequenceStarted)
-        return;
+    const lines =
+        document.querySelectorAll(
+            ".ending-line"
+        );
 
-    finalSequenceStarted =
-        true;
 
-    document
-        .getElementById("cave-screen")
-        .style.display =
-        "none";
+    lines.forEach(
+        function(line, index) {
 
-    document
-        .getElementById("reading-warning")
-        .style.display =
-        "block";
+            setTimeout(
+                function() {
 
-    document
-        .getElementById("final-text-screen")
-        .style.display =
-        "block";
+                    line.classList.add(
+                        "fade-away"
+                    );
 
-    const text =
-`Byłem pogubionym nastolatkiem, kiedy Cię pierwszy raz spotkałem.
-
-Dalej pamiętam, jak stałeś w moich drzwiach, kiedy się obudziłem XD
-
-Z czasem trochę się do mnie otworzyłeś...
-No dobra, bardziej to ja otworzyłem się do Ciebie.
-
-Pomogłeś mi z większością problemów, które wtedy mnie doskwierały.
-Byłeś obok, kiedy naprawdę tego potrzebowałem, nawet jeśli sam nie zawsze wiedziałem, że Cię potrzebuję.
-
-I chyba właśnie za to jestem Ci najbardziej wdzięczny.
-
-Dziękuję Ci za to, że byłeś wtedy, kiedy najbardziej Cię potrzebowałem — nawet jeśli sam nie wiedziałem, że Cię potrzebuję.
-
-I niezależnie od tego, gdzie nas dalej życie zabierze, mam nadzieję, że kiedyś spojrzysz na mnie i pomyślisz:
-
-„Kurwa, dobrze, że zgodziłem się pojechać z Ania XD”
-
-Bo ja wiem jedno —
-
-poznanie Ciebie było jedną z najlepszych rzeczy, jakie mnie w życiu spotkały. ❤️`;
-
-    const container =
-        document
-            .getElementById(
-                "final-text-container"
+                },
+                index * 650
             );
 
-    container.textContent =
-        text;
+        }
+    );
+
 
     /*
-       Tekst przesuwa się przez ekran
-       w około 8 sekund.
+       Po około 8 sekundach
+       wszystko jest całkowicie czarne.
     */
-
-    container.style.animation =
-        "none";
-
-    void container.offsetWidth;
-
-    container.style.animation =
-        "finalTextMove 8s linear forwards";
 
     setTimeout(
         function() {
 
             document
                 .getElementById(
-                    "reading-warning"
+                    "ending-text-screen"
                 )
                 .style.display =
                 "none";
+
 
             document
                 .getElementById(
-                    "final-text-screen"
+                    "ending-black"
                 )
                 .style.display =
-                "none";
+                "flex";
 
-            showFinalBlackout();
+
+            /*
+               Krótka chwila czarnego ekranu.
+            */
+
+            setTimeout(
+                showFinalMessage,
+                4000
+            );
 
         },
         8000
@@ -2166,104 +2506,37 @@ poznanie Ciebie było jedną z najlepszych rzeczy, jakie mnie w życiu spotkały
 
 
 /* ==================================================
-   ANIMACJA TEKSTU
+   OSTATECZNA WIADOMOŚĆ
 ================================================== */
 
-const finalStyle =
-document.createElement("style");
+function showFinalMessage() {
 
-finalStyle.textContent = `
-
-@keyframes finalTextMove {
-
-    0% {
-
-        top: 100%;
-
-        opacity: 1;
-    }
-
-    65% {
-
-        top: 20%;
-
-        opacity: 1;
-    }
-
-    100% {
-
-        top: -115%;
-
-        opacity: 0;
-    }
-
-}
-
-`;
-
-document.head.appendChild(
-    finalStyle
-);
+    document
+        .getElementById(
+            "ending-black"
+        )
+        .style.display =
+        "none";
 
 
-/* ==================================================
-   CZARNY EKRAN 5 SEKUND
-================================================== */
+    document
+        .getElementById(
+            "final-message"
+        )
+        .style.display =
+        "flex";
 
-function showFinalBlackout() {
-
-    const blackout =
-        document
-            .getElementById(
-                "final-blackout"
-            );
-
-    blackout.style.display =
-        "block";
-
-    setTimeout(
-        function() {
-
-            revealFinalMap();
-
-        },
-        5000
-    );
-}
-
-
-/* ==================================================
-   POWRÓT MAPY
-================================================== */
-
-function revealFinalMap() {
-
-    const blackout =
-        document
-            .getElementById(
-                "final-blackout"
-            );
-
-    const game =
-        document
-            .getElementById("game");
 
     /*
-       Najpierw przygotowujemy mapę
-       całkowicie odblokowaną.
+       Po zakończeniu finału
+       wszystko zostaje odblokowane.
     */
 
-    forestUnlocked =
-        true;
+    houseUnlocked = true;
+    lakeUnlocked = true;
+    castleUnlocked = true;
+    caveUnlocked = true;
 
-    lakeUnlocked =
-        true;
-
-    castleUnlocked =
-        true;
-
-    caveUnlocked =
-        true;
 
     document
         .getElementById("forest")
@@ -2284,53 +2557,6 @@ function revealFinalMap() {
         .getElementById("cave")
         .style.display =
         "block";
-
-    game.style.display =
-        "block";
-
-    game.style.opacity =
-        "0";
-
-    blackout.style.transition =
-        "opacity 2.5s ease";
-
-    blackout.style.opacity =
-        "0";
-
-    setTimeout(
-        function() {
-
-            game.style.transition =
-                "opacity 2.5s ease";
-
-            game.style.opacity =
-                "1";
-
-        },
-        100
-    );
-
-    setTimeout(
-        function() {
-
-            blackout.style.display =
-                "none";
-
-            blackout.style.opacity =
-                "1";
-
-        },
-        2600
-    );
-
-    /*
-       Po finale życia nie są już potrzebne.
-    */
-
-    document
-        .getElementById("lives")
-        .style.display =
-        "none";
 }
 
 
@@ -2454,6 +2680,7 @@ function showHint() {
 
         return;
     }
+
 }
 
 
@@ -2476,7 +2703,7 @@ function showHintText(text) {
 
 
 /* ==================================================
-   PYTANIE O KOLEJNĄ
+   PYTANIE O KOLEJNĄ PODPOWIEDŹ
 ================================================== */
 
 function askForHint(
@@ -2519,7 +2746,7 @@ function askForHint(
 
 
 /* ==================================================
-   TAK
+   TAK / NAPEWNO
 ================================================== */
 
 function answerHintYes() {
@@ -2645,31 +2872,8 @@ function closePuzzle() {
         )
         .textContent =
         "";
+
 }
-
-
-/* ==================================================
-   START GRY
-================================================== */
-
-/*
-   WAŻNE:
-
-   Nie używamy localStorage.
-   Nie zapisujemy żadnego stanu gry.
-
-   Dlatego zwykłe F5 / Ctrl+R
-   zawsze uruchamia grę od początku.
-*/
-
-lives = 2;
-
-forestUnlocked = false;
-lakeUnlocked = false;
-castleUnlocked = false;
-caveUnlocked = false;
-
-updateLives();
 
 </script>
 
