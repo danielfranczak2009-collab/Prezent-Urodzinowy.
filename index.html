@@ -2,8 +2,11 @@
 <html lang="pl">
 
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
 
 <title>Nasza Gra</title>
 
@@ -34,8 +37,10 @@ body {
 
 #world {
     position: absolute;
+
     left: -4vw;
     top: -4vh;
+
     width: 108vw;
     height: 108vh;
 
@@ -49,6 +54,7 @@ body {
 
 #game-map {
     position: absolute;
+
     left: 0;
     top: 0;
 
@@ -56,6 +62,7 @@ body {
     height: 100%;
 
     object-fit: fill;
+
     display: block;
 
     user-select: none;
@@ -64,53 +71,10 @@ body {
 
 
 /* ==================================================
-   SERCA
-================================================== */
-
-#lives {
-
-    position: fixed;
-
-    top: 20px;
-    right: 20px;
-
-    z-index: 80;
-
-    display: flex;
-    gap: 8px;
-
-    padding: 10px 14px;
-
-    background: rgba(0,0,0,0.85);
-
-    border-radius: 14px;
-
-    border: 1px solid rgba(255,255,255,0.2);
-
-    font-size: 30px;
-
-    box-shadow:
-        0 4px 15px rgba(0,0,0,0.5);
-}
-
-.heart {
-    transition:
-        opacity 0.3s ease,
-        transform 0.3s ease;
-}
-
-.heart.lost {
-    opacity: 0.18;
-    transform: scale(0.8);
-}
-
-
-/* ==================================================
    CYKL DNIA I NOCY
 ================================================== */
 
 #day-night {
-
     position: absolute;
     inset: 0;
 
@@ -130,23 +94,28 @@ body {
 @keyframes dayNightCycle {
 
     0% {
-        background: rgba(0,0,0,0);
+        background:
+            rgba(0,0,0,0);
     }
 
     25% {
-        background: rgba(0,0,0,0);
+        background:
+            rgba(0,0,0,0);
     }
 
     50% {
-        background: rgba(10,15,55,0.48);
+        background:
+            rgba(10,15,55,0.48);
     }
 
     75% {
-        background: rgba(10,15,55,0.20);
+        background:
+            rgba(10,15,55,0.20);
     }
 
     100% {
-        background: rgba(0,0,0,0);
+        background:
+            rgba(0,0,0,0);
     }
 }
 
@@ -156,7 +125,6 @@ body {
 ================================================== */
 
 .cloud {
-
     position: absolute;
 
     z-index: 10;
@@ -178,7 +146,6 @@ body {
 
 .cloud::before,
 .cloud::after {
-
     content: "";
 
     position: absolute;
@@ -190,7 +157,6 @@ body {
 }
 
 .cloud::before {
-
     width: 75px;
     height: 75px;
 
@@ -199,7 +165,6 @@ body {
 }
 
 .cloud::after {
-
     width: 95px;
     height: 95px;
 
@@ -208,7 +173,6 @@ body {
 }
 
 #cloud1 {
-
     top: 12%;
     left: -220px;
 
@@ -219,7 +183,6 @@ body {
 }
 
 #cloud2 {
-
     top: 25%;
     left: -300px;
 
@@ -232,7 +195,6 @@ body {
 }
 
 #cloud3 {
-
     top: 8%;
     left: -400px;
 
@@ -291,6 +253,57 @@ body {
 
 
 /* ==================================================
+   SERCA
+================================================== */
+
+#lives {
+
+    position: fixed;
+
+    top: 20px;
+    right: 20px;
+
+    z-index: 200;
+
+    display: flex;
+
+    gap: 8px;
+
+    padding: 10px 14px;
+
+    background:
+        rgba(20,20,20,0.95);
+
+    border:
+        2px solid
+        rgba(255,255,255,0.25);
+
+    border-radius: 14px;
+
+    box-shadow:
+        0 5px 20px
+        rgba(0,0,0,0.45);
+
+    font-size: 30px;
+
+    line-height: 1;
+}
+
+.heart {
+    transition:
+        opacity 0.3s ease,
+        transform 0.3s ease;
+}
+
+.heart.lost {
+    opacity: 0.15;
+
+    transform:
+        scale(0.8);
+}
+
+
+/* ==================================================
    HOTSPOTY
 ================================================== */
 
@@ -305,10 +318,12 @@ body {
         translate(-50%,-50%);
 
     border: none;
+
     padding: 0;
     margin: 0;
 
-    background: transparent;
+    background:
+        transparent;
 
     cursor: pointer;
 
@@ -330,6 +345,7 @@ body {
 
     left: 15.536%;
     top: 69.797%;
+
 }
 
 
@@ -402,7 +418,7 @@ body {
 
 
 /* ==================================================
-   ZAGADKA
+   EKRAN ZAGADKI
 ================================================== */
 
 #puzzle-screen {
@@ -423,6 +439,11 @@ body {
 
     z-index: 100;
 }
+
+
+/* ==================================================
+   PUDEŁKO
+================================================== */
 
 #puzzle-box {
 
@@ -451,7 +472,8 @@ body {
         center;
 
     box-shadow:
-        0 0 40px rgba(0,0,0,0.8);
+        0 0 40px
+        rgba(0,0,0,0.8);
 
     border:
         1px solid
@@ -474,7 +496,7 @@ body {
 
 
 /* ==================================================
-   ODPOWIEDŹ
+   POLE ODPOWIEDZI
 ================================================== */
 
 #answer {
@@ -553,17 +575,13 @@ body {
 
 .lake-option {
 
-    display:
-        block;
+    display: block;
 
-    width:
-        260px;
+    width: 260px;
 
-    margin:
-        12px auto;
+    margin: 12px auto;
 
-    padding:
-        14px 20px;
+    padding: 14px 20px;
 
     border:
         2px solid white;
@@ -793,38 +811,53 @@ body {
 
 #game-over {
 
-    position: fixed;
+    position:
+        fixed;
 
-    inset: 0;
+    inset:
+        0;
 
-    z-index: 1000;
+    display:
+        none;
 
-    display: none;
+    align-items:
+        center;
 
-    align-items: center;
-    justify-content: center;
+    justify-content:
+        center;
 
-    flex-direction: column;
+    flex-direction:
+        column;
 
-    background: black;
+    background:
+        black;
 
-    color: white;
+    color:
+        white;
 
-    text-align: center;
+    z-index:
+        1000;
+
+    text-align:
+        center;
 }
 
 #game-over h1 {
 
-    font-size: 64px;
+    font-size:
+        64px;
 
-    margin: 0 0 25px;
+    margin:
+        0 0 20px;
 }
 
 #game-over p {
 
-    font-size: 22px;
+    font-size:
+        22px;
 
-    opacity: 0.8;
+    opacity:
+        0.8;
 }
 
 
@@ -834,25 +867,93 @@ body {
 
 #cave-screen {
 
-    position: fixed;
+    position:
+        fixed;
 
-    inset: 0;
+    inset:
+        0;
 
-    display: none;
+    display:
+        none;
 
-    align-items: center;
+    align-items:
+        center;
 
-    justify-content: center;
+    justify-content:
+        center;
 
-    background: black;
+    flex-direction:
+        column;
 
-    z-index: 500;
+    background:
+        black;
 
-    color: white;
+    z-index:
+        500;
 
-    text-align: center;
+    color:
+        white;
 
-    padding: 30px;
+    text-align:
+        center;
+
+    padding:
+        30px;
+}
+
+#cave-title {
+
+    font-size:
+        72px;
+
+    margin:
+        0 0 50px;
+
+    letter-spacing:
+        4px;
+
+    text-shadow:
+        0 0 25px
+        rgba(255,255,255,0.35);
+}
+
+#cave-message-button {
+
+    padding:
+        16px 28px;
+
+    border:
+        2px solid white;
+
+    border-radius:
+        12px;
+
+    background:
+        white;
+
+    color:
+        black;
+
+    font-size:
+        19px;
+
+    cursor:
+        pointer;
+
+    transition:
+        0.2s ease;
+}
+
+#cave-message-button:hover {
+
+    background:
+        black;
+
+    color:
+        white;
+
+    transform:
+        translateY(-2px);
 }
 
 
@@ -860,178 +961,278 @@ body {
    OSTRZEŻENIE
 ================================================== */
 
-#reading-warning {
+#warning-screen {
 
-    position: fixed;
+    position:
+        fixed;
 
-    inset: 0;
+    inset:
+        0;
 
-    z-index: 700;
+    display:
+        none;
 
-    display: none;
+    align-items:
+        center;
 
-    align-items: center;
-    justify-content: center;
+    justify-content:
+        center;
 
-    background: black;
+    flex-direction:
+        column;
 
-    color: white;
+    background:
+        black;
 
-    text-align: center;
+    z-index:
+        700;
+
+    color:
+        white;
+
+    text-align:
+        center;
 }
 
-#reading-warning-content {
-
-    width: min(800px,90vw);
-}
-
-#reading-warning h1 {
-
-    font-size: clamp(42px,7vw,80px);
-
-    margin:
-        0 0 25px;
-}
-
-#reading-warning p {
+#warning-screen h2 {
 
     font-size:
-        clamp(20px,3vw,32px);
+        52px;
 
-    line-height:
-        1.5;
+    margin:
+        0 0 20px;
+}
+
+#warning-screen p {
+
+    font-size:
+        26px;
+
+    margin:
+        0 0 35px;
+}
+
+#start-message {
+
+    padding:
+        15px 30px;
+
+    border:
+        2px solid white;
+
+    border-radius:
+        12px;
+
+    background:
+        white;
+
+    color:
+        black;
+
+    font-size:
+        18px;
+
+    cursor:
+        pointer;
 }
 
 
 /* ==================================================
-   FINAŁOWY TEKST
+   WŁAŚCIWA WIADOMOŚĆ
 ================================================== */
 
-#final-story {
+#message-screen {
 
-    position: fixed;
+    position:
+        fixed;
 
-    inset: 0;
+    inset:
+        0;
 
-    z-index: 600;
+    display:
+        none;
 
-    display: none;
+    align-items:
+        center;
 
-    align-items: center;
-    justify-content: center;
+    justify-content:
+        center;
 
-    background: black;
+    background:
+        black;
 
-    overflow: hidden;
+    z-index:
+        800;
 
-    color: white;
+    color:
+        white;
+
+    text-align:
+        center;
+
+    padding:
+        40px;
 }
 
-#story-lines {
+#message-line {
 
-    position: relative;
+    width:
+        min(1000px,90vw);
 
-    width: min(900px,88vw);
+    min-height:
+        150px;
 
-    height: 60vh;
+    display:
+        flex;
 
-    display: flex;
+    align-items:
+        center;
 
-    flex-direction: column;
-
-    align-items: center;
-
-    justify-content: center;
-
-    gap: 10px;
-
-    text-align: center;
-}
-
-.story-line {
-
-    width: 100%;
-
-    min-height: 38px;
+    justify-content:
+        center;
 
     font-size:
-        clamp(20px,2.4vw,32px);
-
-    line-height: 1.45;
-
-    opacity: 0;
-
-    transition:
-        opacity 1.2s ease;
-}
-
-.story-line.visible {
-
-    opacity: 1;
-}
-
-.story-line.fading {
-
-    opacity: 0;
-}
-
-
-/* ==================================================
-   KONIEC
-================================================== */
-
-#final-end {
-
-    position: fixed;
-
-    inset: 0;
-
-    z-index: 800;
-
-    display: none;
-
-    align-items: center;
-    justify-content: center;
-
-    flex-direction: column;
-
-    background: black;
-
-    color: white;
-
-    text-align: center;
-
-    padding: 30px;
-}
-
-#final-end h1 {
-
-    font-size:
-        clamp(35px,6vw,70px);
-
-    margin:
-        0 0 25px;
-}
-
-#final-end p {
-
-    font-size:
-        clamp(18px,2.5vw,28px);
+        clamp(24px,3vw,38px);
 
     line-height:
         1.6;
+
+    opacity:
+        0;
+
+    transition:
+        opacity 1.2s ease;
+
+    text-shadow:
+        0 0 18px
+        rgba(255,255,255,0.2);
+}
+
+#message-line.visible {
+
+    opacity:
+        1;
 }
 
 
 /* ==================================================
-   KROPKA
+   FINAL
 ================================================== */
 
-#final-end .heart-final {
+#final-screen {
 
-    font-size: 45px;
+    position:
+        fixed;
 
-    margin-top: 20px;
+    inset:
+        0;
+
+    display:
+        none;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    flex-direction:
+        column;
+
+    background:
+        black;
+
+    z-index:
+        900;
+
+    color:
+        white;
+
+    text-align:
+        center;
+
+    padding:
+        30px;
+}
+
+#final-screen h1 {
+
+    font-size:
+        clamp(30px,5vw,58px);
+
+    margin:
+        0 0 30px;
+}
+
+#final-screen p {
+
+    font-size:
+        22px;
+
+    line-height:
+        1.7;
+
+    margin:
+        0;
+}
+
+
+/* ==================================================
+   KONIEC GRY
+================================================== */
+
+#ending-screen {
+
+    position:
+        fixed;
+
+    inset:
+        0;
+
+    display:
+        none;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    flex-direction:
+        column;
+
+    background:
+        black;
+
+    z-index:
+        950;
+
+    color:
+        white;
+
+    text-align:
+        center;
+}
+
+#ending-screen h1 {
+
+    font-size:
+        clamp(32px,5vw,58px);
+
+    margin:
+        0 0 25px;
+}
+
+#ending-screen p {
+
+    font-size:
+        22px;
+
+    line-height:
+        1.7;
+
+    margin:
+        0;
 }
 
 </style>
@@ -1041,6 +1242,23 @@ body {
 
 <body>
 
+
+<!-- ==================================================
+     SERCA
+================================================== -->
+
+<div id="lives">
+
+    <span id="heart1" class="heart">❤️</span>
+
+    <span id="heart2" class="heart">❤️</span>
+
+</div>
+
+
+<!-- ==================================================
+     GRA
+================================================== -->
 
 <div id="game">
 
@@ -1052,9 +1270,20 @@ body {
             alt="Mapa gry"
         >
 
-        <div id="cloud1" class="cloud"></div>
-        <div id="cloud2" class="cloud"></div>
-        <div id="cloud3" class="cloud"></div>
+        <div
+            id="cloud1"
+            class="cloud">
+        </div>
+
+        <div
+            id="cloud2"
+            class="cloud">
+        </div>
+
+        <div
+            id="cloud3"
+            class="cloud">
+        </div>
 
         <div id="day-night"></div>
 
@@ -1094,27 +1323,6 @@ body {
         </button>
 
     </div>
-
-</div>
-
-
-<!-- ==================================================
-     SERCA
-================================================== -->
-
-<div id="lives">
-
-    <span
-        id="heart1"
-        class="heart">
-        ❤️
-    </span>
-
-    <span
-        id="heart2"
-        class="heart">
-        ❤️
-    </span>
 
 </div>
 
@@ -1201,8 +1409,29 @@ body {
     <h1>PRZEGRAŁEŚ.</h1>
 
     <p>
-        Odśwież stronę, aby zagrać ponownie.
+        Odswież stronę, aby zagrać ponownie.
     </p>
+
+</div>
+
+
+<!-- ==================================================
+     JASKINIA
+================================================== -->
+
+<div id="cave-screen">
+
+    <h1 id="cave-title">
+        KONIEC...
+    </h1>
+
+    <button
+        id="cave-message-button"
+        onclick="showWarning()">
+
+        Wiadomość ode mnie...
+
+    </button>
 
 </div>
 
@@ -1211,59 +1440,53 @@ body {
      OSTRZEŻENIE
 ================================================== -->
 
-<div id="reading-warning">
+<div id="warning-screen">
 
-    <div id="reading-warning-content">
+    <h2>
+        ⚠️ CZYTAJ SZYBKO XD
+    </h2>
 
-        <h1>CZYTAJ SZYBKO XD</h1>
+    <p>
+        Wiadomość będzie pojawiać się<br>
+        po jednym wersie.
+    </p>
 
-        <p>
-            Tekst będzie się pojawiał i znikał.
-            <br>
-            Nie czekaj, aż wszystko się pojawi 😭
-        </p>
+    <button
+        id="start-message"
+        onclick="startFinalMessage()">
 
-        <button
-            class="puzzle-button"
-            onclick="startFinalStory()">
-            Dobra, lecimy
-        </button>
+        Jestem gotowy
 
-    </div>
-
-</div>
-
-
-<!-- ==================================================
-     FINAŁOWY TEKST
-================================================== -->
-
-<div id="final-story">
-
-    <div id="story-lines"></div>
+    </button>
 
 </div>
 
 
 <!-- ==================================================
-     KONIEC
+     WIADOMOŚĆ
 ================================================== -->
 
-<div id="final-end">
+<div id="message-screen">
+
+    <div id="message-line"></div>
+
+</div>
+
+
+<!-- ==================================================
+     FINAL
+================================================== -->
+
+<div id="final-screen">
 
     <h1>
-        Koniec, dałem radę? XD
+        Koniec, dałem radę Cię przebić? XD
     </h1>
 
     <p>
-        Mam nadzieję, że Ci się podobało,
-        <br>
+        Mam nadzieję, że Ci się podobało,<br>
         robiłem to naprawdę sporo czasu...
     </p>
-
-    <div class="heart-final">
-        ❤️
-    </div>
 
 </div>
 
@@ -1277,7 +1500,6 @@ body {
 
 let lives = 2;
 
-let forestUnlocked = false;
 let lakeUnlocked = false;
 let castleUnlocked = false;
 let caveUnlocked = false;
@@ -1288,29 +1510,8 @@ let hintStage = 0;
 
 
 /* ==================================================
-   ŻYCIA
+   SERCA
 ================================================== */
-
-function loseLife() {
-
-    lives--;
-
-    updateLives();
-
-    if (lives <= 0) {
-
-        gameOver();
-
-    } else {
-
-        document
-            .getElementById("message")
-            .textContent =
-            "✗ Zła odpowiedź! Straciłeś życie.";
-
-    }
-}
-
 
 function updateLives() {
 
@@ -1330,27 +1531,38 @@ function updateLives() {
 }
 
 
-function gameOver() {
+/* ==================================================
+   UTRATA ŻYCIA
+================================================== */
 
-    document
-        .getElementById("puzzle-screen")
-        .style.display =
-        "none";
+function loseLife() {
 
-    document
-        .getElementById("game")
-        .style.display =
-        "none";
+    lives--;
 
-    document
-        .getElementById("lives")
-        .style.display =
-        "none";
+    updateLives();
 
-    document
-        .getElementById("game-over")
-        .style.display =
-        "flex";
+    if (lives <= 0) {
+
+        document
+            .getElementById("puzzle-screen")
+            .style.display =
+            "none";
+
+        document
+            .getElementById("game")
+            .style.display =
+            "none";
+
+        document
+            .getElementById("lives")
+            .style.display =
+            "none";
+
+        document
+            .getElementById("game-over")
+            .style.display =
+            "flex";
+    }
 }
 
 
@@ -1371,6 +1583,11 @@ function openHouse() {
         "🏠 Domek";
 
     document
+        .getElementById("puzzle-description")
+        .textContent =
+        "";
+
+    document
         .getElementById("puzzle-question")
         .innerHTML =
         `
@@ -1388,6 +1605,11 @@ function openHouse() {
         `;
 
     document
+        .getElementById("puzzle-instruction")
+        .textContent =
+        "";
+
+    document
         .getElementById("answer")
         .style.display =
         "none";
@@ -1403,16 +1625,14 @@ function openHouse() {
         "none";
 
     document
-        .getElementById("puzzle-screen")
-        .style.display =
-        "flex";
-
-    forestUnlocked = true;
-
-    document
         .getElementById("forest")
         .style.display =
         "block";
+
+    document
+        .getElementById("puzzle-screen")
+        .style.display =
+        "flex";
 }
 
 
@@ -1469,6 +1689,7 @@ document
                     /\B(?=(\d{3})+(?!\d))/g,
                     " "
                 );
+
         }
     );
 
@@ -1517,9 +1738,6 @@ function resetPuzzle() {
 ================================================== */
 
 function openForest() {
-
-    if (!forestUnlocked)
-        return;
 
     currentLocation =
         "forest";
@@ -1587,6 +1805,10 @@ function openForest() {
 }
 
 
+/* ==================================================
+   LAS — SPRAWDZANIE
+================================================== */
+
 function checkForestAnswer() {
 
     const answer =
@@ -1596,10 +1818,12 @@ function checkForestAnswer() {
             .replace(/\s/g,"");
 
     if (
-        answer === "196418"
+        answer ===
+        "196418"
     ) {
 
-        lakeUnlocked = true;
+        lakeUnlocked =
+            true;
 
         document
             .getElementById("lake")
@@ -1616,7 +1840,14 @@ function checkForestAnswer() {
             700
         );
 
-    } else {
+    }
+
+    else {
+
+        document
+            .getElementById("message")
+            .textContent =
+            "✗ Zła odpowiedź. Straciłeś jedno życie.";
 
         loseLife();
     }
@@ -1628,9 +1859,6 @@ function checkForestAnswer() {
 ================================================== */
 
 function openLake() {
-
-    if (!lakeUnlocked)
-        return;
 
     currentLocation =
         "lake";
@@ -1708,7 +1936,9 @@ function createLakeOptions() {
             button.onclick =
                 function() {
 
-                    checkLakeAnswer(option);
+                    checkLakeAnswer(
+                        option
+                    );
 
                 };
 
@@ -1717,6 +1947,7 @@ function createLakeOptions() {
                     "afterend",
                     button
                 );
+
         }
     );
 }
@@ -1725,10 +1956,12 @@ function createLakeOptions() {
 function checkLakeAnswer(option) {
 
     if (
-        option === "809 + 500"
+        option ===
+        "809 + 500"
     ) {
 
-        castleUnlocked = true;
+        castleUnlocked =
+            true;
 
         document
             .getElementById("castle")
@@ -1745,7 +1978,14 @@ function checkLakeAnswer(option) {
             700
         );
 
-    } else {
+    }
+
+    else {
+
+        document
+            .getElementById("message")
+            .textContent =
+            "✗ Zła odpowiedź. Straciłeś jedno życie.";
 
         loseLife();
     }
@@ -1757,9 +1997,6 @@ function checkLakeAnswer(option) {
 ================================================== */
 
 function openCastle() {
-
-    if (!castleUnlocked)
-        return;
 
     currentLocation =
         "castle";
@@ -1783,15 +2020,19 @@ function openCastle() {
         <div class="complex-puzzle">
 
             <div class="complex-equation">
+
                 <strong>
                     (4 + 3i)(4 − 3i) − 6 = ?
                 </strong>
+
             </div>
 
             <div class="complex-equation">
+
                 <strong>
                     (3 + i)(3 − i) = ?
                 </strong>
+
             </div>
 
             <p>
@@ -1858,6 +2099,10 @@ function openCastle() {
 }
 
 
+/* ==================================================
+   ZAMEK — SPRAWDZANIE
+================================================== */
+
 function checkCastleAnswer() {
 
     const first =
@@ -1877,11 +2122,13 @@ function checkCastleAnswer() {
             .replace(/\s/g,"");
 
     if (
-        first === "19" &&
+        first === "19"
+        &&
         second === "10"
     ) {
 
-        caveUnlocked = true;
+        caveUnlocked =
+            true;
 
         document
             .getElementById("cave")
@@ -1898,7 +2145,14 @@ function checkCastleAnswer() {
             800
         );
 
-    } else {
+    }
+
+    else {
+
+        document
+            .getElementById("message")
+            .textContent =
+            "✗ Zła odpowiedź. Straciłeś jedno życie.";
 
         loseLife();
     }
@@ -1915,11 +2169,6 @@ function openCave() {
         return;
 
     document
-        .getElementById("puzzle-screen")
-        .style.display =
-        "none";
-
-    document
         .getElementById("game")
         .style.display =
         "none";
@@ -1930,200 +2179,184 @@ function openCave() {
         "none";
 
     document
-        .getElementById("reading-warning")
+        .getElementById("cave-screen")
         .style.display =
         "flex";
 }
 
 
 /* ==================================================
-   START FINAŁU
+   OSTRZEŻENIE
 ================================================== */
 
-function startFinalStory() {
+function showWarning() {
 
     document
-        .getElementById("reading-warning")
+        .getElementById("cave-screen")
         .style.display =
         "none";
 
     document
-        .getElementById("final-story")
+        .getElementById("warning-screen")
         .style.display =
         "flex";
-
-    playFinalStory();
 }
 
 
 /* ==================================================
-   TEKST FINAŁOWY
+   TEKST KOŃCOWY
 ================================================== */
 
-const finalText = [
+const finalLines = [
 
     "Byłem pogubionym nastolatkiem, kiedy Cię pierwszy raz spotkałem.",
 
     "Dalej pamiętam, jak stałeś w moich drzwiach, kiedy się obudziłem XD.",
 
-    "Z czasem trochę się do mnie otworzyłeś, no dobra — bardziej ja do Ciebie.",
+    "Z czasem trochę się do mnie otworzyłeś... no, bardziej to ja otworzyłem się do Ciebie.",
 
     "Pomogłeś mi z większością problemów, które wtedy mnie doskwierały.",
 
-    "Byłeś przy mnie wtedy, kiedy naprawdę tego potrzebowałem.",
+    "Byłeś przy mnie, kiedy nie zawsze wiedziałem, co właściwie robić.",
 
-    "I chyba nawet nie zdawałeś sobie sprawy z tego, jak dużo to dla mnie znaczyło.",
+    "I chyba właśnie dlatego tak bardzo doceniam to, że Cię poznałem.",
 
     "Dziękuję Ci za to, że byłeś wtedy, kiedy najbardziej Cię potrzebowałem — nawet jeśli sam nie wiedziałem, że Cię potrzebuję.",
 
     "I niezależnie od tego, gdzie nas dalej życie zabierze, mam nadzieję, że kiedyś spojrzysz na mnie i pomyślisz:",
 
-    "„Kurwa, dobrze, że zgodziłem się pojechać z Ania XD”.",
+    "„Kurwa, dobrze, że zgodziłem się pojechać z Anią XD”.",
 
     "Bo ja wiem jedno — poznanie Ciebie było jedną z najlepszych rzeczy, jakie mnie w życiu spotkały. ❤️"
+
 ];
 
 
 /* ==================================================
-   GŁÓWNY MECHANIZM TEKSTU
+   START WIADOMOŚCI
 ================================================== */
 
-function playFinalStory() {
-
-    const container =
-        document.getElementById(
-            "story-lines"
-        );
-
-    container.innerHTML = "";
-
-    const elements = [];
-
-    finalText.forEach(
-        function(text) {
-
-            const line =
-                document.createElement("div");
-
-            line.className =
-                "story-line";
-
-            line.textContent =
-                text;
-
-            container.appendChild(line);
-
-            elements.push(line);
-        }
-    );
-
-
-    /*
-       Każdy wers pojawia się po kolei.
-
-       Gdy pojawia się kolejny wers,
-       dwa wersy wcześniej zaczynają
-       powoli znikać.
-
-       Nic nie jest przesuwane.
-       Każdy wers zostaje dokładnie
-       w swoim miejscu.
-    */
-
-    let index = 0;
-
-    const appearDelay = 2200;
-    const fadeDuration = 2200;
-
-
-    function showNext() {
-
-        if (index >= elements.length) {
-
-            waitForFinalFade();
-
-            return;
-        }
-
-        const current =
-            elements[index];
-
-        current.classList.add("visible");
-
-
-        /*
-           Dwa wersy ZA nim zaczyna znikać.
-        */
-
-        if (index >= 2) {
-
-            const old =
-                elements[index - 2];
-
-            old.classList.add("fading");
-        }
-
-
-        index++;
-
-        setTimeout(
-            showNext,
-            appearDelay
-        );
-    }
-
-
-    showNext();
-
-
-    /*
-       Po pojawieniu się ostatniego
-       tekstu czekamy, aż ostatnie
-       dwa wersy również znikną.
-    */
-
-    function waitForFinalFade() {
-
-        setTimeout(
-            function() {
-
-                if (elements.length >= 2) {
-
-                    elements[
-                        elements.length - 2
-                    ].classList.add("fading");
-
-                    elements[
-                        elements.length - 1
-                    ].classList.add("fading");
-
-                }
-
-                setTimeout(
-                    showFinalEnd,
-                    fadeDuration + 100
-                );
-
-            },
-            appearDelay
-        );
-    }
-}
-
-
-/* ==================================================
-   KONIEC
-================================================== */
-
-function showFinalEnd() {
+function startFinalMessage() {
 
     document
-        .getElementById("final-story")
+        .getElementById("warning-screen")
         .style.display =
         "none";
 
     document
-        .getElementById("final-end")
+        .getElementById("message-screen")
+        .style.display =
+        "flex";
+
+    playFinalLine(0);
+}
+
+
+/* ==================================================
+   POJEDYNCZE WERSY
+================================================== */
+
+function playFinalLine(index) {
+
+    const element =
+        document
+            .getElementById("message-line");
+
+    if (
+        index >= finalLines.length
+    ) {
+
+        setTimeout(
+            showFinalScreen,
+            1000
+        );
+
+        return;
+    }
+
+
+    element.classList.remove(
+        "visible"
+    );
+
+
+    setTimeout(
+        function() {
+
+            element.textContent =
+                finalLines[index];
+
+            element.classList.add(
+                "visible"
+            );
+
+
+            /*
+             * Każdy wers ma własny czas.
+             * Krótsze zdania trochę szybciej,
+             * dłuższe trochę dłużej.
+             */
+
+            const length =
+                finalLines[index].length;
+
+            const readingTime =
+                Math.max(
+                    3200,
+                    Math.min(
+                        6500,
+                        length * 70
+                    )
+                );
+
+
+            setTimeout(
+                function() {
+
+                    element.classList.remove(
+                        "visible"
+                    );
+
+
+                    /*
+                     * Czekamy aż poprzedni
+                     * wers faktycznie zniknie.
+                     */
+
+                    setTimeout(
+                        function() {
+
+                            playFinalLine(
+                                index + 1
+                            );
+
+                        },
+                        1200
+                    );
+
+                },
+                readingTime
+            );
+
+        },
+        100
+    );
+}
+
+
+/* ==================================================
+   OSTATECZNY EKRAN
+================================================== */
+
+function showFinalScreen() {
+
+    document
+        .getElementById("message-screen")
+        .style.display =
+        "none";
+
+    document
+        .getElementById("final-screen")
         .style.display =
         "flex";
 }
@@ -2136,7 +2369,8 @@ function showFinalEnd() {
 function showHint() {
 
     if (
-        currentLocation === "forest" &&
+        currentLocation === "forest"
+        &&
         hintStage === 0
     ) {
 
@@ -2151,7 +2385,8 @@ function showHint() {
 
 
     if (
-        currentLocation === "forest" &&
+        currentLocation === "forest"
+        &&
         hintStage === 1
     ) {
 
@@ -2167,7 +2402,8 @@ function showHint() {
 
 
     if (
-        currentLocation === "forest" &&
+        currentLocation === "forest"
+        &&
         hintStage === 3
     ) {
 
@@ -2183,7 +2419,8 @@ function showHint() {
 
 
     if (
-        currentLocation === "lake" &&
+        currentLocation === "lake"
+        &&
         hintStage === 0
     ) {
 
@@ -2198,7 +2435,8 @@ function showHint() {
 
 
     if (
-        currentLocation === "lake" &&
+        currentLocation === "lake"
+        &&
         hintStage === 1
     ) {
 
@@ -2214,7 +2452,8 @@ function showHint() {
 
 
     if (
-        currentLocation === "castle" &&
+        currentLocation === "castle"
+        &&
         hintStage === 0
     ) {
 
@@ -2229,7 +2468,8 @@ function showHint() {
 
 
     if (
-        currentLocation === "castle" &&
+        currentLocation === "castle"
+        &&
         hintStage === 1
     ) {
 
@@ -2245,6 +2485,10 @@ function showHint() {
 }
 
 
+/* ==================================================
+   POKAZANIE PODPOWIEDZI
+================================================== */
+
 function showHintText(text) {
 
     document
@@ -2258,6 +2502,10 @@ function showHintText(text) {
         "block";
 }
 
+
+/* ==================================================
+   PYTANIE O PODPOWIEDŹ
+================================================== */
 
 function askForHint(
     text,
@@ -2298,10 +2546,15 @@ function askForHint(
 }
 
 
+/* ==================================================
+   TAK
+================================================== */
+
 function answerHintYes() {
 
     if (
-        currentLocation === "forest" &&
+        currentLocation === "forest"
+        &&
         hintStage === 2
     ) {
 
@@ -2318,7 +2571,8 @@ function answerHintYes() {
 
 
     if (
-        currentLocation === "forest" &&
+        currentLocation === "forest"
+        &&
         hintStage === 4
     ) {
 
@@ -2335,7 +2589,8 @@ function answerHintYes() {
 
 
     if (
-        currentLocation === "lake" &&
+        currentLocation === "lake"
+        &&
         hintStage === 4
     ) {
 
@@ -2352,7 +2607,8 @@ function answerHintYes() {
 
 
     if (
-        currentLocation === "castle" &&
+        currentLocation === "castle"
+        &&
         hintStage === 4
     ) {
 
@@ -2368,6 +2624,10 @@ function answerHintYes() {
     }
 }
 
+
+/* ==================================================
+   UKRYCIE PYTANIA
+================================================== */
 
 function hideHintQuestion() {
 
@@ -2395,7 +2655,7 @@ function hideHintQuestion() {
 
 
 /* ==================================================
-   ZAMKNIĘCIE
+   ZAMKNIĘCIE ZAGADKI
 ================================================== */
 
 function closePuzzle() {
