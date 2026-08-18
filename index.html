@@ -37,8 +37,10 @@ body {
 
 #world {
     position: absolute;
+
     left: -4vw;
     top: -4vh;
+
     width: 108vw;
     height: 108vh;
 
@@ -52,6 +54,7 @@ body {
 
 #game-map {
     position: absolute;
+
     left: 0;
     top: 0;
 
@@ -63,6 +66,7 @@ body {
     display: block;
 
     user-select: none;
+
     pointer-events: none;
 }
 
@@ -89,7 +93,6 @@ body {
 
     mix-blend-mode: multiply;
 }
-
 
 @keyframes dayNightCycle {
 
@@ -176,7 +179,6 @@ body {
     top: -48px;
 }
 
-
 #cloud1 {
 
     top: 12%;
@@ -187,7 +189,6 @@ body {
     animation:
         cloudMove1 75s linear infinite;
 }
-
 
 #cloud2 {
 
@@ -202,7 +203,6 @@ body {
         cloudMove2 105s linear infinite;
 }
 
-
 #cloud3 {
 
     top: 8%;
@@ -215,7 +215,6 @@ body {
     animation:
         cloudMove3 130s linear infinite;
 }
-
 
 @keyframes cloudMove1 {
 
@@ -232,7 +231,6 @@ body {
     }
 }
 
-
 @keyframes cloudMove2 {
 
     from {
@@ -247,7 +245,6 @@ body {
             scale(0.65);
     }
 }
-
 
 @keyframes cloudMove3 {
 
@@ -338,8 +335,18 @@ body {
 
 /* ==================================================
    DOMEK
+
+   BAZA:
    X = 240px
    Y = 670px
+
+   DODATKOWE PRZESUNIĘCIE:
+   PRAWO ≈ 3,5 cm
+   DÓŁ ≈ 2 cm
+
+   Przyjmujemy:
+   3,5 cm ≈ 132 px
+   2 cm ≈ 76 px
 ================================================== */
 
 #house {
@@ -349,6 +356,12 @@ body {
 
     width: 80px;
     height: 80px;
+
+    transform:
+        translate(
+            132px,
+            76px
+        );
 }
 
 
@@ -446,7 +459,6 @@ body {
     padding: 30px;
 }
 
-
 #house-text {
 
     width:
@@ -462,7 +474,6 @@ body {
 
     min-height: 120px;
 }
-
 
 #house-back {
 
@@ -485,7 +496,6 @@ body {
 
     transition: 0.15s;
 }
-
 
 #house-back:hover {
 
@@ -518,11 +528,6 @@ body {
 
     z-index: 100;
 }
-
-
-/* ==================================================
-   PUDEŁKO
-================================================== */
 
 #puzzle-box {
 
@@ -559,14 +564,12 @@ body {
         rgba(255,255,255,0.12);
 }
 
-
 #puzzle-box h1 {
 
     margin-top: 0;
 
     font-size: 36px;
 }
-
 
 #puzzle-box p {
 
@@ -637,7 +640,6 @@ body {
         color 0.15s ease;
 }
 
-
 .puzzle-button:hover {
 
     transform:
@@ -688,7 +690,6 @@ body {
         pointer;
 }
 
-
 .lake-option:hover {
 
     background:
@@ -722,7 +723,6 @@ body {
         #202020;
 }
 
-
 .complex-equation {
 
     font-size:
@@ -734,7 +734,6 @@ body {
     margin:
         10px 0 18px;
 }
-
 
 .complex-answer-row {
 
@@ -750,7 +749,6 @@ body {
     gap:
         8px;
 }
-
 
 .complex-input {
 
@@ -775,7 +773,6 @@ body {
     outline:
         none;
 }
-
 
 .complex-dot {
 
@@ -822,7 +819,6 @@ body {
         1.6;
 }
 
-
 #hint-question {
 
     display:
@@ -837,7 +833,6 @@ body {
     line-height:
         1.5;
 }
-
 
 #hint-yes,
 #hint-no {
@@ -869,7 +864,6 @@ body {
     color:
         black;
 }
-
 
 #hint-yes:hover,
 #hint-no:hover {
@@ -939,7 +933,6 @@ body {
         30px;
 }
 
-
 #game-over h1 {
 
     font-size:
@@ -948,7 +941,6 @@ body {
     margin:
         0 0 20px;
 }
-
 
 #game-over p {
 
@@ -996,7 +988,6 @@ body {
     padding:
         30px;
 }
-
 
 #cave-text {
 
@@ -1051,24 +1042,20 @@ body {
             alt="Mapa gry"
         >
 
-
         <div
             id="cloud1"
             class="cloud">
         </div>
-
 
         <div
             id="cloud2"
             class="cloud">
         </div>
 
-
         <div
             id="cloud3"
             class="cloud">
         </div>
-
 
         <div id="day-night"></div>
 
@@ -1164,9 +1151,7 @@ body {
             autocomplete="off"
         >
 
-
         <br>
-
 
         <button
             id="check-button"
@@ -1175,7 +1160,6 @@ body {
             Sprawdź
 
         </button>
-
 
         <button
             id="hint-button"
@@ -1186,7 +1170,6 @@ body {
 
         </button>
 
-
         <button
             class="puzzle-button"
             onclick="closePuzzle()">
@@ -1195,16 +1178,13 @@ body {
 
         </button>
 
-
         <div id="hint-box"></div>
-
 
         <div id="hint-question">
 
             <span id="hint-question-text"></span>
 
             <br>
-
 
             <button
                 id="hint-yes"
@@ -1213,7 +1193,6 @@ body {
                 Tak
 
             </button>
-
 
             <button
                 id="hint-no"
@@ -1224,7 +1203,6 @@ body {
             </button>
 
         </div>
-
 
         <div id="message"></div>
 
@@ -1303,12 +1281,6 @@ function updateLives() {
     livesElement.textContent =
         hearts.trim();
 
-    if (lives <= 0) {
-
-        gameOver();
-
-    }
-
 }
 
 
@@ -1317,6 +1289,12 @@ function loseLife() {
     lives--;
 
     updateLives();
+
+    if (lives <= 0) {
+
+        gameOver();
+
+    }
 
 }
 
@@ -2036,10 +2014,6 @@ Wymyślimy go razem.`;
 }
 
 
-/* ==================================================
-   POWOLNE PISANIE
-================================================== */
-
 function typeCaveText(text) {
 
     const element =
@@ -2111,8 +2085,6 @@ function typeCaveText(text) {
 
 function showHint() {
 
-    /* LAS — pierwsza */
-
     if (
         currentLocation === "forest"
         &&
@@ -2127,9 +2099,6 @@ function showHint() {
 
         return;
     }
-
-
-    /* LAS — druga */
 
     if (
         currentLocation === "forest"
@@ -2147,9 +2116,6 @@ function showHint() {
         return;
     }
 
-
-    /* LAS — ostatnia */
-
     if (
         currentLocation === "forest"
         &&
@@ -2166,9 +2132,6 @@ function showHint() {
         return;
     }
 
-
-    /* JEZIORO — pierwsza */
-
     if (
         currentLocation === "lake"
         &&
@@ -2183,9 +2146,6 @@ function showHint() {
 
         return;
     }
-
-
-    /* JEZIORO — ostatnia */
 
     if (
         currentLocation === "lake"
@@ -2203,9 +2163,6 @@ function showHint() {
         return;
     }
 
-
-    /* ZAMEK — pierwsza */
-
     if (
         currentLocation === "castle"
         &&
@@ -2220,9 +2177,6 @@ function showHint() {
 
         return;
     }
-
-
-    /* ZAMEK — ostatnia */
 
     if (
         currentLocation === "castle"
@@ -2312,8 +2266,6 @@ function askForHint(
 
 function answerHintYes() {
 
-    /* LAS — druga */
-
     if (
         currentLocation === "forest"
         &&
@@ -2330,9 +2282,6 @@ function answerHintYes() {
 
         return;
     }
-
-
-    /* LAS — ostatnia */
 
     if (
         currentLocation === "forest"
@@ -2351,9 +2300,6 @@ function answerHintYes() {
         return;
     }
 
-
-    /* JEZIORO — ostatnia */
-
     if (
         currentLocation === "lake"
         &&
@@ -2370,9 +2316,6 @@ function answerHintYes() {
 
         return;
     }
-
-
-    /* ZAMEK — ostatnia */
 
     if (
         currentLocation === "castle"
