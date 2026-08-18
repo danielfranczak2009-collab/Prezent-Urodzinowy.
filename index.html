@@ -3,89 +3,131 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Nasza Gra</title>
 
     <style>
+        * {
+            box-sizing: border-box;
+        }
+
         html, body {
             margin: 0;
             padding: 0;
             width: 100%;
             height: 100%;
-            background: black;
             overflow: hidden;
-            font-family: Arial, sans-serif;
+            background: #000;
         }
 
+        /* CAŁA GRA */
         #game {
-            position: relative;
+            position: fixed;
+            inset: 0;
             width: 100vw;
             height: 100vh;
+            overflow: hidden;
         }
 
+        /* MAPA */
         #game-map {
-            display: block;
+            position: absolute;
+            inset: 0;
+
             width: 100%;
             height: 100%;
-            object-fit: contain;
+
+            object-fit: cover;
+            object-position: center;
+
+            display: block;
         }
 
-        /* Tymczasowy przycisk lasu */
+        /* PRZYCISK LASU */
         #forest-button {
             position: absolute;
-            left: 20%;
-            top: 30%;
+
+            left: 25%;
+            top: 35%;
+
             width: 120px;
             height: 120px;
-            border: 3px solid rgba(255,255,255,0.8);
+
+            border: 3px solid white;
             border-radius: 50%;
-            background: rgba(0,0,0,0.15);
-            cursor: pointer;
+
+            background: rgba(0, 0, 0, 0.25);
+
             color: white;
             font-size: 18px;
+            font-weight: bold;
+
+            cursor: pointer;
+
+            transition: 0.2s;
         }
 
         #forest-button:hover {
+            transform: scale(1.08);
             background: rgba(255,255,255,0.2);
         }
 
-        /* Ekran zagadki */
+        /* EKRAN ZAGADKI */
         #puzzle-screen {
             display: none;
+
             position: absolute;
             inset: 0;
-            background: rgba(0,0,0,0.88);
+
+            background: rgba(0,0,0,0.85);
+
             color: white;
+
             align-items: center;
             justify-content: center;
-            text-align: center;
+
             z-index: 10;
         }
 
         #puzzle-box {
             width: min(600px, 85%);
+
             padding: 35px;
+
             border-radius: 20px;
+
             background: #151515;
-            box-shadow: 0 0 30px rgba(255,255,255,0.15);
+
+            text-align: center;
+
+            box-shadow: 0 0 40px rgba(0,0,0,0.8);
         }
 
         input {
             padding: 12px;
+
             font-size: 18px;
-            width: 150px;
+
+            width: 180px;
+
             text-align: center;
+
             margin-top: 15px;
         }
 
-        button {
+        #puzzle-box button {
             padding: 12px 20px;
+
             font-size: 16px;
+
             cursor: pointer;
+
             margin: 10px;
         }
 
         #message {
             min-height: 25px;
+
             margin-top: 15px;
         }
     </style>
@@ -95,6 +137,7 @@
 
 <div id="game">
 
+    <!-- MAPA -->
     <img
         id="game-map"
         src="Storybook-World-Map.png"
@@ -106,7 +149,7 @@
         🌲 LAS
     </button>
 
-    <!-- ZAGADKA -->
+    <!-- ZAGADKA LASU -->
     <div id="puzzle-screen">
 
         <div id="puzzle-box">
@@ -122,15 +165,24 @@
             </p>
 
             <p>
-                Uporządkuj ciąg i wpisz <strong>dwie kolejne liczby</strong>.
+                Uzupełnij dwie kolejne liczby.
             </p>
 
-            <input id="answer" type="text" placeholder="np. 13, 21">
+            <input
+                id="answer"
+                type="text"
+                placeholder="13, 21"
+            >
 
             <br>
 
-            <button onclick="checkAnswer()">Sprawdź</button>
-            <button onclick="closePuzzle()">Wróć na mapę</button>
+            <button onclick="checkAnswer()">
+                Sprawdź
+            </button>
+
+            <button onclick="closePuzzle()">
+                Wróć
+            </button>
 
             <div id="message"></div>
 
@@ -163,13 +215,13 @@ function checkAnswer() {
         document.getElementById("message").textContent =
             "✓ Poprawnie! Ścieżka prowadzi dalej...";
 
-        // Następny etap dodamy później.
-
     } else {
 
         document.getElementById("message").textContent =
             "✗ To nie jest właściwa odpowiedź. Spróbuj jeszcze raz.";
+
     }
+
 }
 
 </script>
