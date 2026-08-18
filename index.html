@@ -4,13 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nasza Gra</title>
+
+    <style>
+        html, body {
+            margin: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background: #000;
+        }
+
+        #game-map {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
+        }
+    </style>
 </head>
 
 <body>
 
-    <h1>Nasza gra</h1>
-
-    <p>Mapa pojawi się tutaj.</p>
+    <img
+        id="game-map"
+        src="Storybook-world-map.png"
+        alt="Mapa gry"
+    >
 
 </body>
 </html>
