@@ -12,6 +12,10 @@
 
 <style>
 
+/* ==================================================
+   PODSTAWY
+================================================== */
+
 * {
     box-sizing: border-box;
 }
@@ -29,6 +33,11 @@ body {
     background: black;
 }
 
+
+/* ==================================================
+   GRA
+================================================== */
+
 #game {
     position: fixed;
     inset: 0;
@@ -40,6 +49,11 @@ body {
 
     background: black;
 }
+
+
+/* ==================================================
+   ŚWIAT
+================================================== */
 
 #world {
 
@@ -58,6 +72,11 @@ body {
 
     will-change: transform;
 }
+
+
+/* ==================================================
+   MAPA
+================================================== */
 
 #game-map {
 
@@ -78,6 +97,11 @@ body {
     pointer-events: none;
 }
 
+
+/* ==================================================
+   CYKL DNIA I NOCY
+================================================== */
+
 #day-night {
 
     position: absolute;
@@ -97,28 +121,39 @@ body {
     mix-blend-mode: multiply;
 }
 
+
 @keyframes dayNightCycle {
 
     0% {
-        background: rgba(0,0,0,0);
+        background:
+            rgba(0,0,0,0);
     }
 
     25% {
-        background: rgba(0,0,0,0);
+        background:
+            rgba(0,0,0,0);
     }
 
     50% {
-        background: rgba(10,15,55,0.48);
+        background:
+            rgba(10,15,55,0.48);
     }
 
     75% {
-        background: rgba(10,15,55,0.20);
+        background:
+            rgba(10,15,55,0.20);
     }
 
     100% {
-        background: rgba(0,0,0,0);
+        background:
+            rgba(0,0,0,0);
     }
 }
+
+
+/* ==================================================
+   CHMURY
+================================================== */
 
 .cloud {
 
@@ -141,6 +176,7 @@ body {
     pointer-events: none;
 }
 
+
 .cloud::before,
 .cloud::after {
 
@@ -154,6 +190,7 @@ body {
     border-radius: 50%;
 }
 
+
 .cloud::before {
 
     width: 75px;
@@ -163,6 +200,7 @@ body {
     top: -35px;
 }
 
+
 .cloud::after {
 
     width: 95px;
@@ -171,6 +209,7 @@ body {
     right: 25px;
     top: -48px;
 }
+
 
 #cloud1 {
 
@@ -182,6 +221,7 @@ body {
     animation:
         cloudMove1 75s linear infinite;
 }
+
 
 #cloud2 {
 
@@ -196,6 +236,7 @@ body {
         cloudMove2 105s linear infinite;
 }
 
+
 #cloud3 {
 
     top: 8%;
@@ -208,6 +249,7 @@ body {
     animation:
         cloudMove3 130s linear infinite;
 }
+
 
 @keyframes cloudMove1 {
 
@@ -224,6 +266,7 @@ body {
     }
 }
 
+
 @keyframes cloudMove2 {
 
     from {
@@ -238,6 +281,7 @@ body {
             scale(0.65);
     }
 }
+
 
 @keyframes cloudMove3 {
 
@@ -290,15 +334,15 @@ body {
 
 /* ==================================================
    DOMEK
-   OSTATECZNA POZYCJA
-   +0.2 cm W DÓŁ
-   -0.1 cm W LEWO
+   ŚRODEK: X = 165 PX
+   ŚRODEK: Y = 659 PX
+   DLA 1320 × 925
 ================================================== */
 
 #house {
 
-    left: calc(164px - 4px);
-    top: calc(656px + 8px);
+    left: 165px;
+    top: 659px;
 
 }
 
@@ -391,6 +435,11 @@ body {
     z-index: 100;
 }
 
+
+/* ==================================================
+   PUDEŁKO
+================================================== */
+
 #puzzle-box {
 
     width:
@@ -425,6 +474,7 @@ body {
         rgba(255,255,255,0.12);
 }
 
+
 #puzzle-box h1 {
 
     margin-top: 0;
@@ -432,12 +482,18 @@ body {
     font-size: 36px;
 }
 
+
 #puzzle-box p {
 
     font-size: 18px;
 
     line-height: 1.6;
 }
+
+
+/* ==================================================
+   POLE ODPOWIEDZI
+================================================== */
 
 #answer {
 
@@ -458,6 +514,11 @@ body {
 
     outline: none;
 }
+
+
+/* ==================================================
+   PRZYCISKI
+================================================== */
 
 .puzzle-button {
 
@@ -484,7 +545,13 @@ body {
 
     color:
         black;
+
+    transition:
+        transform 0.15s ease,
+        background 0.15s ease,
+        color 0.15s ease;
 }
+
 
 .puzzle-button:hover {
 
@@ -497,6 +564,11 @@ body {
     color:
         white;
 }
+
+
+/* ==================================================
+   JEZIORO
+================================================== */
 
 .lake-option {
 
@@ -531,6 +603,7 @@ body {
         pointer;
 }
 
+
 .lake-option:hover {
 
     background:
@@ -539,6 +612,11 @@ body {
     color:
         white;
 }
+
+
+/* ==================================================
+   ZAMEK — LICZBY ZESPOLONE
+================================================== */
 
 .complex-puzzle {
 
@@ -559,6 +637,7 @@ body {
         #202020;
 }
 
+
 .complex-equation {
 
     font-size:
@@ -570,6 +649,7 @@ body {
     margin:
         10px 0 18px;
 }
+
 
 .complex-answer-row {
 
@@ -585,6 +665,7 @@ body {
     gap:
         8px;
 }
+
 
 .complex-input {
 
@@ -610,6 +691,7 @@ body {
         none;
 }
 
+
 .complex-dot {
 
     font-size:
@@ -621,6 +703,11 @@ body {
     color:
         white;
 }
+
+
+/* ==================================================
+   PODPOWIEDZI
+================================================== */
 
 #hint-box {
 
@@ -650,6 +737,7 @@ body {
         1.6;
 }
 
+
 #hint-question {
 
     display:
@@ -664,6 +752,7 @@ body {
     line-height:
         1.5;
 }
+
 
 #hint-yes,
 #hint-no {
@@ -696,6 +785,22 @@ body {
         black;
 }
 
+
+#hint-yes:hover,
+#hint-no:hover {
+
+    background:
+        black;
+
+    color:
+        white;
+}
+
+
+/* ==================================================
+   WIADOMOŚĆ
+================================================== */
+
 #message {
 
     min-height:
@@ -707,6 +812,11 @@ body {
     font-size:
         18px;
 }
+
+
+/* ==================================================
+   JASKINIA
+================================================== */
 
 #cave-screen {
 
@@ -741,6 +851,7 @@ body {
         30px;
 }
 
+
 #cave-text {
 
     width:
@@ -767,11 +878,18 @@ body {
 
 </head>
 
+
 <body>
+
+
+<!-- ==================================================
+     ŚWIAT
+================================================== -->
 
 <div id="game">
 
     <div id="world">
+
 
         <img
             id="game-map"
@@ -779,9 +897,24 @@ body {
             alt="Mapa gry"
         >
 
-        <div id="cloud1" class="cloud"></div>
-        <div id="cloud2" class="cloud"></div>
-        <div id="cloud3" class="cloud"></div>
+
+        <div
+            id="cloud1"
+            class="cloud">
+        </div>
+
+
+        <div
+            id="cloud2"
+            class="cloud">
+        </div>
+
+
+        <div
+            id="cloud3"
+            class="cloud">
+        </div>
+
 
         <div id="day-night"></div>
 
@@ -830,22 +963,33 @@ body {
             onclick="openCave()">
         </button>
 
+
     </div>
 
 </div>
 
 
+
+<!-- ==================================================
+     OKNO ZAGADKI
+================================================== -->
+
 <div id="puzzle-screen">
 
     <div id="puzzle-box">
 
+
         <h1 id="puzzle-title"></h1>
+
 
         <p id="puzzle-description"></p>
 
+
         <div id="puzzle-question"></div>
 
+
         <p id="puzzle-instruction"></p>
+
 
         <input
             id="answer"
@@ -854,7 +998,9 @@ body {
             autocomplete="off"
         >
 
+
         <br>
+
 
         <button
             id="check-button"
@@ -862,20 +1008,28 @@ body {
             Sprawdź
         </button>
 
+
         <button
             id="hint-button"
             class="puzzle-button"
             onclick="showHint()">
+
             💭 „Coś mi to przypomina…”
+
         </button>
+
 
         <button
             class="puzzle-button"
             onclick="closePuzzle()">
+
             Wróć
+
         </button>
 
+
         <div id="hint-box"></div>
+
 
         <div id="hint-question">
 
@@ -897,12 +1051,19 @@ body {
 
         </div>
 
+
         <div id="message"></div>
+
 
     </div>
 
 </div>
 
+
+
+<!-- ==================================================
+     JASKINIA
+================================================== -->
 
 <div id="cave-screen">
 
@@ -911,7 +1072,12 @@ body {
 </div>
 
 
+
 <script>
+
+/* ==================================================
+   STAN GRY
+================================================== */
 
 let lakeUnlocked = false;
 let castleUnlocked = false;
@@ -928,19 +1094,23 @@ let hintStage = 0;
 
 function openHouse() {
 
-    currentLocation = "house";
+    currentLocation =
+        "house";
 
     resetPuzzle();
+
 
     document
         .getElementById("puzzle-title")
         .textContent =
         "🏠 Domek";
 
+
     document
         .getElementById("puzzle-description")
         .textContent =
         "";
+
 
     document
         .getElementById("puzzle-question")
@@ -959,30 +1129,36 @@ function openHouse() {
         </div>
         `;
 
+
     document
         .getElementById("puzzle-instruction")
         .textContent =
         "";
+
 
     document
         .getElementById("answer")
         .style.display =
         "none";
 
+
     document
         .getElementById("check-button")
         .style.display =
         "none";
+
 
     document
         .getElementById("hint-button")
         .style.display =
         "none";
 
+
     document
         .getElementById("puzzle-screen")
         .style.display =
         "flex";
+
 }
 
 
@@ -1002,11 +1178,13 @@ document.addEventListener(
             (event.clientY /
             window.innerHeight) - 0.5;
 
+
         const moveX =
             x * 28;
 
         const moveY =
             y * 22;
+
 
         document
             .getElementById("world")
@@ -1016,12 +1194,13 @@ document.addEventListener(
                 ${moveY}px,
                 0
             )`;
+
     }
 );
 
 
 /* ==================================================
-   FORMATOWANIE LICZB
+   AUTOMATYCZNE FORMATOWANIE LICZB
 ================================================== */
 
 document
@@ -1034,44 +1213,52 @@ document
                 this.value
                 .replace(/\D/g, "");
 
+
             this.value =
                 value.replace(
                     /\B(?=(\d{3})+(?!\d))/g,
                     " "
                 );
+
         }
     );
 
 
 /* ==================================================
-   RESET
+   RESET ZAGADKI
 ================================================== */
 
 function resetPuzzle() {
 
     hintStage = 0;
 
+
     document
         .getElementById("hint-box")
         .style.display =
         "none";
+
 
     document
         .getElementById("hint-box")
         .textContent =
         "";
 
+
     hideHintQuestion();
+
 
     document
         .getElementById("message")
         .textContent =
         "";
 
+
     document
         .getElementById("answer")
         .value =
         "";
+
 
     document
         .querySelectorAll(".lake-option")
@@ -1079,6 +1266,7 @@ function resetPuzzle() {
             element =>
                 element.remove()
         );
+
 }
 
 
@@ -1088,19 +1276,23 @@ function resetPuzzle() {
 
 function openForest() {
 
-    currentLocation = "forest";
+    currentLocation =
+        "forest";
 
     resetPuzzle();
+
 
     document
         .getElementById("puzzle-title")
         .textContent =
         "🌲 Las";
 
+
     document
         .getElementById("puzzle-description")
         .textContent =
         "W lesie znajdujesz dziwną tabliczkę.";
+
 
     document
         .getElementById("puzzle-question")
@@ -1116,42 +1308,54 @@ function openForest() {
         </strong>
         `;
 
+
     document
         .getElementById("puzzle-instruction")
         .textContent =
         "Jaka liczba powinna pojawić się jako następna?";
 
+
     document
         .getElementById("answer")
         .style.display =
         "inline-block";
+
 
     document
         .getElementById("answer")
         .placeholder =
         "Wpisz liczbę";
 
+
     document
         .getElementById("check-button")
         .style.display =
         "inline-block";
+
 
     document
         .getElementById("check-button")
         .onclick =
         checkForestAnswer;
 
+
     document
         .getElementById("hint-button")
         .style.display =
         "inline-block";
 
+
     document
         .getElementById("puzzle-screen")
         .style.display =
         "flex";
+
 }
 
+
+/* ==================================================
+   LAS — SPRAWDZANIE
+================================================== */
 
 function checkForestAnswer() {
 
@@ -1161,32 +1365,44 @@ function checkForestAnswer() {
             .value
             .replace(/\s/g,"");
 
-    if (answer === "196418") {
 
-        lakeUnlocked = true;
+    if (
+        answer ===
+        "196418"
+    ) {
+
+        lakeUnlocked =
+            true;
+
 
         document
             .getElementById("lake")
             .style.display =
             "block";
 
+
         document
             .getElementById("message")
             .textContent =
             "✓ Poprawnie! Ścieżka prowadzi dalej...";
+
 
         setTimeout(
             closePuzzle,
             700
         );
 
-    } else {
+    }
+
+    else {
 
         document
             .getElementById("message")
             .textContent =
             "✗ Spróbuj jeszcze raz.";
+
     }
+
 }
 
 
@@ -1196,51 +1412,62 @@ function checkForestAnswer() {
 
 function openLake() {
 
-    currentLocation = "lake";
+    currentLocation =
+        "lake";
 
     resetPuzzle();
+
 
     document
         .getElementById("puzzle-title")
         .textContent =
         "🌊 Jezioro";
 
+
     document
         .getElementById("puzzle-description")
         .textContent =
         "Przy jeziorze znajduje się most. Musisz znaleźć właściwy podział.";
+
 
     document
         .getElementById("puzzle-question")
         .innerHTML =
         "<strong>Most ma 1309 jednostek.</strong>";
 
+
     document
         .getElementById("puzzle-instruction")
         .textContent =
         "Wybierz właściwy podział:";
+
 
     document
         .getElementById("answer")
         .style.display =
         "none";
 
+
     document
         .getElementById("check-button")
         .style.display =
         "none";
+
 
     document
         .getElementById("hint-button")
         .style.display =
         "inline-block";
 
+
     createLakeOptions();
+
 
     document
         .getElementById("puzzle-screen")
         .style.display =
         "flex";
+
 }
 
 
@@ -1249,6 +1476,7 @@ function createLakeOptions() {
     const question =
         document
             .getElementById("puzzle-question");
+
 
     [
         "700 + 609",
@@ -1262,11 +1490,14 @@ function createLakeOptions() {
             const button =
                 document.createElement("button");
 
+
             button.className =
                 "lake-option";
 
+
             button.textContent =
                 option;
+
 
             button.onclick =
                 function() {
@@ -1274,46 +1505,61 @@ function createLakeOptions() {
                     checkLakeAnswer(
                         option
                     );
+
                 };
+
 
             question
                 .insertAdjacentElement(
                     "afterend",
                     button
                 );
+
         }
     );
+
 }
 
 
 function checkLakeAnswer(option) {
 
-    if (option === "809 + 500") {
+    if (
+        option ===
+        "809 + 500"
+    ) {
 
-        castleUnlocked = true;
+        castleUnlocked =
+            true;
+
 
         document
             .getElementById("castle")
             .style.display =
             "block";
 
+
         document
             .getElementById("message")
             .textContent =
             "✓ Poprawnie! Most się otwiera...";
+
 
         setTimeout(
             closePuzzle,
             700
         );
 
-    } else {
+    }
+
+    else {
 
         document
             .getElementById("message")
             .textContent =
             "✗ Spróbuj jeszcze raz.";
+
     }
+
 }
 
 
@@ -1323,19 +1569,23 @@ function checkLakeAnswer(option) {
 
 function openCastle() {
 
-    currentLocation = "castle";
+    currentLocation =
+        "castle";
 
     resetPuzzle();
+
 
     document
         .getElementById("puzzle-title")
         .textContent =
         "🏰 Zamek";
 
+
     document
         .getElementById("puzzle-description")
         .textContent =
         "Docierasz do zamku. Przed Tobą ostatnia główna zagadka.";
+
 
     document
         .getElementById("puzzle-question")
@@ -1343,22 +1593,30 @@ function openCastle() {
         `
         <div class="complex-puzzle">
 
+
             <div class="complex-equation">
+
                 <strong>
                     (4 + 3i)(4 − 3i) − 6 = ?
                 </strong>
+
             </div>
 
+
             <div class="complex-equation">
+
                 <strong>
                     (3 + i)(3 − i) = ?
                 </strong>
+
             </div>
+
 
             <p>
                 Pamiętaj:
                 <strong>i² = −1</strong>
             </p>
+
 
             <div class="complex-answer-row">
 
@@ -1370,9 +1628,11 @@ function openCastle() {
                     autocomplete="off"
                 >
 
+
                 <span class="complex-dot">
                     .
                 </span>
+
 
                 <input
                     id="complex-answer-2"
@@ -1387,81 +1647,107 @@ function openCastle() {
         </div>
         `;
 
+
     document
         .getElementById("puzzle-instruction")
         .textContent =
         "Oblicz oba działania i wpisz wyniki.";
+
 
     document
         .getElementById("answer")
         .style.display =
         "none";
 
+
     document
         .getElementById("check-button")
         .style.display =
         "inline-block";
+
 
     document
         .getElementById("check-button")
         .onclick =
         checkCastleAnswer;
 
+
     document
         .getElementById("hint-button")
         .style.display =
         "inline-block";
 
+
     document
         .getElementById("puzzle-screen")
         .style.display =
         "flex";
+
 }
 
+
+/* ==================================================
+   ZAMEK — SPRAWDZANIE
+================================================== */
 
 function checkCastleAnswer() {
 
     const first =
         document
-            .getElementById("complex-answer-1")
+            .getElementById(
+                "complex-answer-1"
+            )
             .value
             .replace(/\s/g,"");
+
 
     const second =
         document
-            .getElementById("complex-answer-2")
+            .getElementById(
+                "complex-answer-2"
+            )
             .value
             .replace(/\s/g,"");
 
+
     if (
-        first === "19" &&
+        first === "19"
+        &&
         second === "10"
     ) {
 
-        caveUnlocked = true;
+        caveUnlocked =
+            true;
+
 
         document
             .getElementById("cave")
             .style.display =
             "block";
 
+
         document
             .getElementById("message")
             .textContent =
             "✓ Poprawnie! Otworzyła się droga dalej...";
+
 
         setTimeout(
             closePuzzle,
             800
         );
 
-    } else {
+    }
+
+    else {
 
         document
             .getElementById("message")
             .textContent =
             "✗ Spróbuj jeszcze raz.";
+
     }
+
 }
 
 
@@ -1474,34 +1760,43 @@ function openCave() {
     if (!caveUnlocked)
         return;
 
+
     document
         .getElementById("puzzle-screen")
         .style.display =
         "none";
+
 
     document
         .getElementById("game")
         .style.display =
         "none";
 
+
     const caveScreen =
         document
             .getElementById("cave-screen");
 
+
     caveScreen.style.display =
         "flex";
+
 
     const finalText =
 `Tutaj pojawi się tekst finałowy.
 
 Wymyślimy go razem.`;
 
-    typeCaveText(finalText);
+
+    typeCaveText(
+        finalText
+    );
+
 }
 
 
 /* ==================================================
-   TEKST
+   POWOLNE PISANIE TEKSTU
 ================================================== */
 
 function typeCaveText(text) {
@@ -1510,43 +1805,72 @@ function typeCaveText(text) {
         document
             .getElementById("cave-text");
 
-    element.textContent = "";
 
-    let index = 0;
+    element.textContent =
+        "";
+
+
+    let index =
+        0;
+
 
     function writeNext() {
 
-        if (index >= text.length)
+        if (
+            index >=
+            text.length
+        ) {
+
             return;
+
+        }
+
 
         element.textContent +=
             text[index];
 
+
         index++;
 
-        let delay = 45;
+
+        let delay =
+            45;
+
 
         if (
-            text[index - 1] === "." ||
-            text[index - 1] === "!" ||
+            text[index - 1] === "."
+            ||
+            text[index - 1] === "!"
+            ||
             text[index - 1] === "?"
         ) {
-            delay = 500;
+
+            delay =
+                500;
+
         }
+
 
         if (
             text[index - 1] === "\n"
         ) {
-            delay = 700;
+
+            delay =
+                700;
+
         }
+
 
         setTimeout(
             writeNext,
             delay
         );
+
     }
 
+
     writeNext();
+
 }
 
 
@@ -1556,109 +1880,142 @@ function typeCaveText(text) {
 
 function showHint() {
 
+
     if (
-        currentLocation === "forest" &&
+        currentLocation === "forest"
+        &&
         hintStage === 0
     ) {
 
         hintStage = 1;
 
+
         showHintText(
             "„Kiedyś powiedziałeś mi, że najlepiej wszystko sobie po kolei ułożyć, zanim ruszysz na głęboką wodę.”"
         );
 
+
         return;
     }
 
+
     if (
-        currentLocation === "forest" &&
+        currentLocation === "forest"
+        &&
         hintStage === 1
     ) {
 
         hintStage = 2;
+
 
         askForHint(
             "Chcesz drugą podpowiedź?",
             "Tak"
         );
 
+
         return;
     }
 
+
     if (
-        currentLocation === "forest" &&
+        currentLocation === "forest"
+        &&
         hintStage === 3
     ) {
 
         hintStage = 4;
 
+
         askForHint(
             "Chcesz ostatnią podpowiedź?",
             "Napewno"
         );
 
+
         return;
     }
 
+
     if (
-        currentLocation === "lake" &&
+        currentLocation === "lake"
+        &&
         hintStage === 0
     ) {
 
         hintStage = 1;
+
 
         showHintText(
             "„Kiedyś powiedziałeś mi, że we wszystkim trzeba znaleźć odpowiednie proporcje. Chyba pora przypomnieć sobie tę Złotą radę.”"
         );
 
+
         return;
     }
 
+
     if (
-        currentLocation === "lake" &&
+        currentLocation === "lake"
+        &&
         hintStage === 1
     ) {
 
         hintStage = 4;
+
 
         askForHint(
             "Chcesz ostatnią podpowiedź?",
             "Napewno"
         );
 
+
         return;
     }
 
+
     if (
-        currentLocation === "castle" &&
+        currentLocation === "castle"
+        &&
         hintStage === 0
     ) {
 
         hintStage = 1;
 
+
         showHintText(
             "„Pamiętaj, wszystko jest możliwe, jeżeli w siebie uwierzysz :)”"
         );
 
+
         return;
     }
 
+
     if (
-        currentLocation === "castle" &&
+        currentLocation === "castle"
+        &&
         hintStage === 1
     ) {
 
         hintStage = 4;
+
 
         askForHint(
             "Chcesz ostatnią podpowiedź?",
             "Napewno"
         );
 
+
         return;
     }
+
 }
 
+
+/* ==================================================
+   POKAZANIE PODPOWIEDZI
+================================================== */
 
 function showHintText(text) {
 
@@ -1667,51 +2024,74 @@ function showHintText(text) {
         .textContent =
         text;
 
+
     document
         .getElementById("hint-box")
         .style.display =
         "block";
+
 }
 
 
-function askForHint(text, yesText) {
+/* ==================================================
+   PYTANIE O KOLEJNĄ PODPOWIEDŹ
+================================================== */
+
+function askForHint(
+    text,
+    yesText
+) {
 
     document
-        .getElementById("hint-question-text")
+        .getElementById(
+            "hint-question-text"
+        )
         .textContent =
         text;
+
 
     document
         .getElementById("hint-yes")
         .textContent =
         yesText;
 
+
     document
         .getElementById("hint-no")
         .textContent =
         "Nie";
+
 
     document
         .getElementById("hint-question")
         .style.display =
         "block";
 
+
     document
         .getElementById("hint-yes")
         .style.display =
         "inline-block";
 
+
     document
         .getElementById("hint-no")
         .style.display =
         "inline-block";
+
 }
 
 
+/* ==================================================
+   TAK / NAPEWNO
+================================================== */
+
 function answerHintYes() {
 
+
     if (
-        currentLocation === "forest" &&
+        currentLocation === "forest"
+        &&
         hintStage === 2
     ) {
 
@@ -1719,15 +2099,20 @@ function answerHintYes() {
             "Posortuj liczby od najmniejszej."
         );
 
+
         hideHintQuestion();
 
+
         hintStage = 3;
+
 
         return;
     }
 
+
     if (
-        currentLocation === "forest" &&
+        currentLocation === "forest"
+        &&
         hintStage === 4
     ) {
 
@@ -1735,15 +2120,20 @@ function answerHintYes() {
             "Fibonacci"
         );
 
+
         hideHintQuestion();
 
+
         hintStage = 5;
+
 
         return;
     }
 
+
     if (
-        currentLocation === "lake" &&
+        currentLocation === "lake"
+        &&
         hintStage === 4
     ) {
 
@@ -1751,15 +2141,20 @@ function answerHintYes() {
             "Poprawna odpowiedź to ta, z której wychodzi złota proporcja."
         );
 
+
         hideHintQuestion();
 
+
         hintStage = 5;
+
 
         return;
     }
 
+
     if (
-        currentLocation === "castle" &&
+        currentLocation === "castle"
+        &&
         hintStage === 4
     ) {
 
@@ -1767,45 +2162,72 @@ function answerHintYes() {
             "Tym razem musisz spróbować poradzić sobie sam. Niektóre problemy, choć trudne, trzeba rozwiązać własnymi siłami."
         );
 
+
         hideHintQuestion();
+
 
         hintStage = 5;
 
+
         return;
     }
+
 }
 
+
+/* ==================================================
+   UKRYCIE PYTANIA
+================================================== */
 
 function hideHintQuestion() {
 
     document
-        .getElementById("hint-question")
+        .getElementById(
+            "hint-question"
+        )
         .style.display =
         "none";
 
+
     document
-        .getElementById("hint-yes")
+        .getElementById(
+            "hint-yes"
+        )
         .style.display =
         "none";
 
+
     document
-        .getElementById("hint-no")
+        .getElementById(
+            "hint-no"
+        )
         .style.display =
         "none";
+
 }
 
+
+/* ==================================================
+   ZAMKNIĘCIE OKNA
+================================================== */
 
 function closePuzzle() {
 
     document
-        .getElementById("puzzle-screen")
+        .getElementById(
+            "puzzle-screen"
+        )
         .style.display =
         "none";
 
+
     document
-        .getElementById("message")
+        .getElementById(
+            "message"
+        )
         .textContent =
         "";
+
 }
 
 </script>
