@@ -2852,6 +2852,16 @@ function closePuzzle() {
 ================================================== */
 
 updateLives();
+     
+document.addEventListener("click", function () {
+
+    const music = document.getElementById("dayMusic");
+
+    music.volume = 1;
+
+    music.play();
+
+}, { once: true });
 </script>
 
 </body>
