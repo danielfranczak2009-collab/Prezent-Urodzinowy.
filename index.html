@@ -2,11 +2,8 @@
 <html lang="pl">
 
 <head>
-
 <meta charset="UTF-8">
-
-<meta name="viewport"
-      content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Nasza Gra</title>
 
@@ -42,7 +39,7 @@ body {
     width: 108vw;
     height: 108vh;
 
-    transform: translate3d(0, 0, 0);
+    transform: translate3d(0,0,0);
 
     transition:
         transform 0.15s ease-out;
@@ -67,7 +64,7 @@ body {
 
 
 /* ==================================================
-   SERCA / ŻYCIA
+   SERCA
 ================================================== */
 
 #lives {
@@ -77,47 +74,34 @@ body {
     top: 20px;
     right: 20px;
 
-    z-index: 200;
+    z-index: 80;
 
     display: flex;
     gap: 8px;
 
     padding: 10px 14px;
 
-    background: rgba(20,20,20,0.95);
-
-    border:
-        2px solid
-        rgba(255,255,255,0.25);
+    background: rgba(0,0,0,0.85);
 
     border-radius: 14px;
 
-    box-shadow:
-        0 4px 18px
-        rgba(0,0,0,0.5);
+    border: 1px solid rgba(255,255,255,0.2);
 
-    pointer-events: none;
+    font-size: 30px;
+
+    box-shadow:
+        0 4px 15px rgba(0,0,0,0.5);
 }
 
 .heart {
-
-    font-size: 32px;
-
-    line-height: 1;
-
     transition:
         opacity 0.3s ease,
         transform 0.3s ease;
-
 }
 
 .heart.lost {
-
-    opacity: 0.2;
-
-    transform:
-        scale(0.8);
-
+    opacity: 0.18;
+    transform: scale(0.8);
 }
 
 
@@ -146,28 +130,23 @@ body {
 @keyframes dayNightCycle {
 
     0% {
-        background:
-            rgba(0,0,0,0);
+        background: rgba(0,0,0,0);
     }
 
     25% {
-        background:
-            rgba(0,0,0,0);
+        background: rgba(0,0,0,0);
     }
 
     50% {
-        background:
-            rgba(10,15,55,0.48);
+        background: rgba(10,15,55,0.48);
     }
 
     75% {
-        background:
-            rgba(10,15,55,0.20);
+        background: rgba(10,15,55,0.20);
     }
 
     100% {
-        background:
-            rgba(0,0,0,0);
+        background: rgba(0,0,0,0);
     }
 }
 
@@ -323,7 +302,7 @@ body {
     height: 80px;
 
     transform:
-        translate(-50%, -50%);
+        translate(-50%,-50%);
 
     border: none;
     padding: 0;
@@ -397,12 +376,13 @@ body {
 
     border-radius: 0;
 
-    clip-path: polygon(
-        0% 9.091%,
-        93.151% 0%,
-        100% 98.966%,
-        6.757% 100%
-    );
+    clip-path:
+        polygon(
+            0% 9.091%,
+            93.151% 0%,
+            100% 98.966%,
+            6.757% 100%
+        );
 
     display: none;
 }
@@ -422,12 +402,13 @@ body {
 
 
 /* ==================================================
-   EKRAN ZAGADKI
+   ZAGADKA
 ================================================== */
 
 #puzzle-screen {
 
     position: fixed;
+
     inset: 0;
 
     display: none;
@@ -442,11 +423,6 @@ body {
 
     z-index: 100;
 }
-
-
-/* ==================================================
-   PUDEŁKO
-================================================== */
 
 #puzzle-box {
 
@@ -498,7 +474,7 @@ body {
 
 
 /* ==================================================
-   POLE ODPOWIEDZI
+   ODPOWIEDŹ
 ================================================== */
 
 #answer {
@@ -839,17 +815,16 @@ body {
 
 #game-over h1 {
 
-    font-size: 58px;
+    font-size: 64px;
 
-    margin:
-        0 0 20px;
+    margin: 0 0 25px;
 }
 
 #game-over p {
 
     font-size: 22px;
 
-    margin: 0;
+    opacity: 0.8;
 }
 
 
@@ -859,100 +834,25 @@ body {
 
 #cave-screen {
 
-    position:
-        fixed;
+    position: fixed;
 
-    inset:
-        0;
+    inset: 0;
 
-    display:
-        none;
+    display: none;
 
-    align-items:
-        center;
+    align-items: center;
 
-    justify-content:
-        center;
+    justify-content: center;
 
-    background:
-        black;
+    background: black;
 
-    z-index:
-        500;
+    z-index: 500;
 
-    color:
-        white;
+    color: white;
 
-    text-align:
-        center;
+    text-align: center;
 
-    padding:
-        30px;
-}
-
-
-/* ==================================================
-   START JASKINI
-================================================== */
-
-#cave-start {
-
-    display:
-        flex;
-
-    flex-direction:
-        column;
-
-    align-items:
-        center;
-
-    justify-content:
-        center;
-
-    gap:
-        25px;
-}
-
-#cave-start h1 {
-
-    font-size:
-        60px;
-
-    margin:
-        0;
-}
-
-#cave-start button {
-
-    padding:
-        15px 30px;
-
-    font-size:
-        20px;
-
-    border:
-        2px solid white;
-
-    border-radius:
-        12px;
-
-    background:
-        white;
-
-    color:
-        black;
-
-    cursor:
-        pointer;
-}
-
-#cave-start button:hover {
-
-    background:
-        black;
-
-    color:
-        white;
+    padding: 30px;
 }
 
 
@@ -960,163 +860,119 @@ body {
    OSTRZEŻENIE
 ================================================== */
 
-#warning-screen {
+#reading-warning {
 
-    position:
-        fixed;
+    position: fixed;
 
-    inset:
-        0;
+    inset: 0;
 
-    z-index:
-        800;
+    z-index: 700;
 
-    display:
-        none;
+    display: none;
 
-    align-items:
-        center;
+    align-items: center;
+    justify-content: center;
 
-    justify-content:
-        center;
+    background: black;
 
-    background:
-        black;
+    color: white;
 
-    color:
-        white;
-
-    text-align:
-        center;
-
-    padding:
-        30px;
+    text-align: center;
 }
 
-#warning-box {
+#reading-warning-content {
 
-    width:
-        min(700px,90vw);
+    width: min(800px,90vw);
 }
 
-#warning-box h2 {
+#reading-warning h1 {
+
+    font-size: clamp(42px,7vw,80px);
+
+    margin:
+        0 0 25px;
+}
+
+#reading-warning p {
 
     font-size:
-        42px;
-
-    margin-bottom:
-        25px;
-}
-
-#warning-box p {
-
-    font-size:
-        24px;
+        clamp(20px,3vw,32px);
 
     line-height:
-        1.6;
+        1.5;
 }
 
 
 /* ==================================================
-   TEKST FINAŁOWY
+   FINAŁOWY TEKST
 ================================================== */
 
-#story-screen {
+#final-story {
 
-    position:
-        fixed;
+    position: fixed;
 
-    inset:
-        0;
+    inset: 0;
 
-    z-index:
-        700;
+    z-index: 600;
 
-    display:
-        none;
+    display: none;
 
-    align-items:
-        center;
+    align-items: center;
+    justify-content: center;
 
-    justify-content:
-        center;
+    background: black;
 
-    background:
-        black;
+    overflow: hidden;
 
-    color:
-        white;
-
-    overflow:
-        hidden;
-
-    text-align:
-        center;
+    color: white;
 }
 
-#story-container {
+#story-lines {
 
-    width:
-        min(900px,90vw);
+    position: relative;
 
-    height:
-        75vh;
+    width: min(900px,88vw);
 
-    display:
-        flex;
+    height: 60vh;
 
-    flex-direction:
-        column;
+    display: flex;
 
-    justify-content:
-        flex-end;
+    flex-direction: column;
 
-    overflow:
-        hidden;
+    align-items: center;
 
-    position:
-        relative;
+    justify-content: center;
+
+    gap: 10px;
+
+    text-align: center;
 }
 
 .story-line {
 
+    width: 100%;
+
+    min-height: 38px;
+
     font-size:
-        25px;
+        clamp(20px,2.4vw,32px);
 
-    line-height:
-        1.65;
+    line-height: 1.45;
 
-    margin:
-        7px 0;
-
-    opacity:
-        0;
-
-    transform:
-        translateY(20px);
+    opacity: 0;
 
     transition:
-        opacity 1.4s ease,
-        transform 1.4s ease;
+        opacity 1.2s ease;
 }
 
 .story-line.visible {
 
-    opacity:
-        1;
-
-    transform:
-        translateY(0);
+    opacity: 1;
 }
 
 .story-line.fading {
 
-    opacity:
-        0;
-
-    transform:
-        translateY(-25px);
+    opacity: 0;
 }
 
 
@@ -1124,61 +980,58 @@ body {
    KONIEC
 ================================================== */
 
-#final-screen {
+#final-end {
 
-    position:
-        fixed;
+    position: fixed;
 
-    inset:
-        0;
+    inset: 0;
 
-    z-index:
-        900;
+    z-index: 800;
 
-    display:
-        none;
+    display: none;
 
-    align-items:
-        center;
+    align-items: center;
+    justify-content: center;
 
-    justify-content:
-        center;
+    flex-direction: column;
 
-    background:
-        black;
+    background: black;
 
-    color:
-        white;
+    color: white;
 
-    text-align:
-        center;
+    text-align: center;
 
-    padding:
-        30px;
+    padding: 30px;
 }
 
-#final-text {
-
-    width:
-        min(850px,90vw);
+#final-end h1 {
 
     font-size:
-        27px;
+        clamp(35px,6vw,70px);
+
+    margin:
+        0 0 25px;
+}
+
+#final-end p {
+
+    font-size:
+        clamp(18px,2.5vw,28px);
 
     line-height:
-        1.8;
+        1.6;
 }
 
-#final-text strong {
 
-    display:
-        block;
+/* ==================================================
+   KROPKA
+================================================== */
 
-    font-size:
-        36px;
+#final-end .heart-final {
 
-    margin-bottom:
-        25px;
+    font-size: 45px;
+
+    margin-top: 20px;
 }
 
 </style>
@@ -1187,6 +1040,62 @@ body {
 
 
 <body>
+
+
+<div id="game">
+
+    <div id="world">
+
+        <img
+            id="game-map"
+            src="Storybook-World-Map.png"
+            alt="Mapa gry"
+        >
+
+        <div id="cloud1" class="cloud"></div>
+        <div id="cloud2" class="cloud"></div>
+        <div id="cloud3" class="cloud"></div>
+
+        <div id="day-night"></div>
+
+
+        <button
+            id="house"
+            class="location"
+            onclick="openHouse()">
+        </button>
+
+
+        <button
+            id="forest"
+            class="location"
+            onclick="openForest()">
+        </button>
+
+
+        <button
+            id="lake"
+            class="location"
+            onclick="openLake()">
+        </button>
+
+
+        <button
+            id="castle"
+            class="location"
+            onclick="openCastle()">
+        </button>
+
+
+        <button
+            id="cave"
+            class="location"
+            onclick="openCave()">
+        </button>
+
+    </div>
+
+</div>
 
 
 <!-- ==================================================
@@ -1211,88 +1120,7 @@ body {
 
 
 <!-- ==================================================
-     GRA
-================================================== -->
-
-<div id="game">
-
-    <div id="world">
-
-        <img
-            id="game-map"
-            src="Storybook-World-Map.png"
-            alt="Mapa gry"
-        >
-
-        <div
-            id="cloud1"
-            class="cloud">
-        </div>
-
-        <div
-            id="cloud2"
-            class="cloud">
-        </div>
-
-        <div
-            id="cloud3"
-            class="cloud">
-        </div>
-
-        <div id="day-night"></div>
-
-
-        <!-- DOMEK -->
-
-        <button
-            id="house"
-            class="location"
-            onclick="openHouse()">
-        </button>
-
-
-        <!-- LAS -->
-
-        <button
-            id="forest"
-            class="location"
-            onclick="openForest()">
-        </button>
-
-
-        <!-- JEZIORO -->
-
-        <button
-            id="lake"
-            class="location"
-            onclick="openLake()">
-        </button>
-
-
-        <!-- ZAMEK -->
-
-        <button
-            id="castle"
-            class="location"
-            onclick="openCastle()">
-        </button>
-
-
-        <!-- JASKINIA -->
-
-        <button
-            id="cave"
-            class="location"
-            onclick="openCave()">
-        </button>
-
-    </div>
-
-</div>
-
-
-<!-- ==================================================
-     OKNO ZAGADKI
+     ZAGADKA
 ================================================== -->
 
 <div id="puzzle-screen">
@@ -1380,17 +1208,25 @@ body {
 
 
 <!-- ==================================================
-     JASKINIA
+     OSTRZEŻENIE
 ================================================== -->
 
-<div id="cave-screen">
+<div id="reading-warning">
 
-    <div id="cave-start">
+    <div id="reading-warning-content">
 
-        <h1>Koniec</h1>
+        <h1>CZYTAJ SZYBKO XD</h1>
 
-        <button onclick="startFinalStory()">
-            Wiadomość Ode Mnie....
+        <p>
+            Tekst będzie się pojawiał i znikał.
+            <br>
+            Nie czekaj, aż wszystko się pojawi 😭
+        </p>
+
+        <button
+            class="puzzle-button"
+            onclick="startFinalStory()">
+            Dobra, lecimy
         </button>
 
     </div>
@@ -1399,61 +1235,37 @@ body {
 
 
 <!-- ==================================================
-     OSTRZEŻENIE
+     FINAŁOWY TEKST
 ================================================== -->
 
-<div id="warning-screen">
+<div id="final-story">
 
-    <div id="warning-box">
-
-        <h2>
-            ⚠️ CZYTAJ SZYBKO XD
-        </h2>
-
-        <p>
-            Nie będę Ci tutaj dawać całej wieczności.
-            <br><br>
-            Tekst będzie się pojawiał przed Tobą,
-            a to, co przeczytasz, będzie powoli znikało za Tobą.
-            <br><br>
-            Więc... powodzenia XD
-        </p>
-
-    </div>
+    <div id="story-lines"></div>
 
 </div>
 
 
 <!-- ==================================================
-     TEKST FINAŁOWY
+     KONIEC
 ================================================== -->
 
-<div id="story-screen">
+<div id="final-end">
 
-    <div id="story-container"></div>
+    <h1>
+        Koniec, dałem radę? XD
+    </h1>
 
-</div>
+    <p>
+        Mam nadzieję, że Ci się podobało,
+        <br>
+        robiłem to naprawdę sporo czasu...
+    </p>
 
-
-<!-- ==================================================
-     OSTATECZNY EKRAN
-================================================== -->
-
-<div id="final-screen">
-
-    <div id="final-text">
-
-        <strong>
-            Koniec, dałem radę Cię przebić? XD
-        </strong>
-
-        Mam nadzieję, że Ci się podobało.<br>
-        Robiłem to naprawdę sporo czasu...
-
+    <div class="heart-final">
+        ❤️
     </div>
 
 </div>
-
 
 
 <script>
@@ -1465,7 +1277,7 @@ body {
 
 let lives = 2;
 
-let houseUnlocked = false;
+let forestUnlocked = false;
 let lakeUnlocked = false;
 let castleUnlocked = false;
 let caveUnlocked = false;
@@ -1481,38 +1293,42 @@ let hintStage = 0;
 
 function loseLife() {
 
-    if (lives <= 0)
-        return;
-
     lives--;
 
-    if (lives === 1) {
+    updateLives();
+
+    if (lives <= 0) {
+
+        gameOver();
+
+    } else {
 
         document
-            .getElementById("heart2")
-            .classList
-            .add("lost");
+            .getElementById("message")
+            .textContent =
+            "✗ Zła odpowiedź! Straciłeś życie.";
 
-    }
-
-    if (lives === 0) {
-
-        document
-            .getElementById("heart1")
-            .classList
-            .add("lost");
-
-        setTimeout(
-            gameOver,
-            350
-        );
     }
 }
 
 
-/* ==================================================
-   PRZEGRANA
-================================================== */
+function updateLives() {
+
+    document
+        .getElementById("heart1")
+        .classList.toggle(
+            "lost",
+            lives < 1
+        );
+
+    document
+        .getElementById("heart2")
+        .classList.toggle(
+            "lost",
+            lives < 2
+        );
+}
+
 
 function gameOver() {
 
@@ -1544,13 +1360,6 @@ function gameOver() {
 
 function openHouse() {
 
-    houseUnlocked = true;
-
-    document
-        .getElementById("forest")
-        .style.display =
-        "block";
-
     currentLocation =
         "house";
 
@@ -1560,11 +1369,6 @@ function openHouse() {
         .getElementById("puzzle-title")
         .textContent =
         "🏠 Domek";
-
-    document
-        .getElementById("puzzle-description")
-        .textContent =
-        "";
 
     document
         .getElementById("puzzle-question")
@@ -1582,11 +1386,6 @@ function openHouse() {
             tam zacznie się Twoja przygoda. 🌲
         </div>
         `;
-
-    document
-        .getElementById("puzzle-instruction")
-        .textContent =
-        "";
 
     document
         .getElementById("answer")
@@ -1607,6 +1406,13 @@ function openHouse() {
         .getElementById("puzzle-screen")
         .style.display =
         "flex";
+
+    forestUnlocked = true;
+
+    document
+        .getElementById("forest")
+        .style.display =
+        "block";
 }
 
 
@@ -1645,7 +1451,7 @@ document.addEventListener(
 
 
 /* ==================================================
-   AUTOMATYCZNE FORMATOWANIE LICZB
+   FORMATOWANIE LICZB
 ================================================== */
 
 document
@@ -1656,14 +1462,13 @@ document
 
             let value =
                 this.value
-                .replace(/\D/g, "");
+                .replace(/\D/g,"");
 
             this.value =
                 value.replace(
                     /\B(?=(\d{3})+(?!\d))/g,
                     " "
                 );
-
         }
     );
 
@@ -1713,7 +1518,7 @@ function resetPuzzle() {
 
 function openForest() {
 
-    if (!houseUnlocked)
+    if (!forestUnlocked)
         return;
 
     currentLocation =
@@ -1782,10 +1587,6 @@ function openForest() {
 }
 
 
-/* ==================================================
-   LAS — SPRAWDZANIE
-================================================== */
-
 function checkForestAnswer() {
 
     const answer =
@@ -1795,12 +1596,10 @@ function checkForestAnswer() {
             .replace(/\s/g,"");
 
     if (
-        answer ===
-        "196418"
+        answer === "196418"
     ) {
 
-        lakeUnlocked =
-            true;
+        lakeUnlocked = true;
 
         document
             .getElementById("lake")
@@ -1817,21 +1616,9 @@ function checkForestAnswer() {
             700
         );
 
-    }
-
-    else {
+    } else {
 
         loseLife();
-
-        if (lives > 0) {
-
-            document
-                .getElementById("message")
-                .textContent =
-                "✗ Zła odpowiedź... Straciłeś jedno życie.";
-
-        }
-
     }
 }
 
@@ -1921,9 +1708,7 @@ function createLakeOptions() {
             button.onclick =
                 function() {
 
-                    checkLakeAnswer(
-                        option
-                    );
+                    checkLakeAnswer(option);
 
                 };
 
@@ -1932,7 +1717,6 @@ function createLakeOptions() {
                     "afterend",
                     button
                 );
-
         }
     );
 }
@@ -1941,12 +1725,10 @@ function createLakeOptions() {
 function checkLakeAnswer(option) {
 
     if (
-        option ===
-        "809 + 500"
+        option === "809 + 500"
     ) {
 
-        castleUnlocked =
-            true;
+        castleUnlocked = true;
 
         document
             .getElementById("castle")
@@ -1963,21 +1745,9 @@ function checkLakeAnswer(option) {
             700
         );
 
-    }
-
-    else {
+    } else {
 
         loseLife();
-
-        if (lives > 0) {
-
-            document
-                .getElementById("message")
-                .textContent =
-                "✗ Zła odpowiedź... Straciłeś jedno życie.";
-
-        }
-
     }
 }
 
@@ -2013,19 +1783,15 @@ function openCastle() {
         <div class="complex-puzzle">
 
             <div class="complex-equation">
-
                 <strong>
                     (4 + 3i)(4 − 3i) − 6 = ?
                 </strong>
-
             </div>
 
             <div class="complex-equation">
-
                 <strong>
                     (3 + i)(3 − i) = ?
                 </strong>
-
             </div>
 
             <p>
@@ -2092,10 +1858,6 @@ function openCastle() {
 }
 
 
-/* ==================================================
-   ZAMEK — SPRAWDZANIE
-================================================== */
-
 function checkCastleAnswer() {
 
     const first =
@@ -2115,13 +1877,11 @@ function checkCastleAnswer() {
             .replace(/\s/g,"");
 
     if (
-        first === "19"
-        &&
+        first === "19" &&
         second === "10"
     ) {
 
-        caveUnlocked =
-            true;
+        caveUnlocked = true;
 
         document
             .getElementById("cave")
@@ -2138,21 +1898,9 @@ function checkCastleAnswer() {
             800
         );
 
-    }
-
-    else {
+    } else {
 
         loseLife();
-
-        if (lives > 0) {
-
-            document
-                .getElementById("message")
-                .textContent =
-                "✗ Zła odpowiedź... Straciłeś jedno życie.";
-
-        }
-
     }
 }
 
@@ -2182,7 +1930,7 @@ function openCave() {
         "none";
 
     document
-        .getElementById("cave-screen")
+        .getElementById("reading-warning")
         .style.display =
         "flex";
 }
@@ -2195,28 +1943,16 @@ function openCave() {
 function startFinalStory() {
 
     document
-        .getElementById("cave-screen")
+        .getElementById("reading-warning")
         .style.display =
         "none";
 
     document
-        .getElementById("warning-screen")
+        .getElementById("final-story")
         .style.display =
         "flex";
 
-    setTimeout(
-        function() {
-
-            document
-                .getElementById("warning-screen")
-                .style.display =
-                "none";
-
-            startStory();
-
-        },
-        4500
-    );
+    playFinalStory();
 }
 
 
@@ -2224,227 +1960,172 @@ function startFinalStory() {
    TEKST FINAŁOWY
 ================================================== */
 
-const finalStory = [
+const finalText = [
 
     "Byłem pogubionym nastolatkiem, kiedy Cię pierwszy raz spotkałem.",
 
     "Dalej pamiętam, jak stałeś w moich drzwiach, kiedy się obudziłem XD.",
 
-    "Z czasem trochę się do mnie otworzyłeś... no, bardziej ja do Ciebie.",
+    "Z czasem trochę się do mnie otworzyłeś, no dobra — bardziej ja do Ciebie.",
 
     "Pomogłeś mi z większością problemów, które wtedy mnie doskwierały.",
+
+    "Byłeś przy mnie wtedy, kiedy naprawdę tego potrzebowałem.",
+
+    "I chyba nawet nie zdawałeś sobie sprawy z tego, jak dużo to dla mnie znaczyło.",
 
     "Dziękuję Ci za to, że byłeś wtedy, kiedy najbardziej Cię potrzebowałem — nawet jeśli sam nie wiedziałem, że Cię potrzebuję.",
 
     "I niezależnie od tego, gdzie nas dalej życie zabierze, mam nadzieję, że kiedyś spojrzysz na mnie i pomyślisz:",
 
-    "„Kurwa, dobrze, że zgodziłem się pojechać z Anią XD”.",
+    "„Kurwa, dobrze, że zgodziłem się pojechać z Ania XD”.",
 
     "Bo ja wiem jedno — poznanie Ciebie było jedną z najlepszych rzeczy, jakie mnie w życiu spotkały. ❤️"
-
 ];
 
 
 /* ==================================================
-   SYSTEM POJAWIANIA SIĘ I ZNIKANIA
+   GŁÓWNY MECHANIZM TEKSTU
 ================================================== */
 
-function startStory() {
+function playFinalStory() {
 
     const container =
         document.getElementById(
-            "story-container"
+            "story-lines"
         );
 
-    container.innerHTML =
-        "";
+    container.innerHTML = "";
 
-    document
-        .getElementById("story-screen")
-        .style.display =
-        "flex";
+    const elements = [];
 
-    let currentIndex = 0;
+    finalText.forEach(
+        function(text) {
 
-    function showNextLine() {
+            const line =
+                document.createElement("div");
 
-        if (
-            currentIndex >=
-            finalStory.length
-        ) {
+            line.className =
+                "story-line";
+
+            line.textContent =
+                text;
+
+            container.appendChild(line);
+
+            elements.push(line);
+        }
+    );
+
+
+    /*
+       Każdy wers pojawia się po kolei.
+
+       Gdy pojawia się kolejny wers,
+       dwa wersy wcześniej zaczynają
+       powoli znikać.
+
+       Nic nie jest przesuwane.
+       Każdy wers zostaje dokładnie
+       w swoim miejscu.
+    */
+
+    let index = 0;
+
+    const appearDelay = 2200;
+    const fadeDuration = 2200;
+
+
+    function showNext() {
+
+        if (index >= elements.length) {
 
             waitForFinalFade();
 
             return;
         }
 
-        const line =
-            document.createElement("div");
+        const current =
+            elements[index];
 
-        line.className =
-            "story-line";
-
-        line.textContent =
-            finalStory[currentIndex];
-
-        container.appendChild(line);
-
-        requestAnimationFrame(
-            function() {
-
-                line.classList.add(
-                    "visible"
-                );
-
-            }
-        );
+        current.classList.add("visible");
 
 
         /*
-         * Kiedy pojawia się nowa linia,
-         * starsza zaczyna znikać.
-         *
-         * Dzięki temu nie ma efektu,
-         * że cały tekst gotowy spada
-         * albo przesuwa się jako jeden blok.
-         */
+           Dwa wersy ZA nim zaczyna znikać.
+        */
 
-        const lines =
-            container.querySelectorAll(
-                ".story-line"
-            );
+        if (index >= 2) {
 
-        if (
-            lines.length >= 3
-        ) {
+            const old =
+                elements[index - 2];
 
-            const oldLine =
-                lines[
-                    lines.length - 3
-                ];
-
-            oldLine.classList.add(
-                "fading"
-            );
-
-            setTimeout(
-                function() {
-
-                    if (
-                        oldLine.parentNode
-                    ) {
-
-                        oldLine.parentNode
-                            .removeChild(
-                                oldLine
-                            );
-
-                    }
-
-                },
-                1500
-            );
-
+            old.classList.add("fading");
         }
 
 
-        currentIndex++;
-
-        /*
-         * Spokojne tempo czytania.
-         * Każdy fragment ma chwilę,
-         * zanim pojawi się kolejny.
-         */
+        index++;
 
         setTimeout(
-            showNextLine,
-            3600
+            showNext,
+            appearDelay
         );
     }
 
-    showNextLine();
+
+    showNext();
+
+
+    /*
+       Po pojawieniu się ostatniego
+       tekstu czekamy, aż ostatnie
+       dwa wersy również znikną.
+    */
+
+    function waitForFinalFade() {
+
+        setTimeout(
+            function() {
+
+                if (elements.length >= 2) {
+
+                    elements[
+                        elements.length - 2
+                    ].classList.add("fading");
+
+                    elements[
+                        elements.length - 1
+                    ].classList.add("fading");
+
+                }
+
+                setTimeout(
+                    showFinalEnd,
+                    fadeDuration + 100
+                );
+
+            },
+            appearDelay
+        );
+    }
 }
 
 
 /* ==================================================
-   KONIEC TEKSTU
+   KONIEC
 ================================================== */
 
-function waitForFinalFade() {
+function showFinalEnd() {
 
-    const lines =
-        document.querySelectorAll(
-            ".story-line"
-        );
+    document
+        .getElementById("final-story")
+        .style.display =
+        "none";
 
-    /*
-     * Kiedy pojawi się ostatnia linia,
-     * dajemy jej chwilę na przeczytanie,
-     * a następnie powoli wygaszamy
-     * absolutnie cały tekst.
-     */
-
-    setTimeout(
-        function() {
-
-            lines.forEach(
-                function(line) {
-
-                    line.classList.add(
-                        "fading"
-                    );
-
-                }
-            );
-
-
-            /*
-             * 1.8 sekundy na pełne zniknięcie.
-             */
-
-            setTimeout(
-                function() {
-
-                    document
-                        .getElementById(
-                            "story-screen"
-                        )
-                        .style.display =
-                        "none";
-
-                    /*
-                     * 4 sekundy całkowitej
-                     * czerni przed finałem.
-                     */
-
-                    document
-                        .getElementById(
-                            "final-screen"
-                        )
-                        .style.display =
-                        "none";
-
-                    setTimeout(
-                        function() {
-
-                            document
-                                .getElementById(
-                                    "final-screen"
-                                )
-                                .style.display =
-                                "flex";
-
-                        },
-                        4000
-                    );
-
-                },
-                1800
-            );
-
-        },
-        4500
-    );
+    document
+        .getElementById("final-end")
+        .style.display =
+        "flex";
 }
 
 
@@ -2455,8 +2136,7 @@ function waitForFinalFade() {
 function showHint() {
 
     if (
-        currentLocation === "forest"
-        &&
+        currentLocation === "forest" &&
         hintStage === 0
     ) {
 
@@ -2471,8 +2151,7 @@ function showHint() {
 
 
     if (
-        currentLocation === "forest"
-        &&
+        currentLocation === "forest" &&
         hintStage === 1
     ) {
 
@@ -2488,8 +2167,7 @@ function showHint() {
 
 
     if (
-        currentLocation === "forest"
-        &&
+        currentLocation === "forest" &&
         hintStage === 3
     ) {
 
@@ -2505,8 +2183,7 @@ function showHint() {
 
 
     if (
-        currentLocation === "lake"
-        &&
+        currentLocation === "lake" &&
         hintStage === 0
     ) {
 
@@ -2521,8 +2198,7 @@ function showHint() {
 
 
     if (
-        currentLocation === "lake"
-        &&
+        currentLocation === "lake" &&
         hintStage === 1
     ) {
 
@@ -2538,8 +2214,7 @@ function showHint() {
 
 
     if (
-        currentLocation === "castle"
-        &&
+        currentLocation === "castle" &&
         hintStage === 0
     ) {
 
@@ -2554,8 +2229,7 @@ function showHint() {
 
 
     if (
-        currentLocation === "castle"
-        &&
+        currentLocation === "castle" &&
         hintStage === 1
     ) {
 
@@ -2568,13 +2242,8 @@ function showHint() {
 
         return;
     }
-
 }
 
-
-/* ==================================================
-   POKAZANIE PODPOWIEDZI
-================================================== */
 
 function showHintText(text) {
 
@@ -2589,10 +2258,6 @@ function showHintText(text) {
         "block";
 }
 
-
-/* ==================================================
-   PYTANIE O KOLEJNĄ PODPOWIEDŹ
-================================================== */
 
 function askForHint(
     text,
@@ -2633,15 +2298,10 @@ function askForHint(
 }
 
 
-/* ==================================================
-   TAK / NAPEWNO
-================================================== */
-
 function answerHintYes() {
 
     if (
-        currentLocation === "forest"
-        &&
+        currentLocation === "forest" &&
         hintStage === 2
     ) {
 
@@ -2658,8 +2318,7 @@ function answerHintYes() {
 
 
     if (
-        currentLocation === "forest"
-        &&
+        currentLocation === "forest" &&
         hintStage === 4
     ) {
 
@@ -2676,8 +2335,7 @@ function answerHintYes() {
 
 
     if (
-        currentLocation === "lake"
-        &&
+        currentLocation === "lake" &&
         hintStage === 4
     ) {
 
@@ -2694,8 +2352,7 @@ function answerHintYes() {
 
 
     if (
-        currentLocation === "castle"
-        &&
+        currentLocation === "castle" &&
         hintStage === 4
     ) {
 
@@ -2711,10 +2368,6 @@ function answerHintYes() {
     }
 }
 
-
-/* ==================================================
-   UKRYCIE PYTANIA
-================================================== */
 
 function hideHintQuestion() {
 
@@ -2742,7 +2395,7 @@ function hideHintQuestion() {
 
 
 /* ==================================================
-   ZAMKNIĘCIE OKNA
+   ZAMKNIĘCIE
 ================================================== */
 
 function closePuzzle() {
@@ -2764,18 +2417,10 @@ function closePuzzle() {
 
 
 /* ==================================================
-   WAŻNE:
-   ODŚWIEŻENIE STRONY = NOWA GRA
+   START
 ================================================== */
 
-/*
- * Wszystkie zmienne są tworzone od początku
- * po każdym odświeżeniu.
- *
- * Nie używamy localStorage,
- * więc F5 / Ctrl+R zawsze zaczyna
- * całą grę od dwóch żyć.
- */
+updateLives();
 
 </script>
 
