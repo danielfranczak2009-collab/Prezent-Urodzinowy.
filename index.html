@@ -20,36 +20,25 @@ html,
 body {
     margin: 0;
     padding: 0;
-
     width: 100%;
     height: 100%;
-
     overflow: hidden;
-
     background: black;
 }
-
 
 #game {
     position: fixed;
     inset: 0;
-
     width: 100vw;
     height: 100vh;
-
     overflow: hidden;
-
     background: black;
 }
 
-
 #world {
-
     position: absolute;
-
     left: -4vw;
     top: -4vh;
-
     width: 108vw;
     height: 108vh;
 
@@ -61,11 +50,8 @@ body {
     will-change: transform;
 }
 
-
 #game-map {
-
     position: absolute;
-
     left: 0;
     top: 0;
 
@@ -73,11 +59,9 @@ body {
     height: 100%;
 
     object-fit: fill;
-
     display: block;
 
     user-select: none;
-
     pointer-events: none;
 }
 
@@ -87,13 +71,10 @@ body {
 ================================================== */
 
 #day-night {
-
     position: absolute;
-
     inset: 0;
 
     pointer-events: none;
-
     z-index: 20;
 
     background:
@@ -104,7 +85,6 @@ body {
 
     mix-blend-mode: multiply;
 }
-
 
 @keyframes dayNightCycle {
 
@@ -140,7 +120,6 @@ body {
 ================================================== */
 
 .cloud {
-
     position: absolute;
 
     z-index: 10;
@@ -160,10 +139,8 @@ body {
     pointer-events: none;
 }
 
-
 .cloud::before,
 .cloud::after {
-
     content: "";
 
     position: absolute;
@@ -174,9 +151,7 @@ body {
     border-radius: 50%;
 }
 
-
 .cloud::before {
-
     width: 75px;
     height: 75px;
 
@@ -184,9 +159,7 @@ body {
     top: -35px;
 }
 
-
 .cloud::after {
-
     width: 95px;
     height: 95px;
 
@@ -194,9 +167,7 @@ body {
     top: -48px;
 }
 
-
 #cloud1 {
-
     top: 12%;
     left: -220px;
 
@@ -206,9 +177,7 @@ body {
         cloudMove1 75s linear infinite;
 }
 
-
 #cloud2 {
-
     top: 25%;
     left: -300px;
 
@@ -220,9 +189,7 @@ body {
         cloudMove2 105s linear infinite;
 }
 
-
 #cloud3 {
-
     top: 8%;
     left: -400px;
 
@@ -233,7 +200,6 @@ body {
     animation:
         cloudMove3 130s linear infinite;
 }
-
 
 @keyframes cloudMove1 {
 
@@ -250,7 +216,6 @@ body {
     }
 }
 
-
 @keyframes cloudMove2 {
 
     from {
@@ -265,7 +230,6 @@ body {
             scale(0.65);
     }
 }
-
 
 @keyframes cloudMove3 {
 
@@ -288,7 +252,6 @@ body {
 ================================================== */
 
 .location {
-
     position: absolute;
 
     width: 80px;
@@ -298,7 +261,6 @@ body {
         translate(-50%, -50%);
 
     border: none;
-
     padding: 0;
     margin: 0;
 
@@ -322,7 +284,7 @@ body {
 
 #house {
 
-    left: 15.336%;
+    left: 15.536%;
     top: 69.797%;
 
 }
@@ -333,7 +295,6 @@ body {
 ================================================== */
 
 #forest {
-
     left: 35.45%;
     top: 45.08%;
 }
@@ -344,7 +305,6 @@ body {
 ================================================== */
 
 #lake {
-
     left: 54.85%;
     top: 44.54%;
 
@@ -357,7 +317,6 @@ body {
 ================================================== */
 
 #castle {
-
     left: 72.727%;
     top: 44.541%;
 
@@ -385,7 +344,6 @@ body {
 ================================================== */
 
 #cave {
-
     left: 86.82%;
     top: 22.81%;
 
@@ -398,9 +356,7 @@ body {
 ================================================== */
 
 #puzzle-screen {
-
     position: fixed;
-
     inset: 0;
 
     display: none;
@@ -422,7 +378,6 @@ body {
 ================================================== */
 
 #puzzle-box {
-
     width:
         min(680px,92vw);
 
@@ -455,19 +410,13 @@ body {
         rgba(255,255,255,0.12);
 }
 
-
 #puzzle-box h1 {
-
     margin-top: 0;
-
     font-size: 36px;
 }
 
-
 #puzzle-box p {
-
     font-size: 18px;
-
     line-height: 1.6;
 }
 
@@ -477,7 +426,6 @@ body {
 ================================================== */
 
 #answer {
-
     width: 220px;
 
     padding: 12px;
@@ -502,7 +450,6 @@ body {
 ================================================== */
 
 .puzzle-button {
-
     margin:
         15px 5px 0;
 
@@ -533,9 +480,7 @@ body {
         color 0.15s ease;
 }
 
-
 .puzzle-button:hover {
-
     transform:
         translateY(-2px);
 
@@ -552,7 +497,6 @@ body {
 ================================================== */
 
 .lake-option {
-
     display:
         block;
 
@@ -584,9 +528,7 @@ body {
         pointer;
 }
 
-
 .lake-option:hover {
-
     background:
         black;
 
@@ -600,7 +542,6 @@ body {
 ================================================== */
 
 .complex-puzzle {
-
     margin:
         25px auto;
 
@@ -618,9 +559,7 @@ body {
         #202020;
 }
 
-
 .complex-equation {
-
     font-size:
         21px;
 
@@ -631,9 +570,7 @@ body {
         10px 0 18px;
 }
 
-
 .complex-answer-row {
-
     display:
         flex;
 
@@ -647,9 +584,7 @@ body {
         8px;
 }
 
-
 .complex-input {
-
     width:
         90px;
 
@@ -672,9 +607,7 @@ body {
         none;
 }
 
-
 .complex-dot {
-
     font-size:
         28px;
 
@@ -691,7 +624,6 @@ body {
 ================================================== */
 
 #hint-box {
-
     display:
         none;
 
@@ -718,9 +650,7 @@ body {
         1.6;
 }
 
-
 #hint-question {
-
     display:
         none;
 
@@ -734,10 +664,8 @@ body {
         1.5;
 }
 
-
 #hint-yes,
 #hint-no {
-
     display:
         none;
 
@@ -766,10 +694,8 @@ body {
         black;
 }
 
-
 #hint-yes:hover,
 #hint-no:hover {
-
     background:
         black;
 
@@ -783,7 +709,6 @@ body {
 ================================================== */
 
 #message {
-
     min-height:
         28px;
 
@@ -800,7 +725,6 @@ body {
 ================================================== */
 
 #cave-screen {
-
     position:
         fixed;
 
@@ -832,9 +756,7 @@ body {
         30px;
 }
 
-
 #cave-text {
-
     width:
         min(800px,90vw);
 
@@ -873,11 +795,20 @@ body {
             alt="Mapa gry"
         >
 
-        <div id="cloud1" class="cloud"></div>
+        <div
+            id="cloud1"
+            class="cloud">
+        </div>
 
-        <div id="cloud2" class="cloud"></div>
+        <div
+            id="cloud2"
+            class="cloud">
+        </div>
 
-        <div id="cloud3" class="cloud"></div>
+        <div
+            id="cloud3"
+            class="cloud">
+        </div>
 
         <div id="day-night"></div>
 
@@ -931,6 +862,10 @@ body {
 </div>
 
 
+
+<!-- ==================================================
+     OKNO ZAGADKI
+================================================== -->
 
 <div id="puzzle-screen">
 
@@ -1002,6 +937,10 @@ body {
 
 
 
+<!-- ==================================================
+     JASKINIA
+================================================== -->
+
 <div id="cave-screen">
 
     <div id="cave-text"></div>
@@ -1011,6 +950,7 @@ body {
 
 
 <script>
+
 
 /* ==================================================
    STAN GRY
@@ -1125,7 +1065,7 @@ document.addEventListener(
 
 
 /* ==================================================
-   FORMATOWANIE LICZB
+   AUTOMATYCZNE FORMATOWANIE LICZB
 ================================================== */
 
 document
@@ -1143,12 +1083,13 @@ document
                     /\B(?=(\d{3})+(?!\d))/g,
                     " "
                 );
+
         }
     );
 
 
 /* ==================================================
-   RESET
+   RESET ZAGADKI
 ================================================== */
 
 function resetPuzzle() {
@@ -1399,6 +1340,7 @@ function createLakeOptions() {
                     "afterend",
                     button
                 );
+
         }
     );
 }
@@ -1470,15 +1412,19 @@ function openCastle() {
         <div class="complex-puzzle">
 
             <div class="complex-equation">
+
                 <strong>
                     (4 + 3i)(4 − 3i) − 6 = ?
                 </strong>
+
             </div>
 
             <div class="complex-equation">
+
                 <strong>
                     (3 + i)(3 − i) = ?
                 </strong>
+
             </div>
 
             <p>
@@ -1642,7 +1588,7 @@ Wymyślimy go razem.`;
 
 
 /* ==================================================
-   POWOLNE PISANIE
+   POWOLNE PISANIE TEKSTU
 ================================================== */
 
 function typeCaveText(text) {
@@ -1851,7 +1797,7 @@ function showHintText(text) {
 
 
 /* ==================================================
-   PYTANIE O PODPOWIEDŹ
+   PYTANIE O KOLEJNĄ PODPOWIEDŹ
 ================================================== */
 
 function askForHint(
@@ -2002,7 +1948,7 @@ function hideHintQuestion() {
 
 
 /* ==================================================
-   ZAMKNIĘCIE
+   ZAMKNIĘCIE OKNA
 ================================================== */
 
 function closePuzzle() {
