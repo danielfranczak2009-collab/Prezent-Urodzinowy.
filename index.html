@@ -37,8 +37,10 @@ body {
 
 #world {
     position: absolute;
+
     left: -4vw;
     top: -4vh;
+
     width: 108vw;
     height: 108vh;
 
@@ -52,6 +54,7 @@ body {
 
 #game-map {
     position: absolute;
+
     left: 0;
     top: 0;
 
@@ -59,6 +62,7 @@ body {
     height: 100%;
 
     object-fit: fill;
+
     display: block;
 
     user-select: none;
@@ -67,18 +71,72 @@ body {
 
 
 /* ==================================================
+   ŻYCIA
+================================================== */
+
+#lives-box {
+
+    position: fixed;
+
+    top: 20px;
+    right: 20px;
+
+    z-index: 200;
+
+    display: flex;
+
+    gap: 8px;
+
+    padding: 10px 14px;
+
+    background: rgba(0,0,0,0.95);
+
+    border-radius: 14px;
+
+    border: 1px solid
+        rgba(255,255,255,0.25);
+
+    box-shadow:
+        0 4px 20px
+        rgba(0,0,0,0.7);
+}
+
+.heart {
+
+    font-size: 32px;
+
+    line-height: 1;
+
+    transition:
+        opacity 0.25s ease,
+        transform 0.25s ease;
+}
+
+.heart.lost {
+
+    opacity: 0.18;
+
+    transform:
+        scale(0.8);
+}
+
+
+/* ==================================================
    CYKL DNIA I NOCY
 ================================================== */
 
 #day-night {
+
     position: absolute;
+
     inset: 0;
 
     pointer-events: none;
+
     z-index: 20;
 
     background:
-        rgba(0, 0, 0, 0);
+        rgba(0,0,0,0);
 
     animation:
         dayNightCycle 60s linear infinite;
@@ -120,6 +178,7 @@ body {
 ================================================== */
 
 .cloud {
+
     position: absolute;
 
     z-index: 10;
@@ -141,6 +200,7 @@ body {
 
 .cloud::before,
 .cloud::after {
+
     content: "";
 
     position: absolute;
@@ -152,6 +212,7 @@ body {
 }
 
 .cloud::before {
+
     width: 75px;
     height: 75px;
 
@@ -160,6 +221,7 @@ body {
 }
 
 .cloud::after {
+
     width: 95px;
     height: 95px;
 
@@ -168,6 +230,7 @@ body {
 }
 
 #cloud1 {
+
     top: 12%;
     left: -220px;
 
@@ -178,6 +241,7 @@ body {
 }
 
 #cloud2 {
+
     top: 25%;
     left: -300px;
 
@@ -190,6 +254,7 @@ body {
 }
 
 #cloud3 {
+
     top: 8%;
     left: -400px;
 
@@ -248,68 +313,11 @@ body {
 
 
 /* ==================================================
-   SERCA
-================================================== */
-
-#lives {
-
-    position: fixed;
-
-    top: 20px;
-    right: 20px;
-
-    z-index: 200;
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 7px;
-
-    padding: 10px 14px;
-
-    background: rgba(20,20,20,0.95);
-
-    border:
-        2px solid
-        rgba(255,255,255,0.25);
-
-    border-radius: 14px;
-
-    box-shadow:
-        0 5px 20px
-        rgba(0,0,0,0.45);
-
-    font-size: 27px;
-
-    user-select: none;
-}
-
-.heart {
-    transition:
-        opacity 0.3s ease,
-        transform 0.3s ease;
-
-    line-height: 1;
-}
-
-.heart.lost {
-
-    opacity: 0.18;
-
-    transform:
-        scale(0.85);
-
-    filter:
-        grayscale(1);
-}
-
-
-/* ==================================================
    HOTSPOTY
 ================================================== */
 
 .location {
+
     position: absolute;
 
     width: 80px;
@@ -319,6 +327,7 @@ body {
         translate(-50%, -50%);
 
     border: none;
+
     padding: 0;
     margin: 0;
 
@@ -344,7 +353,6 @@ body {
 
     left: 15.536%;
     top: 69.797%;
-
 }
 
 
@@ -416,12 +424,13 @@ body {
 
 
 /* ==================================================
-   EKRAN ZAGADKI
+   OKNO ZAGADKI
 ================================================== */
 
 #puzzle-screen {
 
     position: fixed;
+
     inset: 0;
 
     display: none;
@@ -807,7 +816,7 @@ body {
 
 
 /* ==================================================
-   EKRAN ŚMIERCI
+   EKRAN PRZEGRANEJ
 ================================================== */
 
 #game-over {
@@ -818,9 +827,6 @@ body {
     inset:
         0;
 
-    z-index:
-        1000;
-
     display:
         none;
 
@@ -830,60 +836,48 @@ body {
     justify-content:
         center;
 
+    flex-direction:
+        column;
+
     background:
-        rgba(0,0,0,0.96);
+        black;
 
     color:
         white;
+
+    z-index:
+        1000;
 
     text-align:
         center;
 }
 
-#game-over-box {
-
-    width:
-        min(500px,90vw);
-
-    padding:
-        45px 30px;
-
-    border-radius:
-        22px;
-
-    background:
-        #171717;
-
-    border:
-        1px solid
-        rgba(255,255,255,0.15);
-
-    box-shadow:
-        0 0 50px
-        rgba(0,0,0,0.8);
-}
-
 #game-over h1 {
 
-    font-size:
-        42px;
+    margin: 0;
 
-    margin-top:
-        0;
+    font-size:
+        clamp(50px, 10vw, 110px);
+
+    letter-spacing:
+        8px;
 }
 
 #game-over p {
 
-    font-size:
-        19px;
+    margin-top:
+        30px;
 
-    line-height:
-        1.6;
+    font-size:
+        22px;
+
+    opacity:
+        0.8;
 }
 
 
 /* ==================================================
-   JASKINIA — KONIEC
+   JASKINIA
 ================================================== */
 
 #cave-screen {
@@ -903,6 +897,9 @@ body {
     justify-content:
         center;
 
+    flex-direction:
+        column;
+
     background:
         black;
 
@@ -919,41 +916,22 @@ body {
         30px;
 }
 
-#cave-start {
-
-    display:
-        flex;
-
-    flex-direction:
-        column;
-
-    align-items:
-        center;
-
-    justify-content:
-        center;
-
-    width:
-        100%;
-}
-
 #cave-title {
 
     font-size:
-        clamp(48px,8vw,90px);
+        clamp(55px, 10vw, 120px);
 
     letter-spacing:
-        12px;
+        10px;
 
     margin:
-        0 0 50px;
-
-    text-shadow:
-        0 0 25px
-        rgba(255,255,255,0.3);
+        0 0 45px;
 }
 
-#message-button {
+#cave-message-button {
+
+    display:
+        none;
 
     padding:
         16px 30px;
@@ -971,146 +949,86 @@ body {
         black;
 
     font-size:
-        18px;
+        20px;
 
     cursor:
         pointer;
 
     transition:
-        all 0.2s ease;
+        0.2s;
 }
 
-#message-button:hover {
+#cave-message-button:hover {
 
     background:
         black;
 
     color:
         white;
-
-    transform:
-        translateY(-2px);
 }
 
 
 /* ==================================================
-   FINAŁOWA WIADOMOŚĆ
+   OSTRZEŻENIE
 ================================================== */
 
-#final-message {
-
-    position:
-        absolute;
-
-    inset:
-        0;
+#reading-warning {
 
     display:
         none;
 
-    overflow:
-        hidden;
+    position:
+        fixed;
+
+    inset:
+        0;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
 
     background:
         black;
 
+    z-index:
+        800;
+
     color:
         white;
-}
-
-#final-message-track {
-
-    position:
-        absolute;
-
-    width:
-        min(900px,88vw);
-
-    left:
-        50%;
-
-    transform:
-        translateX(-50%);
-
-    top:
-        100vh;
 
     text-align:
         center;
 
     font-size:
-        clamp(20px,2.2vw,28px);
+        clamp(24px,4vw,42px);
 
-    line-height:
-        1.8;
-
-    letter-spacing:
-        0.2px;
-
-    will-change:
-        transform;
-}
-
-.final-line {
-
-    opacity:
-        0;
-
-    margin:
-        0 0 22px;
-
-    transition:
-        opacity 2.5s ease;
-
-    min-height:
-        1.8em;
-}
-
-.final-line.visible {
-
-    opacity:
-        1;
-}
-
-.final-line.fade-away {
-
-    opacity:
-        0;
-}
-
-.final-space {
-
-    height:
-        25px;
-}
-
-.final-highlight {
-
-    font-weight:
-        bold;
-
-    font-size:
-        1.08em;
-
-    margin-top:
-        25px;
-}
-
-.final-heart {
-
-    font-size:
-        45px;
-
-    margin-top:
+    padding:
         30px;
+}
+
+#reading-warning span {
+
+    display:
+        block;
+
+    margin-top:
+        20px;
+
+    font-size:
+        18px;
+
+    opacity:
+        0.65;
 }
 
 
 /* ==================================================
-   KONIEC FINAŁU
+   FINAŁOWY TEKST
 ================================================== */
 
-#final-end {
+#final-screen {
 
     position:
         fixed;
@@ -1121,53 +1039,130 @@ body {
     display:
         none;
 
-    align-items:
-        center;
-
-    justify-content:
-        center;
-
-    flex-direction:
-        column;
-
     background:
         black;
 
+    z-index:
+        900;
+
+    overflow:
+        hidden;
+
     color:
         white;
+}
 
-    z-index:
-        700;
+#final-text-container {
+
+    position:
+        absolute;
+
+    left:
+        50%;
+
+    width:
+        min(850px,88vw);
+
+    transform:
+        translateX(-50%);
 
     text-align:
         center;
-}
-
-#final-end-text {
 
     font-size:
-        28px;
+        clamp(19px,2.2vw,28px);
+
+    line-height:
+        1.8;
+
+    white-space:
+        pre-line;
+
+    opacity:
+        1;
+}
+
+.final-line {
+
+    display:
+        block;
+
+    margin:
+        0 0 14px;
 
     opacity:
         0;
 
     animation:
-        finalAppear 3s ease forwards;
+        finalLineAppear
+        0.7s
+        ease
+        forwards;
 }
 
-@keyframes finalAppear {
+@keyframes finalLineAppear {
 
     from {
-        opacity: 0;
-        transform:
-            translateY(20px);
+        opacity:
+            0;
     }
 
     to {
-        opacity: 1;
-        transform:
-            translateY(0);
+        opacity:
+            1;
     }
+}
+
+
+/* ==================================================
+   CZARNY EKRAN PO FINALE
+================================================== */
+
+#after-final {
+
+    position:
+        fixed;
+
+    inset:
+        0;
+
+    display:
+        none;
+
+    background:
+        black;
+
+    z-index:
+        950;
+}
+
+
+/* ==================================================
+   POWOLNE ODSŁANIANIE MAPY
+================================================== */
+
+#map-reveal {
+
+    position:
+        fixed;
+
+    inset:
+        0;
+
+    background:
+        black;
+
+    z-index:
+        1200;
+
+    pointer-events:
+        none;
+
+    opacity:
+        1;
+
+    transition:
+        opacity 4s ease;
 }
 
 </style>
@@ -1177,6 +1172,31 @@ body {
 
 <body>
 
+
+<!-- ==================================================
+     ŻYCIA
+================================================== -->
+
+<div id="lives-box">
+
+    <span
+        id="heart1"
+        class="heart">
+        ❤️
+    </span>
+
+    <span
+        id="heart2"
+        class="heart">
+        ❤️
+    </span>
+
+</div>
+
+
+<!-- ==================================================
+     GRA
+================================================== -->
 
 <div id="game">
 
@@ -1256,18 +1276,6 @@ body {
 
 
 <!-- ==================================================
-     SERCA
-================================================== -->
-
-<div id="lives">
-
-    <span id="heart1" class="heart">❤️</span>
-    <span id="heart2" class="heart">❤️</span>
-
-</div>
-
-
-<!-- ==================================================
      OKNO ZAGADKI
 ================================================== -->
 
@@ -1341,24 +1349,37 @@ body {
 
 
 <!-- ==================================================
-     EKRAN KOŃCA ŻYĆ
+     JASKINIA
 ================================================== -->
 
-<div id="game-over">
+<div id="cave-screen">
 
-    <div id="game-over-box">
+    <h1 id="cave-title">
+        KONIEC
+    </h1>
 
-        <h1>💔</h1>
+    <button
+        id="cave-message-button"
+        onclick="startFinalMessage()">
+        Wiadomość Ode Mnie…
+    </button>
 
-        <h1>Koniec</h1>
+</div>
 
-        <p>
-            Tym razem Ci się nie udało...
-        </p>
 
-        <p>
-            Odśwież stronę, aby spróbować jeszcze raz.
-        </p>
+<!-- ==================================================
+     OSTRZEŻENIE
+================================================== -->
+
+<div id="reading-warning">
+
+    <div>
+
+        Czytaj szybko XD
+
+        <span>
+            Ta wiadomość zaraz zacznie znikać...
+        </span>
 
     </div>
 
@@ -1366,31 +1387,43 @@ body {
 
 
 <!-- ==================================================
-     JASKINIA
+     FINAŁOWY TEKST
 ================================================== -->
 
-<div id="cave-screen">
+<div id="final-screen">
 
-    <div id="cave-start">
+    <div id="final-text-container"></div>
 
-        <div id="cave-title">
-            KONIEC
-        </div>
-
-        <button
-            id="message-button"
-            onclick="startFinalMessage()">
-            Wiadomość Ode Mnie....
-        </button>
-
-    </div>
+</div>
 
 
-    <div id="final-message">
+<!-- ==================================================
+     CZARNY EKRAN PO FINALE
+================================================== -->
 
-        <div id="final-message-track"></div>
+<div id="after-final"></div>
 
-    </div>
+
+<!-- ==================================================
+     ODSŁANIANIE MAPY
+================================================== -->
+
+<div id="map-reveal"></div>
+
+
+<!-- ==================================================
+     EKRAN PRZEGRANEJ
+================================================== -->
+
+<div id="game-over">
+
+    <h1>
+        PRZEGRAŁEŚ.
+    </h1>
+
+    <p>
+        Odśwież, aby zagrać ponownie.
+    </p>
 
 </div>
 
@@ -1402,88 +1435,23 @@ body {
    STAN GRY
 ================================================== */
 
-let lakeUnlocked =
-    localStorage.getItem("lakeUnlocked") === "true";
+let lives = 2;
 
-let castleUnlocked =
-    localStorage.getItem("castleUnlocked") === "true";
+let houseVisited = false;
 
-let caveUnlocked =
-    localStorage.getItem("caveUnlocked") === "true";
-
-let houseVisited =
-    localStorage.getItem("houseVisited") === "true";
-
-let lives =
-    parseInt(
-        localStorage.getItem("lives")
-    );
-
-if (
-    isNaN(lives)
-    ||
-    lives < 0
-    ||
-    lives > 2
-) {
-
-    lives = 2;
-
-    localStorage.setItem(
-        "lives",
-        "2"
-    );
-}
+let lakeUnlocked = false;
+let castleUnlocked = false;
+let caveUnlocked = false;
 
 let currentLocation = "";
 
 let hintStage = 0;
 
-
-/* ==================================================
-   PRZYWRACANIE POSTĘPU
-================================================== */
-
-function restoreProgress() {
-
-    if (houseVisited) {
-
-        document
-            .getElementById("forest")
-            .style.display =
-            "block";
-    }
-
-    if (lakeUnlocked) {
-
-        document
-            .getElementById("lake")
-            .style.display =
-            "block";
-    }
-
-    if (castleUnlocked) {
-
-        document
-            .getElementById("castle")
-            .style.display =
-            "block";
-    }
-
-    if (caveUnlocked) {
-
-        document
-            .getElementById("cave")
-            .style.display =
-            "block";
-    }
-
-    updateLives();
-}
+let finalStarted = false;
 
 
 /* ==================================================
-   SERCA
+   ŻYCIA
 ================================================== */
 
 function updateLives() {
@@ -1494,15 +1462,27 @@ function updateLives() {
     const heart2 =
         document.getElementById("heart2");
 
-    heart1.classList.toggle(
-        "lost",
-        lives < 1
-    );
 
-    heart2.classList.toggle(
-        "lost",
-        lives < 2
-    );
+    if (lives >= 2) {
+
+        heart1.classList.remove("lost");
+        heart2.classList.remove("lost");
+
+    }
+
+    else if (lives === 1) {
+
+        heart1.classList.remove("lost");
+        heart2.classList.add("lost");
+
+    }
+
+    else {
+
+        heart1.classList.add("lost");
+        heart2.classList.add("lost");
+
+    }
 }
 
 
@@ -1514,32 +1494,45 @@ function loseLife() {
 
     lives--;
 
-    if (lives < 0)
-        lives = 0;
-
-    localStorage.setItem(
-        "lives",
-        lives
-    );
-
     updateLives();
 
     if (lives <= 0) {
 
-        document
-            .getElementById("puzzle-screen")
-            .style.display =
-            "none";
+        setTimeout(
+            showGameOver,
+            300
+        );
 
-        document
-            .getElementById("game-over")
-            .style.display =
-            "flex";
-
-        return true;
     }
 
-    return false;
+}
+
+
+/* ==================================================
+   PRZEGRANA
+================================================== */
+
+function showGameOver() {
+
+    document
+        .getElementById("puzzle-screen")
+        .style.display =
+        "none";
+
+    document
+        .getElementById("lives-box")
+        .style.display =
+        "none";
+
+    document
+        .getElementById("game")
+        .style.display =
+        "none";
+
+    document
+        .getElementById("game-over")
+        .style.display =
+        "flex";
 }
 
 
@@ -1549,18 +1542,13 @@ function loseLife() {
 
 function openHouse() {
 
-    houseVisited =
-        true;
-
-    localStorage.setItem(
-        "houseVisited",
-        "true"
-    );
+    houseVisited = true;
 
     document
         .getElementById("forest")
         .style.display =
         "block";
+
 
     currentLocation =
         "house";
@@ -1674,6 +1662,7 @@ document
                     /\B(?=(\d{3})+(?!\d))/g,
                     " "
                 );
+
         }
     );
 
@@ -1812,11 +1801,6 @@ function checkForestAnswer() {
         lakeUnlocked =
             true;
 
-        localStorage.setItem(
-            "lakeUnlocked",
-            "true"
-        );
-
         document
             .getElementById("lake")
             .style.display =
@@ -1836,15 +1820,14 @@ function checkForestAnswer() {
 
     else {
 
-        const dead =
-            loseLife();
+        loseLife();
 
-        if (!dead) {
+        if (lives > 0) {
 
             document
                 .getElementById("message")
                 .textContent =
-                "✗ Zła odpowiedź. Straciłeś ❤️";
+                "✗ Zła odpowiedź. Straciłeś życie.";
 
         }
 
@@ -1857,6 +1840,9 @@ function checkForestAnswer() {
 ================================================== */
 
 function openLake() {
+
+    if (!lakeUnlocked)
+        return;
 
     currentLocation =
         "lake";
@@ -1961,11 +1947,6 @@ function checkLakeAnswer(option) {
         castleUnlocked =
             true;
 
-        localStorage.setItem(
-            "castleUnlocked",
-            "true"
-        );
-
         document
             .getElementById("castle")
             .style.display =
@@ -1985,15 +1966,14 @@ function checkLakeAnswer(option) {
 
     else {
 
-        const dead =
-            loseLife();
+        loseLife();
 
-        if (!dead) {
+        if (lives > 0) {
 
             document
                 .getElementById("message")
                 .textContent =
-                "✗ Zła odpowiedź. Straciłeś ❤️";
+                "✗ Zła odpowiedź. Straciłeś życie.";
 
         }
 
@@ -2006,6 +1986,9 @@ function checkLakeAnswer(option) {
 ================================================== */
 
 function openCastle() {
+
+    if (!castleUnlocked)
+        return;
 
     currentLocation =
         "castle";
@@ -2139,11 +2122,6 @@ function checkCastleAnswer() {
         caveUnlocked =
             true;
 
-        localStorage.setItem(
-            "caveUnlocked",
-            "true"
-        );
-
         document
             .getElementById("cave")
             .style.display =
@@ -2163,15 +2141,14 @@ function checkCastleAnswer() {
 
     else {
 
-        const dead =
-            loseLife();
+        loseLife();
 
-        if (!dead) {
+        if (lives > 0) {
 
             document
                 .getElementById("message")
                 .textContent =
-                "✗ Zła odpowiedź. Straciłeś ❤️";
+                "✗ Zła odpowiedź. Straciłeś życie.";
 
         }
 
@@ -2199,277 +2176,395 @@ function openCave() {
         "none";
 
     document
-        .getElementById("lives")
+        .getElementById("lives-box")
         .style.display =
         "none";
 
-    document
-        .getElementById("cave-screen")
-        .style.display =
+    const caveScreen =
+        document
+            .getElementById("cave-screen");
+
+    caveScreen.style.display =
         "flex";
 
     document
-        .getElementById("cave-start")
-        .style.display =
-        "flex";
-
-    document
-        .getElementById("final-message")
+        .getElementById("cave-message-button")
         .style.display =
         "none";
-}
-
-
-/* ==================================================
-   FINAŁOWA WIADOMOŚĆ
-================================================== */
-
-const finalText = [
-
-    "Bylem pogubionym nastolatkiem, kiedy Cię pierwszy raz spotkałem.",
-
-    "Dalej pamiętam, jak stałeś w moich drzwiach, kiedy się obudziłem XD.",
-
-    "Na początku chyba sam nie wiedziałem, co z tego wszystkiego będzie.",
-
-    "Z czasem trochę się do mnie otworzyłeś...",
-
-    "No dobra, bardziej to ja otworzyłem się do Ciebie.",
-
-    "I chyba właśnie tego najbardziej potrzebowałem.",
-
-    "Pomogłeś mi z większością problemów, które wtedy mnie doskwierały.",
-
-    "Czasami wystarczyło, że po prostu byłeś i mogłem z Tobą pogadać.",
-
-    "Nie zawsze musiałeś nawet coś mówić.",
-
-    "Po prostu dobrze było wiedzieć, że jesteś.",
-
-    "Dzięki Tobie wiele rzeczy zacząłem widzieć trochę inaczej.",
-
-    "I chociaż pewnie nie zdajesz sobie sprawy z tego, jak bardzo mi pomogłeś, to naprawdę zrobiłeś dla mnie więcej, niż możesz myśleć.",
-
-    "Dziękuję Ci za to, że byłeś wtedy, kiedy najbardziej Cię potrzebowałem — nawet jeśli sam nie wiedziałem, że Cię potrzebuję.",
-
-    "I niezależnie od tego, gdzie nas dalej życie zabierze, mam nadzieję, że kiedyś spojrzysz na mnie i pomyślisz:",
-
-    "„Kurwa, dobrze, że zgodziłem się pojechać z Ania XD”.",
-
-    "Bo ja wiem jedno — poznanie Ciebie było jedną z najlepszych rzeczy, jakie mnie w życiu spotkały.",
-
-    "❤️"
-
-];
-
-
-/* ==================================================
-   URUCHOMIENIE FINAŁU
-================================================== */
-
-function startFinalMessage() {
-
-    document
-        .getElementById("cave-start")
-        .style.display =
-        "none";
-
-    const final =
-        document.getElementById(
-            "final-message"
-        );
-
-    final.style.display =
-        "block";
-
-    const track =
-        document.getElementById(
-            "final-message-track"
-        );
-
-    track.innerHTML =
-        "";
-
-    finalText.forEach(
-        function(text, index) {
-
-            const line =
-                document.createElement("div");
-
-            line.className =
-                "final-line";
-
-            if (
-                index === 12
-                ||
-                index === 15
-            ) {
-
-                line.classList.add(
-                    "final-highlight"
-                );
-            }
-
-            if (
-                index === 16
-            ) {
-
-                line.classList.add(
-                    "final-heart"
-                );
-            }
-
-            line.textContent =
-                text;
-
-            track.appendChild(
-                line
-            );
-
-        }
-    );
-
-    playFinalText();
-}
-
-
-/* ==================================================
-   ANIMACJA FINAŁU
-================================================== */
-
-function playFinalText() {
-
-    const lines =
-        document.querySelectorAll(
-            ".final-line"
-        );
-
-    let current =
-        0;
-
-    function showNextLine() {
-
-        if (
-            current >=
-            lines.length
-        ) {
-
-            setTimeout(
-                finishFinalMessage,
-                5000
-            );
-
-            return;
-        }
-
-        const line =
-            lines[current];
-
-        line.classList.add(
-            "visible"
-        );
-
-        /*
-         * Przesuwamy całą historię
-         * w dół / górę bardzo powoli.
-         */
-
-        const offset =
-            current * 118;
-
-        const track =
-            document.getElementById(
-                "final-message-track"
-            );
-
-        track.style.transition =
-            "transform 2.8s ease";
-
-        track.style.transform =
-            `translateX(-50%) translateY(-${offset}px)`;
-
-
-        /*
-         * Po pojawieniu się kilku
-         * kolejnych wersów starsze
-         * zaczynają znikać.
-         */
-
-        if (
-            current >= 4
-        ) {
-
-            lines[current - 4]
-                .classList.add(
-                    "fade-away"
-                );
-        }
-
-
-        current++;
-
-        /*
-         * Tempo czytania.
-         * Około 3.7 sekundy na wers.
-         */
-
-        setTimeout(
-            showNextLine,
-            3700
-        );
-    }
-
-
-    /*
-     * Mała pauza przed rozpoczęciem.
-     */
-
-    setTimeout(
-        showNextLine,
-        1200
-    );
-}
-
-
-/* ==================================================
-   KONIEC WIADOMOŚCI
-================================================== */
-
-function finishFinalMessage() {
-
-    const final =
-        document.getElementById(
-            "final-message"
-        );
-
-    final.style.transition =
-        "opacity 3s ease";
-
-    final.style.opacity =
-        "0";
 
     setTimeout(
         function() {
 
-            final.style.display =
-                "none";
-
-            final.style.opacity =
-                "1";
-
-            const end =
-                document.getElementById(
-                    "final-end"
-                );
-
-            if (end) {
-
-                end.style.display =
-                    "flex";
-            }
+            document
+                .getElementById(
+                    "cave-message-button"
+                )
+                .style.display =
+                "block";
 
         },
-        3000
+        1800
+    );
+}
+
+
+/* ==================================================
+   START FINAŁU
+================================================== */
+
+function startFinalMessage() {
+
+    if (finalStarted)
+        return;
+
+    finalStarted =
+        true;
+
+    document
+        .getElementById("cave-screen")
+        .style.display =
+        "none";
+
+    const warning =
+        document
+            .getElementById("reading-warning");
+
+    warning.style.display =
+        "flex";
+
+
+    setTimeout(
+        function() {
+
+            warning.style.display =
+                "none";
+
+            startScrollingFinalText();
+
+        },
+        2200
+    );
+}
+
+
+/* ==================================================
+   FINAŁOWY TEKST
+================================================== */
+
+function startScrollingFinalText() {
+
+    const finalScreen =
+        document
+            .getElementById("final-screen");
+
+    const container =
+        document
+            .getElementById(
+                "final-text-container"
+            );
+
+    finalScreen.style.display =
+        "block";
+
+    container.innerHTML =
+        "";
+
+
+    const text = [
+
+        "Byłem pogubionym nastolatkiem, kiedy Cię pierwszy raz spotkałem.",
+
+        "Dalej pamiętam, jak stałeś w moich drzwiach, kiedy się obudziłem XD.",
+
+        "I chyba wtedy jeszcze nie miałem pojęcia, jak dużo zmieni się przez ten czas.",
+
+        "Z czasem trochę się do mnie otworzyłeś…",
+
+        "no dobra, bardziej to ja otworzyłem się do Ciebie.",
+
+        "Pomogłeś mi z większością problemów, które wtedy mnie doskwierały.",
+
+        "Byłeś przy mnie w momentach, w których naprawdę tego potrzebowałem.",
+
+        "I nawet jeśli nie zawsze Ci to mówiłem, naprawdę dużo to dla mnie znaczyło.",
+
+        "Dziękuję Ci za to, że byłeś wtedy, kiedy najbardziej Cię potrzebowałem — nawet jeśli sam nie wiedziałem, że Cię potrzebuję.",
+
+        "I niezależnie od tego, gdzie nas dalej życie zabierze, mam nadzieję, że kiedyś spojrzysz na mnie i pomyślisz:",
+
+        "„Kurwa, dobrze, że zgodziłem się pojechać z Anią XD”.",
+
+        "Bo ja wiem jedno — poznanie Ciebie było jedną z najlepszych rzeczy, jakie mnie w życiu spotkały. ❤️"
+
+    ];
+
+
+    text.forEach(
+        function(line) {
+
+            const element =
+                document.createElement("div");
+
+            element.className =
+                "final-line";
+
+            element.textContent =
+                line;
+
+            container.appendChild(
+                element
+            );
+
+        }
+    );
+
+
+    const lines =
+        Array.from(
+            container.children
+        );
+
+
+    const totalTime =
+        8000;
+
+    const lineDelay =
+        totalTime /
+        lines.length;
+
+
+    lines.forEach(
+        function(line, index) {
+
+            setTimeout(
+                function() {
+
+                    line.style.opacity =
+                        "1";
+
+                },
+                index * lineDelay
+            );
+
+        }
+    );
+
+
+    /*
+       Tekst zaczyna powoli
+       przesuwać się w górę.
+    */
+
+    let position =
+        window.innerHeight * 0.78;
+
+    container.style.top =
+        position + "px";
+
+
+    const startTime =
+        performance.now();
+
+    const scrollDuration =
+        8000;
+
+
+    function animate(time) {
+
+        const elapsed =
+            time - startTime;
+
+        const progress =
+            Math.min(
+                elapsed /
+                scrollDuration,
+                1
+            );
+
+
+        /*
+           Tekst przechodzi przez ekran
+           i znika za górą.
+        */
+
+        const distance =
+            window.innerHeight * 1.65;
+
+        const current =
+            position -
+            distance * progress;
+
+
+        container.style.top =
+            current + "px";
+
+
+        /*
+           Delikatne zanikanie
+           przy końcu.
+        */
+
+        if (progress > 0.72) {
+
+            const fade =
+                1 -
+                (
+                    (progress - 0.72) /
+                    0.28
+                );
+
+            container.style.opacity =
+                Math.max(
+                    0,
+                    fade
+                );
+
+        }
+
+
+        if (progress < 1) {
+
+            requestAnimationFrame(
+                animate
+            );
+
+        }
+
+        else {
+
+            finishFinal();
+
+        }
+
+    }
+
+    requestAnimationFrame(
+        animate
+    );
+}
+
+
+/* ==================================================
+   KONIEC FINAŁU
+================================================== */
+
+function finishFinal() {
+
+    document
+        .getElementById("final-screen")
+        .style.display =
+        "none";
+
+    const afterFinal =
+        document
+            .getElementById("after-final");
+
+    afterFinal.style.display =
+        "block";
+
+
+    /*
+       Czarny ekran przez 5 sekund.
+    */
+
+    setTimeout(
+        function() {
+
+            revealMap();
+
+        },
+        5000
+    );
+}
+
+
+/* ==================================================
+   ODSŁONIĘCIE MAPY
+================================================== */
+
+function revealMap() {
+
+    /*
+       Wszystko odblokowane.
+    */
+
+    houseVisited =
+        true;
+
+    lakeUnlocked =
+        true;
+
+    castleUnlocked =
+        true;
+
+    caveUnlocked =
+        true;
+
+
+    document
+        .getElementById("house")
+        .style.display =
+        "block";
+
+    document
+        .getElementById("forest")
+        .style.display =
+        "block";
+
+    document
+        .getElementById("lake")
+        .style.display =
+        "block";
+
+    document
+        .getElementById("castle")
+        .style.display =
+        "block";
+
+    document
+        .getElementById("cave")
+        .style.display =
+        "block";
+
+
+    document
+        .getElementById("game")
+        .style.display =
+        "block";
+
+
+    document
+        .getElementById("lives-box")
+        .style.display =
+        "flex";
+
+
+    const reveal =
+        document
+            .getElementById("map-reveal");
+
+    reveal.style.opacity =
+        "1";
+
+    setTimeout(
+        function() {
+
+            reveal.style.opacity =
+                "0";
+
+        },
+        100
+    );
+
+
+    setTimeout(
+        function() {
+
+            reveal.style.display =
+                "none";
+
+        },
+        4200
     );
 }
 
@@ -2594,6 +2689,7 @@ function showHint() {
 
         return;
     }
+
 }
 
 
@@ -2792,7 +2888,7 @@ function closePuzzle() {
    START
 ================================================== */
 
-restoreProgress();
+updateLives();
 
 </script>
 
