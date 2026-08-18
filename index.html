@@ -2852,14 +2852,17 @@ function closePuzzle() {
 ================================================== */
 
 updateLives();
-      
-document.addEventListener("click", function () {
+      document.addEventListener("click", function () {
 
     const music = document.getElementById("dayMusic");
 
-    music.volume = 1;
-
-    music.play();
+    music.play()
+        .then(() => {
+            alert("MUZYKA ZNALEZIONA I URUCHOMIONA");
+        })
+        .catch((error) => {
+            alert("BŁĄD: " + error);
+        });
 
 }, { once: true });
 
