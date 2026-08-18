@@ -67,6 +67,45 @@ body {
 
 
 /* ==================================================
+   ŻYCIA
+================================================== */
+
+#lives {
+    position: fixed;
+
+    top: 20px;
+    left: 25px;
+
+    z-index: 50;
+
+    font-size: 32px;
+
+    letter-spacing: 5px;
+
+    padding:
+        8px 14px;
+
+    border-radius:
+        14px;
+
+    background:
+        rgba(0,0,0,0.45);
+
+    backdrop-filter:
+        blur(4px);
+
+    text-shadow:
+        0 0 10px rgba(0,0,0,0.8);
+
+    pointer-events:
+        none;
+
+    user-select:
+        none;
+}
+
+
+/* ==================================================
    CYKL DNIA I NOCY
 ================================================== */
 
@@ -297,6 +336,8 @@ body {
 #forest {
     left: 35.45%;
     top: 45.08%;
+
+    display: none;
 }
 
 
@@ -862,6 +903,14 @@ body {
 </div>
 
 
+<!-- ==================================================
+     ŻYCIA
+================================================== -->
+
+<div id="lives">
+    ❤️ ❤️
+</div>
+
 
 <!-- ==================================================
      OKNO ZAGADKI
@@ -936,7 +985,6 @@ body {
 </div>
 
 
-
 <!-- ==================================================
      JASKINIA
 ================================================== -->
@@ -956,6 +1004,10 @@ body {
    STAN GRY
 ================================================== */
 
+let lives = 2;
+
+let houseVisited = false;
+
 let lakeUnlocked = false;
 let castleUnlocked = false;
 let caveUnlocked = false;
@@ -966,6 +1018,82 @@ let hintStage = 0;
 
 
 /* ==================================================
+   AKTUALIZACJA ŻYCIA
+================================================== */
+
+function updateLives() {
+
+    const livesElement =
+        document.getElementById("lives");
+
+    if (lives === 2) {
+
+        livesElement.textContent =
+            "❤️ ❤️";
+
+    }
+
+    else if (lives === 1) {
+
+        livesElement.textContent =
+            "❤️ ♡";
+
+    }
+
+    else {
+
+        livesElement.textContent =
+            "♡ ♡";
+
+    }
+}
+
+
+/* ==================================================
+   UTRATA ŻYCIA
+================================================== */
+
+function loseLife() {
+
+    lives--;
+
+    updateLives();
+
+    if (lives <= 0) {
+
+        document
+            .getElementById("puzzle-screen")
+            .style.display =
+            "none";
+
+        document
+            .getElementById("game")
+            .style.display =
+            "none";
+
+        document
+            .getElementById("lives")
+            .style.display =
+            "none";
+
+        setTimeout(
+            function() {
+
+                window.location.href =
+                    "about:blank";
+
+            },
+            500
+        );
+
+        return true;
+    }
+
+    return false;
+}
+
+
+/* ==================================================
    DOMEK
 ================================================== */
 
@@ -973,6 +1101,14 @@ function openHouse() {
 
     currentLocation =
         "house";
+
+    houseVisited =
+        true;
+
+    document
+        .getElementById("forest")
+        .style.display =
+        "block";
 
     resetPuzzle();
 
@@ -1133,6 +1269,12 @@ function resetPuzzle() {
 
 function openForest() {
 
+    if (!houseVisited) {
+
+        return;
+
+    }
+
     currentLocation =
         "forest";
 
@@ -1238,10 +1380,14 @@ function checkForestAnswer() {
 
     else {
 
+        if (loseLife()) {
+            return;
+        }
+
         document
             .getElementById("message")
             .textContent =
-            "✗ Spróbuj jeszcze raz.";
+            "✗ Zła odpowiedź. Straciłeś życie.";
 
     }
 }
@@ -1375,10 +1521,14 @@ function checkLakeAnswer(option) {
 
     else {
 
+        if (loseLife()) {
+            return;
+        }
+
         document
             .getElementById("message")
             .textContent =
-            "✗ Spróbuj jeszcze raz.";
+            "✗ Zła odpowiedź. Straciłeś życie.";
 
     }
 }
@@ -1541,10 +1691,14 @@ function checkCastleAnswer() {
 
     else {
 
+        if (loseLife()) {
+            return;
+        }
+
         document
             .getElementById("message")
             .textContent =
-            "✗ Spróbuj jeszcze raz.";
+            "✗ Zła odpowiedź. Straciłeś życie.";
 
     }
 }
@@ -1967,6 +2121,13 @@ function closePuzzle() {
         .textContent =
         "";
 }
+
+
+/* ==================================================
+   START
+================================================== */
+
+updateLives();
 
 </script>
 
