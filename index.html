@@ -85,11 +85,18 @@ body {
     background:
         rgba(0,0,0,0);
 
-    animation:
-        dayNightCycle 60s linear infinite;
-
     mix-blend-mode: multiply;
 }
+
+
+/*
+    Cykl:
+    
+    0–20 s   → dzień
+    20–30 s  → zachód
+    30–50 s  → noc
+    50–60 s  → świt
+*/
 
 @keyframes dayNightCycle {
 
@@ -98,7 +105,7 @@ body {
             rgba(0,0,0,0);
     }
 
-    25% {
+    33.333% {
         background:
             rgba(0,0,0,0);
     }
@@ -108,15 +115,78 @@ body {
             rgba(10,15,55,0.48);
     }
 
-    75% {
+    83.333% {
         background:
-            rgba(10,15,55,0.20);
+            rgba(10,15,55,0.48);
     }
 
     100% {
         background:
             rgba(0,0,0,0);
     }
+}
+
+#day-night {
+    animation:
+        dayNightCycle 60s linear infinite;
+}
+
+
+/* ==================================================
+   MUZYKA
+================================================== */
+
+#music-start {
+
+    position: fixed;
+
+    left: 50%;
+    bottom: 25px;
+
+    transform:
+        translateX(-50%);
+
+    z-index: 10000;
+
+    padding:
+        12px 22px;
+
+    border:
+        2px solid white;
+
+    border-radius:
+        12px;
+
+    background:
+        rgba(0,0,0,0.85);
+
+    color:
+        white;
+
+    font-size:
+        16px;
+
+    cursor:
+        pointer;
+
+    transition:
+        opacity 0.5s ease,
+        transform 0.2s ease;
+}
+
+#music-start:hover {
+
+    transform:
+        translateX(-50%)
+        translateY(-2px);
+}
+
+#music-start.hidden {
+
+    opacity: 0;
+
+    pointer-events:
+        none;
 }
 
 
@@ -1244,6 +1314,19 @@ body {
 
 
 <!-- ==================================================
+     PRZYCISK STARTU MUZYKI
+================================================== -->
+
+<button
+    id="music-start"
+    onclick="startMusic()">
+
+    🎵 Włącz muzykę
+
+</button>
+
+
+<!-- ==================================================
      SERCA
 ================================================== -->
 
@@ -1510,6 +1593,236 @@ let hintStage = 0;
 
 
 /* ==================================================
+   MUZYKA
+================================================== */
+
+const dayMusic =
+    new Audio("day.mp3");
+
+const nightMusic =
+    new Audio("night.mp3");
+
+
+dayMusic.loop = true;
+nightMusic.loop = true;
+
+
+/*
+ * Na początku obie ścieżki są ściszone.
+ */
+
+dayMusic.volume = 0;
+nightMusic.volume = 0;
+
+
+let musicStarted = false;
+
+
+/*
+ * Długość całego cyklu:
+ * 60 sekund.
+ */
+
+const MUSIC_CYCLE =
+    60000;
+
+
+/*
+ * Uruchomienie muzyki.
+ *
+ * Przeglądarka wymaga interakcji
+ * użytkownika przed odtworzeniem audio.
+ */
+
+function startMusic() {
+
+    if (musicStarted)
+        return;
+
+    musicStarted = true;
+
+
+    dayMusic.currentTime = 0;
+    nightMusic.currentTime = 0;
+
+
+    /*
+     * Startujemy obie piosenki jednocześnie.
+     *
+     * Dzięki temu podczas crossfade'u
+     * nie zaczynają się w dziwnych momentach.
+     */
+
+    dayMusic
+        .play()
+        .catch(() => {});
+
+
+    nightMusic
+        .play()
+        .catch(() => {});
+
+
+    document
+        .getElementById("music-start")
+        .classList
+        .add("hidden");
+
+
+    updateMusic();
+}
+
+
+/*
+ * Płynna zmiana głośności.
+ *
+ * 0–20 sekund:
+ * dzień
+ *
+ * 20–30 sekund:
+ * zachód
+ *
+ * 30–50 sekund:
+ * noc
+ *
+ * 50–60 sekund:
+ * świt
+ */
+
+function updateMusic() {
+
+    if (!musicStarted)
+        return;
+
+
+    const elapsed =
+        Date.now() % MUSIC_CYCLE;
+
+
+    const seconds =
+        elapsed / 1000;
+
+
+    let dayVolume = 0;
+    let nightVolume = 0;
+
+
+    /*
+     * DZIEŃ
+     */
+
+    if (seconds < 20) {
+
+        dayVolume = 1;
+        nightVolume = 0;
+
+    }
+
+
+    /*
+     * ZACHÓD
+     *
+     * 20 → 30 sekund
+     */
+
+    else if (seconds < 30) {
+
+        const progress =
+            (seconds - 20) / 10;
+
+
+        /*
+         * Smoothstep.
+         *
+         * Dzięki temu przejście
+         * zaczyna się i kończy łagodnie.
+         */
+
+        const smooth =
+            progress *
+            progress *
+            (3 - 2 * progress);
+
+
+        dayVolume =
+            1 - smooth;
+
+        nightVolume =
+            smooth;
+
+    }
+
+
+    /*
+     * NOC
+     */
+
+    else if (seconds < 50) {
+
+        dayVolume = 0;
+        nightVolume = 1;
+
+    }
+
+
+    /*
+     * ŚWIT
+     *
+     * 50 → 60 sekund
+     */
+
+    else {
+
+        const progress =
+            (seconds - 50) / 10;
+
+
+        const smooth =
+            progress *
+            progress *
+            (3 - 2 * progress);
+
+
+        dayVolume =
+            smooth;
+
+        nightVolume =
+            1 - smooth;
+
+    }
+
+
+    /*
+     * Ustawienie głośności.
+     */
+
+    dayMusic.volume =
+        Math.max(
+            0,
+            Math.min(
+                1,
+                dayVolume
+            )
+        );
+
+
+    nightMusic.volume =
+        Math.max(
+            0,
+            Math.min(
+                1,
+                nightVolume
+            )
+        );
+
+
+    requestAnimationFrame(
+        updateMusic
+    );
+}
+
+
+/* ==================================================
    SERCA
 ================================================== */
 
@@ -1571,6 +1884,8 @@ function loseLife() {
 ================================================== */
 
 function openHouse() {
+
+    startMusic();
 
     currentLocation =
         "house";
@@ -1739,6 +2054,8 @@ function resetPuzzle() {
 
 function openForest() {
 
+    startMusic();
+
     currentLocation =
         "forest";
 
@@ -1859,6 +2176,8 @@ function checkForestAnswer() {
 ================================================== */
 
 function openLake() {
+
+    startMusic();
 
     currentLocation =
         "lake";
@@ -1997,6 +2316,8 @@ function checkLakeAnswer(option) {
 ================================================== */
 
 function openCastle() {
+
+    startMusic();
 
     currentLocation =
         "castle";
@@ -2291,12 +2612,6 @@ function playFinalLine(index) {
             );
 
 
-            /*
-             * Każdy wers ma własny czas.
-             * Krótsze zdania trochę szybciej,
-             * dłuższe trochę dłużej.
-             */
-
             const length =
                 finalLines[index].length;
 
@@ -2317,11 +2632,6 @@ function playFinalLine(index) {
                         "visible"
                     );
 
-
-                    /*
-                     * Czekamy aż poprzedni
-                     * wers faktycznie zniknie.
-                     */
 
                     setTimeout(
                         function() {
