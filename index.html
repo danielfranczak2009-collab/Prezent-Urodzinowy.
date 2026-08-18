@@ -67,121 +67,6 @@ body {
 
 
 /* ==================================================
-   ŻYCIA
-================================================== */
-
-#lives {
-    position: fixed;
-
-    top: 20px;
-    right: 25px;
-
-    z-index: 60;
-
-    font-size: 32px;
-
-    letter-spacing: 5px;
-
-    padding:
-        8px 14px;
-
-    border-radius:
-        14px;
-
-    background:
-        #171717;
-
-    border:
-        2px solid
-        rgba(255,255,255,0.25);
-
-    box-shadow:
-        0 4px 15px
-        rgba(0,0,0,0.7);
-
-    text-shadow:
-        0 0 8px
-        rgba(0,0,0,0.8);
-
-    pointer-events:
-        none;
-
-    user-select:
-        none;
-}
-
-
-/* ==================================================
-   EKRAN KOŃCA GRY
-================================================== */
-
-#game-over {
-    position: fixed;
-
-    inset: 0;
-
-    display: none;
-
-    align-items: center;
-
-    justify-content: center;
-
-    flex-direction: column;
-
-    background:
-        #000000;
-
-    color:
-        white;
-
-    z-index:
-        1000;
-
-    text-align:
-        center;
-
-    padding:
-        30px;
-}
-
-#game-over h1 {
-
-    font-size:
-        52px;
-
-    margin:
-        0 0 20px;
-
-}
-
-#game-over p {
-
-    font-size:
-        21px;
-
-    margin:
-        0;
-
-    opacity:
-        0.85;
-
-    line-height:
-        1.6;
-
-}
-
-.game-over-heart {
-
-    font-size:
-        60px;
-
-    margin-bottom:
-        20px;
-
-}
-
-
-/* ==================================================
    CYKL DNIA I NOCY
 ================================================== */
 
@@ -363,6 +248,64 @@ body {
 
 
 /* ==================================================
+   SERCA
+================================================== */
+
+#lives {
+
+    position: fixed;
+
+    top: 20px;
+    right: 20px;
+
+    z-index: 200;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 7px;
+
+    padding: 10px 14px;
+
+    background: rgba(20,20,20,0.95);
+
+    border:
+        2px solid
+        rgba(255,255,255,0.25);
+
+    border-radius: 14px;
+
+    box-shadow:
+        0 5px 20px
+        rgba(0,0,0,0.45);
+
+    font-size: 27px;
+
+    user-select: none;
+}
+
+.heart {
+    transition:
+        opacity 0.3s ease,
+        transform 0.3s ease;
+
+    line-height: 1;
+}
+
+.heart.lost {
+
+    opacity: 0.18;
+
+    transform:
+        scale(0.85);
+
+    filter:
+        grayscale(1);
+}
+
+
+/* ==================================================
    HOTSPOTY
 ================================================== */
 
@@ -414,8 +357,7 @@ body {
     left: 35.45%;
     top: 45.08%;
 
-    display:
-        none;
+    display: none;
 }
 
 
@@ -428,8 +370,7 @@ body {
     left: 54.85%;
     top: 44.54%;
 
-    display:
-        none;
+    display: none;
 }
 
 
@@ -457,8 +398,7 @@ body {
         6.757% 100%
     );
 
-    display:
-        none;
+    display: none;
 }
 
 
@@ -471,8 +411,7 @@ body {
     left: 86.82%;
     top: 22.81%;
 
-    display:
-        none;
+    display: none;
 }
 
 
@@ -483,13 +422,11 @@ body {
 #puzzle-screen {
 
     position: fixed;
-
     inset: 0;
 
     display: none;
 
     align-items: center;
-
     justify-content: center;
 
     padding: 20px;
@@ -532,7 +469,8 @@ body {
         center;
 
     box-shadow:
-        0 0 40px rgba(0,0,0,0.8);
+        0 0 40px
+        rgba(0,0,0,0.8);
 
     border:
         1px solid
@@ -541,20 +479,16 @@ body {
 
 #puzzle-box h1 {
 
-    margin-top:
-        0;
+    margin-top: 0;
 
-    font-size:
-        36px;
+    font-size: 36px;
 }
 
 #puzzle-box p {
 
-    font-size:
-        18px;
+    font-size: 18px;
 
-    line-height:
-        1.6;
+    line-height: 1.6;
 }
 
 
@@ -564,29 +498,22 @@ body {
 
 #answer {
 
-    width:
-        220px;
+    width: 220px;
 
-    padding:
-        12px;
+    padding: 12px;
 
-    margin-top:
-        10px;
+    margin-top: 10px;
 
     border:
         2px solid white;
 
-    border-radius:
-        8px;
+    border-radius: 8px;
 
-    font-size:
-        18px;
+    font-size: 18px;
 
-    text-align:
-        center;
+    text-align: center;
 
-    outline:
-        none;
+    outline: none;
 }
 
 
@@ -880,10 +807,310 @@ body {
 
 
 /* ==================================================
-   JASKINIA — FINAŁ
+   EKRAN ŚMIERCI
+================================================== */
+
+#game-over {
+
+    position:
+        fixed;
+
+    inset:
+        0;
+
+    z-index:
+        1000;
+
+    display:
+        none;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    background:
+        rgba(0,0,0,0.96);
+
+    color:
+        white;
+
+    text-align:
+        center;
+}
+
+#game-over-box {
+
+    width:
+        min(500px,90vw);
+
+    padding:
+        45px 30px;
+
+    border-radius:
+        22px;
+
+    background:
+        #171717;
+
+    border:
+        1px solid
+        rgba(255,255,255,0.15);
+
+    box-shadow:
+        0 0 50px
+        rgba(0,0,0,0.8);
+}
+
+#game-over h1 {
+
+    font-size:
+        42px;
+
+    margin-top:
+        0;
+}
+
+#game-over p {
+
+    font-size:
+        19px;
+
+    line-height:
+        1.6;
+}
+
+
+/* ==================================================
+   JASKINIA — KONIEC
 ================================================== */
 
 #cave-screen {
+
+    position:
+        fixed;
+
+    inset:
+        0;
+
+    display:
+        none;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    background:
+        black;
+
+    z-index:
+        500;
+
+    color:
+        white;
+
+    text-align:
+        center;
+
+    padding:
+        30px;
+}
+
+#cave-start {
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    width:
+        100%;
+}
+
+#cave-title {
+
+    font-size:
+        clamp(48px,8vw,90px);
+
+    letter-spacing:
+        12px;
+
+    margin:
+        0 0 50px;
+
+    text-shadow:
+        0 0 25px
+        rgba(255,255,255,0.3);
+}
+
+#message-button {
+
+    padding:
+        16px 30px;
+
+    border:
+        2px solid white;
+
+    border-radius:
+        12px;
+
+    background:
+        white;
+
+    color:
+        black;
+
+    font-size:
+        18px;
+
+    cursor:
+        pointer;
+
+    transition:
+        all 0.2s ease;
+}
+
+#message-button:hover {
+
+    background:
+        black;
+
+    color:
+        white;
+
+    transform:
+        translateY(-2px);
+}
+
+
+/* ==================================================
+   FINAŁOWA WIADOMOŚĆ
+================================================== */
+
+#final-message {
+
+    position:
+        absolute;
+
+    inset:
+        0;
+
+    display:
+        none;
+
+    overflow:
+        hidden;
+
+    background:
+        black;
+
+    color:
+        white;
+}
+
+#final-message-track {
+
+    position:
+        absolute;
+
+    width:
+        min(900px,88vw);
+
+    left:
+        50%;
+
+    transform:
+        translateX(-50%);
+
+    top:
+        100vh;
+
+    text-align:
+        center;
+
+    font-size:
+        clamp(20px,2.2vw,28px);
+
+    line-height:
+        1.8;
+
+    letter-spacing:
+        0.2px;
+
+    will-change:
+        transform;
+}
+
+.final-line {
+
+    opacity:
+        0;
+
+    margin:
+        0 0 22px;
+
+    transition:
+        opacity 2.5s ease;
+
+    min-height:
+        1.8em;
+}
+
+.final-line.visible {
+
+    opacity:
+        1;
+}
+
+.final-line.fade-away {
+
+    opacity:
+        0;
+}
+
+.final-space {
+
+    height:
+        25px;
+}
+
+.final-highlight {
+
+    font-weight:
+        bold;
+
+    font-size:
+        1.08em;
+
+    margin-top:
+        25px;
+}
+
+.final-heart {
+
+    font-size:
+        45px;
+
+    margin-top:
+        30px;
+}
+
+
+/* ==================================================
+   KONIEC FINAŁU
+================================================== */
+
+#final-end {
 
     position:
         fixed;
@@ -906,147 +1133,41 @@ body {
     background:
         black;
 
+    color:
+        white;
+
     z-index:
-        500;
-
-    color:
-        white;
+        700;
 
     text-align:
         center;
-
-    padding:
-        30px;
 }
 
-
-/* ==================================================
-   NAPIS KONIEC
-================================================== */
-
-#cave-ending {
-
-    display:
-        flex;
-
-    flex-direction:
-        column;
-
-    align-items:
-        center;
-
-    justify-content:
-        center;
-
-    width:
-        100%;
-
-    height:
-        100%;
-}
-
-#cave-ending h1 {
+#final-end-text {
 
     font-size:
-        clamp(50px,8vw,100px);
+        28px;
 
-    font-weight:
-        300;
+    opacity:
+        0;
 
-    letter-spacing:
-        12px;
-
-    margin:
-        0 0 45px;
-
-    text-shadow:
-        0 0 25px
-        rgba(255,255,255,0.25);
+    animation:
+        finalAppear 3s ease forwards;
 }
 
+@keyframes finalAppear {
 
-/* ==================================================
-   PRZYCISK WIADOMOŚCI
-================================================== */
+    from {
+        opacity: 0;
+        transform:
+            translateY(20px);
+    }
 
-#message-button {
-
-    padding:
-        15px 28px;
-
-    border:
-        2px solid white;
-
-    border-radius:
-        12px;
-
-    background:
-        white;
-
-    color:
-        black;
-
-    font-size:
-        18px;
-
-    cursor:
-        pointer;
-
-    transition:
-        transform 0.2s ease,
-        background 0.2s ease,
-        color 0.2s ease;
-}
-
-#message-button:hover {
-
-    transform:
-        translateY(-3px);
-
-    background:
-        black;
-
-    color:
-        white;
-}
-
-
-/* ==================================================
-   TEKST FINAŁOWY
-================================================== */
-
-#final-message {
-
-    display:
-        none;
-
-    width:
-        min(850px,90vw);
-
-    max-height:
-        85vh;
-
-    overflow-y:
-        auto;
-
-    font-size:
-        22px;
-
-    line-height:
-        1.9;
-
-    text-align:
-        left;
-
-    white-space:
-        pre-line;
-
-    padding:
-        20px;
-
-    text-shadow:
-        0 0 12px
-        rgba(255,255,255,0.20);
+    to {
+        opacity: 1;
+        transform:
+            translateY(0);
+    }
 }
 
 </style>
@@ -1135,32 +1256,13 @@ body {
 
 
 <!-- ==================================================
-     ŻYCIA
+     SERCA
 ================================================== -->
 
 <div id="lives">
-    ❤️ ❤️
-</div>
 
-
-<!-- ==================================================
-     EKRAN KOŃCA GRY
-================================================== -->
-
-<div id="game-over">
-
-    <div class="game-over-heart">
-        💔
-    </div>
-
-    <h1>
-        Koniec gry
-    </h1>
-
-    <p>
-        Straciłeś wszystkie życia.<br>
-        Odśwież stronę, aby spróbować ponownie.
-    </p>
+    <span id="heart1" class="heart">❤️</span>
+    <span id="heart2" class="heart">❤️</span>
 
 </div>
 
@@ -1239,29 +1341,58 @@ body {
 
 
 <!-- ==================================================
-     JASKINIA / FINAŁ
+     EKRAN KOŃCA ŻYĆ
+================================================== -->
+
+<div id="game-over">
+
+    <div id="game-over-box">
+
+        <h1>💔</h1>
+
+        <h1>Koniec</h1>
+
+        <p>
+            Tym razem Ci się nie udało...
+        </p>
+
+        <p>
+            Odśwież stronę, aby spróbować jeszcze raz.
+        </p>
+
+    </div>
+
+</div>
+
+
+<!-- ==================================================
+     JASKINIA
 ================================================== -->
 
 <div id="cave-screen">
 
-    <div id="cave-ending">
+    <div id="cave-start">
 
-        <h1>
+        <div id="cave-title">
             KONIEC
-        </h1>
+        </div>
 
         <button
             id="message-button"
-            onclick="showFinalMessage()">
-            Wiadomość ode mnie…
+            onclick="startFinalMessage()">
+            Wiadomość Ode Mnie....
         </button>
 
     </div>
 
-    <div id="final-message"></div>
+
+    <div id="final-message">
+
+        <div id="final-message-track"></div>
+
+    </div>
 
 </div>
-
 
 
 <script>
@@ -1271,13 +1402,38 @@ body {
    STAN GRY
 ================================================== */
 
-let lives = 2;
+let lakeUnlocked =
+    localStorage.getItem("lakeUnlocked") === "true";
 
-let houseVisited = false;
+let castleUnlocked =
+    localStorage.getItem("castleUnlocked") === "true";
 
-let lakeUnlocked = false;
-let castleUnlocked = false;
-let caveUnlocked = false;
+let caveUnlocked =
+    localStorage.getItem("caveUnlocked") === "true";
+
+let houseVisited =
+    localStorage.getItem("houseVisited") === "true";
+
+let lives =
+    parseInt(
+        localStorage.getItem("lives")
+    );
+
+if (
+    isNaN(lives)
+    ||
+    lives < 0
+    ||
+    lives > 2
+) {
+
+    lives = 2;
+
+    localStorage.setItem(
+        "lives",
+        "2"
+    );
+}
 
 let currentLocation = "";
 
@@ -1285,33 +1441,68 @@ let hintStage = 0;
 
 
 /* ==================================================
-   AKTUALIZACJA ŻYCIA
+   PRZYWRACANIE POSTĘPU
+================================================== */
+
+function restoreProgress() {
+
+    if (houseVisited) {
+
+        document
+            .getElementById("forest")
+            .style.display =
+            "block";
+    }
+
+    if (lakeUnlocked) {
+
+        document
+            .getElementById("lake")
+            .style.display =
+            "block";
+    }
+
+    if (castleUnlocked) {
+
+        document
+            .getElementById("castle")
+            .style.display =
+            "block";
+    }
+
+    if (caveUnlocked) {
+
+        document
+            .getElementById("cave")
+            .style.display =
+            "block";
+    }
+
+    updateLives();
+}
+
+
+/* ==================================================
+   SERCA
 ================================================== */
 
 function updateLives() {
 
-    const livesElement =
-        document.getElementById("lives");
+    const heart1 =
+        document.getElementById("heart1");
 
-    if (lives === 2) {
+    const heart2 =
+        document.getElementById("heart2");
 
-        livesElement.textContent =
-            "❤️ ❤️";
+    heart1.classList.toggle(
+        "lost",
+        lives < 1
+    );
 
-    }
-
-    else if (lives === 1) {
-
-        livesElement.textContent =
-            "❤️ ♡";
-
-    }
-
-    else {
-
-        livesElement.textContent =
-            "♡ ♡";
-    }
+    heart2.classList.toggle(
+        "lost",
+        lives < 2
+    );
 }
 
 
@@ -1323,22 +1514,20 @@ function loseLife() {
 
     lives--;
 
+    if (lives < 0)
+        lives = 0;
+
+    localStorage.setItem(
+        "lives",
+        lives
+    );
+
     updateLives();
 
     if (lives <= 0) {
 
         document
             .getElementById("puzzle-screen")
-            .style.display =
-            "none";
-
-        document
-            .getElementById("game")
-            .style.display =
-            "none";
-
-        document
-            .getElementById("lives")
             .style.display =
             "none";
 
@@ -1360,16 +1549,21 @@ function loseLife() {
 
 function openHouse() {
 
-    currentLocation =
-        "house";
-
     houseVisited =
         true;
+
+    localStorage.setItem(
+        "houseVisited",
+        "true"
+    );
 
     document
         .getElementById("forest")
         .style.display =
         "block";
+
+    currentLocation =
+        "house";
 
     resetPuzzle();
 
@@ -1480,7 +1674,6 @@ document
                     /\B(?=(\d{3})+(?!\d))/g,
                     " "
                 );
-
         }
     );
 
@@ -1530,9 +1723,8 @@ function resetPuzzle() {
 
 function openForest() {
 
-    if (!houseVisited) {
+    if (!houseVisited)
         return;
-    }
 
     currentLocation =
         "forest";
@@ -1620,6 +1812,11 @@ function checkForestAnswer() {
         lakeUnlocked =
             true;
 
+        localStorage.setItem(
+            "lakeUnlocked",
+            "true"
+        );
+
         document
             .getElementById("lake")
             .style.display =
@@ -1639,14 +1836,17 @@ function checkForestAnswer() {
 
     else {
 
-        if (loseLife()) {
-            return;
-        }
+        const dead =
+            loseLife();
 
-        document
-            .getElementById("message")
-            .textContent =
-            "✗ Zła odpowiedź. Straciłeś życie.";
+        if (!dead) {
+
+            document
+                .getElementById("message")
+                .textContent =
+                "✗ Zła odpowiedź. Straciłeś ❤️";
+
+        }
 
     }
 }
@@ -1761,6 +1961,11 @@ function checkLakeAnswer(option) {
         castleUnlocked =
             true;
 
+        localStorage.setItem(
+            "castleUnlocked",
+            "true"
+        );
+
         document
             .getElementById("castle")
             .style.display =
@@ -1780,14 +1985,17 @@ function checkLakeAnswer(option) {
 
     else {
 
-        if (loseLife()) {
-            return;
-        }
+        const dead =
+            loseLife();
 
-        document
-            .getElementById("message")
-            .textContent =
-            "✗ Zła odpowiedź. Straciłeś życie.";
+        if (!dead) {
+
+            document
+                .getElementById("message")
+                .textContent =
+                "✗ Zła odpowiedź. Straciłeś ❤️";
+
+        }
 
     }
 }
@@ -1931,6 +2139,11 @@ function checkCastleAnswer() {
         caveUnlocked =
             true;
 
+        localStorage.setItem(
+            "caveUnlocked",
+            "true"
+        );
+
         document
             .getElementById("cave")
             .style.display =
@@ -1950,14 +2163,17 @@ function checkCastleAnswer() {
 
     else {
 
-        if (loseLife()) {
-            return;
-        }
+        const dead =
+            loseLife();
 
-        document
-            .getElementById("message")
-            .textContent =
-            "✗ Zła odpowiedź. Straciłeś życie.";
+        if (!dead) {
+
+            document
+                .getElementById("message")
+                .textContent =
+                "✗ Zła odpowiedź. Straciłeś ❤️";
+
+        }
 
     }
 }
@@ -1987,15 +2203,13 @@ function openCave() {
         .style.display =
         "none";
 
-    const caveScreen =
-        document
-            .getElementById("cave-screen");
-
-    caveScreen.style.display =
+    document
+        .getElementById("cave-screen")
+        .style.display =
         "flex";
 
     document
-        .getElementById("cave-ending")
+        .getElementById("cave-start")
         .style.display =
         "flex";
 
@@ -2007,106 +2221,256 @@ function openCave() {
 
 
 /* ==================================================
-   POKAZANIE WIADOMOŚCI
+   FINAŁOWA WIADOMOŚĆ
 ================================================== */
 
-function showFinalMessage() {
+const finalText = [
+
+    "Bylem pogubionym nastolatkiem, kiedy Cię pierwszy raz spotkałem.",
+
+    "Dalej pamiętam, jak stałeś w moich drzwiach, kiedy się obudziłem XD.",
+
+    "Na początku chyba sam nie wiedziałem, co z tego wszystkiego będzie.",
+
+    "Z czasem trochę się do mnie otworzyłeś...",
+
+    "No dobra, bardziej to ja otworzyłem się do Ciebie.",
+
+    "I chyba właśnie tego najbardziej potrzebowałem.",
+
+    "Pomogłeś mi z większością problemów, które wtedy mnie doskwierały.",
+
+    "Czasami wystarczyło, że po prostu byłeś i mogłem z Tobą pogadać.",
+
+    "Nie zawsze musiałeś nawet coś mówić.",
+
+    "Po prostu dobrze było wiedzieć, że jesteś.",
+
+    "Dzięki Tobie wiele rzeczy zacząłem widzieć trochę inaczej.",
+
+    "I chociaż pewnie nie zdajesz sobie sprawy z tego, jak bardzo mi pomogłeś, to naprawdę zrobiłeś dla mnie więcej, niż możesz myśleć.",
+
+    "Dziękuję Ci za to, że byłeś wtedy, kiedy najbardziej Cię potrzebowałem — nawet jeśli sam nie wiedziałem, że Cię potrzebuję.",
+
+    "I niezależnie od tego, gdzie nas dalej życie zabierze, mam nadzieję, że kiedyś spojrzysz na mnie i pomyślisz:",
+
+    "„Kurwa, dobrze, że zgodziłem się pojechać z Ania XD”.",
+
+    "Bo ja wiem jedno — poznanie Ciebie było jedną z najlepszych rzeczy, jakie mnie w życiu spotkały.",
+
+    "❤️"
+
+];
+
+
+/* ==================================================
+   URUCHOMIENIE FINAŁU
+================================================== */
+
+function startFinalMessage() {
 
     document
-        .getElementById("cave-ending")
+        .getElementById("cave-start")
         .style.display =
         "none";
 
-    const finalMessage =
-        document
-            .getElementById("final-message");
+    const final =
+        document.getElementById(
+            "final-message"
+        );
 
-    finalMessage.style.display =
+    final.style.display =
         "block";
 
-    const text =
-`Byłem pogubionym nastolatkiem, kiedy Cię pierwszy raz spotkałem. Dalej pamiętam jak stałeś w moich drzwiach, kiedy się obudziłem XD. Wtedy jeszcze kompletnie nie wiedziałem, że poznaję kogoś, kto z czasem będzie dla mnie tak ważny.
+    const track =
+        document.getElementById(
+            "final-message-track"
+        );
 
-Z czasem trochę się do mnie otworzyłeś, chociaż tak szczerze to chyba bardziej ja otworzyłem się przed Tobą. Zacząłem Ci mówić o różnych rzeczach, o których wcześniej raczej z nikim nie rozmawiałem. O problemach, które mnie męczyły, o tym co siedziało mi w głowie i o różnych rzeczach, z którymi sam nie do końca wiedziałem co zrobić.
+    track.innerHTML =
+        "";
 
-I pomogłeś mi z większością tych problemów. Czasami coś mi doradziłeś, czasami po prostu mnie wysłuchałeś, a czasami wystarczyło, że po prostu byłeś. I może dla Ciebie niektóre z tych rzeczy były zwykłymi rozmowami, ale dla mnie naprawdę dużo znaczyły.
+    finalText.forEach(
+        function(text, index) {
 
-Dzięki Tobie zacząłem trochę inaczej patrzeć na niektóre rzeczy i chyba też trochę inaczej patrzeć na samego siebie. I wiem, że nie zawsze Ci to pokazuję albo mówię Ci wprost, ale naprawdę jestem Ci za to wszystko wdzięczny.
+            const line =
+                document.createElement("div");
 
-Bo nie chodzi tylko o to, że pomogłeś mi z problemami. Po prostu przez ten cały czas miałem obok siebie osobę, przy której mogłem być sobą i nie musiałem udawać, że wszystko jest okej.
+            line.className =
+                "final-line";
 
-Dziękuję Ci za to, że byłeś wtedy, kiedy najbardziej Cię potrzebowałem — nawet jeśli sam nie wiedziałem, że Cię potrzebuję.
+            if (
+                index === 12
+                ||
+                index === 15
+            ) {
 
-I niezależnie od tego, gdzie nas dalej życie zabierze, mam nadzieję, że kiedyś spojrzysz na mnie i pomyślisz: „Kurwa, dobrze, że zgodziłem się pojechać z Anią XD”.
+                line.classList.add(
+                    "final-highlight"
+                );
+            }
 
-Bo ja wiem jedno — poznanie Ciebie było jedną z najlepszych rzeczy, jakie mnie w życiu spotkały. ❤️`;
+            if (
+                index === 16
+            ) {
 
-    typeFinalText(
-        text
+                line.classList.add(
+                    "final-heart"
+                );
+            }
+
+            line.textContent =
+                text;
+
+            track.appendChild(
+                line
+            );
+
+        }
+    );
+
+    playFinalText();
+}
+
+
+/* ==================================================
+   ANIMACJA FINAŁU
+================================================== */
+
+function playFinalText() {
+
+    const lines =
+        document.querySelectorAll(
+            ".final-line"
+        );
+
+    let current =
+        0;
+
+    function showNextLine() {
+
+        if (
+            current >=
+            lines.length
+        ) {
+
+            setTimeout(
+                finishFinalMessage,
+                5000
+            );
+
+            return;
+        }
+
+        const line =
+            lines[current];
+
+        line.classList.add(
+            "visible"
+        );
+
+        /*
+         * Przesuwamy całą historię
+         * w dół / górę bardzo powoli.
+         */
+
+        const offset =
+            current * 118;
+
+        const track =
+            document.getElementById(
+                "final-message-track"
+            );
+
+        track.style.transition =
+            "transform 2.8s ease";
+
+        track.style.transform =
+            `translateX(-50%) translateY(-${offset}px)`;
+
+
+        /*
+         * Po pojawieniu się kilku
+         * kolejnych wersów starsze
+         * zaczynają znikać.
+         */
+
+        if (
+            current >= 4
+        ) {
+
+            lines[current - 4]
+                .classList.add(
+                    "fade-away"
+                );
+        }
+
+
+        current++;
+
+        /*
+         * Tempo czytania.
+         * Około 3.7 sekundy na wers.
+         */
+
+        setTimeout(
+            showNextLine,
+            3700
+        );
+    }
+
+
+    /*
+     * Mała pauza przed rozpoczęciem.
+     */
+
+    setTimeout(
+        showNextLine,
+        1200
     );
 }
 
 
 /* ==================================================
-   POWOLNE PISANIE WIADOMOŚCI
+   KONIEC WIADOMOŚCI
 ================================================== */
 
-function typeFinalText(text) {
+function finishFinalMessage() {
 
-    const element =
-        document
-            .getElementById("final-message");
-
-    element.textContent =
-        "";
-
-    let index =
-        0;
-
-    function writeNext() {
-
-        if (
-            index >=
-            text.length
-        ) {
-            return;
-        }
-
-        element.textContent +=
-            text[index];
-
-        index++;
-
-        let delay =
-            38;
-
-        if (
-            text[index - 1] === "."
-            ||
-            text[index - 1] === "!"
-            ||
-            text[index - 1] === "?"
-        ) {
-
-            delay =
-                450;
-        }
-
-        if (
-            text[index - 1] === "\n"
-        ) {
-
-            delay =
-                800;
-        }
-
-        setTimeout(
-            writeNext,
-            delay
+    const final =
+        document.getElementById(
+            "final-message"
         );
-    }
 
-    writeNext();
+    final.style.transition =
+        "opacity 3s ease";
+
+    final.style.opacity =
+        "0";
+
+    setTimeout(
+        function() {
+
+            final.style.display =
+                "none";
+
+            final.style.opacity =
+                "1";
+
+            const end =
+                document.getElementById(
+                    "final-end"
+                );
+
+            if (end) {
+
+                end.style.display =
+                    "flex";
+            }
+
+        },
+        3000
+    );
 }
 
 
@@ -2230,7 +2594,6 @@ function showHint() {
 
         return;
     }
-
 }
 
 
@@ -2426,10 +2789,10 @@ function closePuzzle() {
 
 
 /* ==================================================
-   START GRY
+   START
 ================================================== */
 
-updateLives();
+restoreProgress();
 
 </script>
 
