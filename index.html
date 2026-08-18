@@ -37,10 +37,8 @@ body {
 
 #world {
     position: absolute;
-
     left: -4vw;
     top: -4vh;
-
     width: 108vw;
     height: 108vh;
 
@@ -54,7 +52,6 @@ body {
 
 #game-map {
     position: absolute;
-
     left: 0;
     top: 0;
 
@@ -75,7 +72,9 @@ body {
 ================================================== */
 
 #day-night {
+
     position: absolute;
+
     inset: 0;
 
     pointer-events: none;
@@ -125,6 +124,7 @@ body {
 ================================================== */
 
 .cloud {
+
     position: absolute;
 
     z-index: 10;
@@ -146,6 +146,7 @@ body {
 
 .cloud::before,
 .cloud::after {
+
     content: "";
 
     position: absolute;
@@ -157,6 +158,7 @@ body {
 }
 
 .cloud::before {
+
     width: 75px;
     height: 75px;
 
@@ -165,6 +167,7 @@ body {
 }
 
 .cloud::after {
+
     width: 95px;
     height: 95px;
 
@@ -173,6 +176,7 @@ body {
 }
 
 #cloud1 {
+
     top: 12%;
     left: -220px;
 
@@ -183,6 +187,7 @@ body {
 }
 
 #cloud2 {
+
     top: 25%;
     left: -300px;
 
@@ -195,6 +200,7 @@ body {
 }
 
 #cloud3 {
+
     top: 8%;
     left: -400px;
 
@@ -290,12 +296,14 @@ body {
 }
 
 .heart {
+
     transition:
         opacity 0.3s ease,
         transform 0.3s ease;
 }
 
 .heart.lost {
+
     opacity: 0.15;
 
     transform:
@@ -345,7 +353,6 @@ body {
 
     left: 15.536%;
     top: 69.797%;
-
 }
 
 
@@ -1241,8 +1248,6 @@ body {
 
 
 <body>
-      <audio id="dayMusic" src="day.mp3" loop preload="auto"></audio>
-      <audio id="nightMusic" src="night.mp3" loop preload="auto"></audio>
 
 
 <!-- ==================================================
@@ -1252,13 +1257,15 @@ body {
 <audio
     id="dayMusic"
     src="day.mp3"
-    loop>
+    loop
+    preload="auto">
 </audio>
 
 <audio
     id="nightMusic"
     src="night.mp3"
-    loop>
+    loop
+    preload="auto">
 </audio>
 
 
@@ -1514,7 +1521,7 @@ body {
 
 
 /* ==================================================
-   MUZYKA — CYKL DNIA I NOCY
+   MUZYKA — CYKL 60 SEKUND
 ================================================== */
 
 const dayMusic =
@@ -1525,23 +1532,42 @@ const nightMusic =
 
 
 /*
-   Głośność początkowa.
-   Muzyka nie będzie bardzo głośna.
+   Maksymalna głośność.
+   ZOSTAWIONE 0.1 — tak jak chciałeś.
 */
 
-dayMusic.volume = 0;
-nightMusic.volume = 0;
+const MUSIC_VOLUME = 0.1;
+
+
+/*
+   Cały cykl trwa dokładnie 60 sekund.
+*/
+
+const MUSIC_CYCLE = 60000;
+
+
+/*
+   Fade trwa 5 sekund.
+*/
+
+const FADE_TIME = 5000;
 
 
 let musicStarted = false;
 
 
 /*
-   Rozpoczęcie muzyki po pierwszym
-   kliknięciu użytkownika.
+   Ustawienie początkowej głośności.
+*/
 
-   Jest to potrzebne, ponieważ przeglądarka
-   często blokuje automatyczne odtwarzanie audio.
+dayMusic.volume = 0;
+nightMusic.volume = 0;
+
+
+/*
+   Uruchomienie obu utworów.
+   Przeglądarki pozwalają na play()
+   po kliknięciu użytkownika.
 */
 
 function startMusic() {
@@ -1564,109 +1590,134 @@ function startMusic() {
 
 
 /*
-   CAŁY CYKL TRWA 60 SEKUND.
+   Synchronizacja muzyki z cyklem dnia/nocy.
 
-   0–15 s   = dzień
-   15–30 s  = przejście dzień → noc
-   30–45 s  = noc
-   45–60 s  = przejście noc → dzień
+   00–25 s = dzień
+   25–30 s = fade dzień → noc
+   30–55 s = noc
+   55–60 s = fade noc → dzień
 */
-
-const MUSIC_CYCLE = 60000;
-
 
 function updateMusic() {
 
+    if (!musicStarted)
+        return;
+
+
     const time =
-        (Date.now() % MUSIC_CYCLE)
-        / MUSIC_CYCLE;
+        Date.now() % MUSIC_CYCLE;
 
 
-    let dayVolume;
-    let nightVolume;
+    let dayVolume = 0;
+    let nightVolume = 0;
 
 
     /*
        DZIEŃ
+       0–25 sekund
     */
 
-    if (time < 0.25) {
+    if (time < 25000) {
 
-        dayVolume = 0.18;
-        nightVolume = 0;
+        dayVolume =
+            MUSIC_VOLUME;
 
+        nightVolume =
+            0;
     }
 
 
     /*
        DZIEŃ → NOC
+       25–30 sekund
     */
 
-    else if (time < 0.50) {
+    else if (time < 30000) {
 
         const progress =
-            (time - 0.25) / 0.25;
+            (time - 25000) / FADE_TIME;
+
 
         dayVolume =
-            0.18 * (1 - progress);
+            MUSIC_VOLUME *
+            (1 - progress);
 
         nightVolume =
-            0.18 * progress;
-
+            MUSIC_VOLUME *
+            progress;
     }
 
 
     /*
        NOC
+       30–55 sekund
     */
 
-    else if (time < 0.75) {
+    else if (time < 55000) {
 
-        dayVolume = 0;
-        nightVolume = 0.18;
+        dayVolume =
+            0;
 
+        nightVolume =
+            MUSIC_VOLUME;
     }
 
 
     /*
        NOC → DZIEŃ
+       55–60 sekund
     */
 
     else {
 
         const progress =
-            (time - 0.75) / 0.25;
+            (time - 55000) / FADE_TIME;
+
 
         dayVolume =
-            0.18 * progress;
+            MUSIC_VOLUME *
+            progress;
 
         nightVolume =
-            0.18 * (1 - progress);
-
+            MUSIC_VOLUME *
+            (1 - progress);
     }
 
 
     dayMusic.volume =
-        dayVolume;
+        Math.max(
+            0,
+            Math.min(
+                MUSIC_VOLUME,
+                dayVolume
+            )
+        );
+
 
     nightMusic.volume =
-        nightVolume;
+        Math.max(
+            0,
+            Math.min(
+                MUSIC_VOLUME,
+                nightVolume
+            )
+        );
 }
 
 
 /*
-   Aktualizacja głośności 10 razy na sekundę.
+   Aktualizacja 20 razy na sekundę,
+   dzięki czemu fade jest płynny.
 */
 
 setInterval(
     updateMusic,
-    100
+    50
 );
 
 
 /*
-   Pierwsze kliknięcie na stronie
-   uruchamia muzykę.
+   Pierwsze kliknięcie uruchamia muzykę.
 */
 
 document.addEventListener(
@@ -2852,16 +2903,7 @@ function closePuzzle() {
 ================================================== */
 
 updateLives();
-     
-document.addEventListener("click", function () {
 
-    const music = document.getElementById("dayMusic");
-
-    music.volume = 0.1;
-
-    music.play();
-
-}, { once: true });
 </script>
 
 </body>
