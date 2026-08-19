@@ -1593,12 +1593,6 @@ function updateMusic() {
     /*
        40–50 SEKUND
        FADE DZIEŃ → NOC
-
-       Pierwsze 5 sekund:
-       dzień całkowicie cichnie.
-
-       Drugie 5 sekund:
-       noc zaczyna grać.
     */
 
     else if (time < 0.5) {
@@ -1651,12 +1645,6 @@ function updateMusic() {
     /*
        90–100 SEKUND
        FADE NOC → DZIEŃ
-
-       Pierwsze 5 sekund:
-       noc całkowicie cichnie.
-
-       Drugie 5 sekund:
-       dzień zaczyna grać.
     */
 
     else {
@@ -1710,19 +1698,11 @@ function updateMusic() {
 }
 
 
-/*
-   Aktualizacja 10 razy na sekundę.
-*/
-
 setInterval(
     updateMusic,
     100
 );
 
-
-/*
-   Pierwsze kliknięcie uruchamia muzykę.
-*/
 
 document.addEventListener(
     "click",
@@ -2419,6 +2399,69 @@ function openCave() {
         .getElementById("cave-screen")
         .style.display =
         "flex";
+
+
+    /* ==================================================
+       PŁYNNE WYCISZENIE MUZYKI
+    ================================================== */
+
+    const fadeDuration = 5000;
+    const fadeSteps = 50;
+    const fadeInterval = fadeDuration / fadeSteps;
+
+    const startDayVolume =
+        dayMusic.volume;
+
+    const startNightVolume =
+        nightMusic.volume;
+
+    let step = 0;
+
+
+    const fadeOut =
+        setInterval(
+            function() {
+
+                step++;
+
+                const progress =
+                    step / fadeSteps;
+
+
+                dayMusic.volume =
+                    Math.max(
+                        0,
+                        startDayVolume *
+                        (1 - progress)
+                    );
+
+
+                nightMusic.volume =
+                    Math.max(
+                        0,
+                        startNightVolume *
+                        (1 - progress)
+                    );
+
+
+                if (
+                    step >= fadeSteps
+                ) {
+
+                    clearInterval(
+                        fadeOut
+                    );
+
+                    dayMusic.pause();
+                    nightMusic.pause();
+
+                    dayMusic.volume = 0;
+                    nightMusic.volume = 0;
+                }
+
+            },
+            fadeInterval
+        );
 }
 
 
@@ -2458,16 +2501,16 @@ const finalLines = [
 
     "I chyba właśnie dlatego tak bardzo doceniam to, że Cię poznałem.",
 
-    "Dziękuję Ci za to, że byłeś wtedy, kiedy najbardziej Cię potrzebowałemn mimo, że nawet sam nie wiedziałem, że Cię potrzebuję.",
-            
-      "I niezależnie od tego, gdzie nas dalej życie zabierze i czy w ogóle będziemy się jeszcze znać...",
-      
-    "Mam nadzieję, że kiedyś się zreflektujesz i pomyślisz:",
+    "Dziękuję Ci za to, że byłeś wtedy, kiedy najbardziej Cię potrzebowałem, mimo że nawet sam nie wiedziałem, że Cię potrzebuję.",
+
+    "I niezależnie od tego, gdzie nas dalej życie zabierze i czy w ogóle będziemy się jeszcze znać...",
+
+    "Mam nadzieję, że kiedyś Się zreflektujesz i pomyślisz:",
 
     "„Kurwa, dobrze, że zgodziłem się pojechać z Anią XD”.",
 
     "Bo ja wiem jedno...",
-      
+
     "Poznanie Ciebie było jedną z najlepszych rzeczy, jakie mnie w życiu spotkało. ❤️"
 
 ];
@@ -2913,6 +2956,7 @@ function closePuzzle() {
 updateLives();
 
 </script>
+
 
 </body>
 </html>
