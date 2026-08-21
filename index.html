@@ -42,7 +42,12 @@ body {
     width: 108vw;
     height: 108vh;
 
-    transform: translate3d(0,0,0);
+    transform:
+        translate3d(0,0,0)
+        scale(1);
+
+    transform-origin:
+        center center;
 
     transition:
         transform 0.15s ease-out;
@@ -64,6 +69,93 @@ body {
 
     user-select: none;
     pointer-events: none;
+}
+
+
+/* ==================================================
+   STEROWANIE MAPĄ
+================================================== */
+
+#map-controls {
+
+    position: fixed;
+
+    top: 20px;
+    right: 20px;
+
+    z-index: 300;
+
+    display: flex;
+
+    gap: 8px;
+
+}
+
+.map-control {
+
+    min-width: 44px;
+    height: 44px;
+
+    padding: 0 14px;
+
+    border:
+        1px solid
+        rgba(80,65,35,0.3);
+
+    border-radius: 4px;
+
+    background:
+        rgba(244,235,194,0.94);
+
+    color:
+        rgba(60,50,30,0.85);
+
+    font-size: 22px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 4px 12px
+        rgba(0,0,0,0.18);
+
+    transition:
+        transform 0.15s ease,
+        background 0.15s ease;
+
+}
+
+.map-control:hover {
+
+    transform:
+        translateY(-2px);
+
+    background:
+        white;
+
+}
+
+#overview-button {
+
+    font-size: 11px;
+
+    letter-spacing: 1px;
+
+}
+
+
+/* ==================================================
+   TRYB OVERVIEW
+================================================== */
+
+body.overview-mode .location,
+body.overview-mode #lives {
+
+    opacity: 0;
+
+    pointer-events: none;
+
 }
 
 
@@ -257,7 +349,7 @@ body {
 
     position: fixed;
 
-    top: 20px;
+    bottom: 20px;
     right: 20px;
 
     z-index: 200;
@@ -284,6 +376,10 @@ body {
     font-size: 30px;
 
     line-height: 1;
+
+    transition:
+        opacity 0.2s ease;
+
 }
 
 .heart {
@@ -331,6 +427,9 @@ body {
     outline: none;
 
     appearance: none;
+
+    transition:
+        opacity 0.2s ease;
 }
 
 
@@ -1260,6 +1359,48 @@ body {
 
 
 <!-- ==================================================
+     STEROWANIE MAPĄ
+================================================== -->
+
+<div id="map-controls">
+
+    <button
+        class="map-control"
+        onclick="zoomIn()">
+
+        +
+
+    </button>
+
+    <button
+        class="map-control"
+        onclick="zoomOut()">
+
+        −
+
+    </button>
+
+    <button
+        class="map-control"
+        onclick="resetGame()">
+
+        ↻
+
+    </button>
+
+    <button
+        id="overview-button"
+        class="map-control"
+        onclick="toggleOverview()">
+
+        OVERVIEW
+
+    </button>
+
+</div>
+
+
+<!-- ==================================================
      SERCA
 ================================================== -->
 
@@ -1528,17 +1669,6 @@ nightMusic.volume = 0;
 let musicStarted = false;
 
 
-/*
-   CAŁY CYKL = 100 SEKUND
-
-   0–40 s   = DZIEŃ
-   40–50 s  = FADE DZIEŃ → NOC
-   50–90 s  = NOC
-   90–100 s = FADE NOC → DZIEŃ
-
-   Fade trwa dokładnie 10 sekund.
-*/
-
 const MUSIC_CYCLE = 100000;
 
 const MUSIC_VOLUME = 0.05;
@@ -1565,6 +1695,9 @@ function startMusic() {
 
 function updateMusic() {
 
+    if (!musicStarted)
+        return;
+
     const time =
         (Date.now() % MUSIC_CYCLE)
         / MUSIC_CYCLE;
@@ -1573,11 +1706,6 @@ function updateMusic() {
     let dayVolume = 0;
     let nightVolume = 0;
 
-
-    /*
-       0–40 SEKUND
-       CZYSTY DZIEŃ
-    */
 
     if (time < 0.4) {
 
@@ -1588,12 +1716,6 @@ function updateMusic() {
             0;
 
     }
-
-
-    /*
-       40–50 SEKUND
-       FADE DZIEŃ → NOC
-    */
 
     else if (time < 0.5) {
 
@@ -1625,12 +1747,6 @@ function updateMusic() {
 
     }
 
-
-    /*
-       50–90 SEKUND
-       CZYSTA NOC
-    */
-
     else if (time < 0.9) {
 
         dayVolume =
@@ -1640,12 +1756,6 @@ function updateMusic() {
             MUSIC_VOLUME;
 
     }
-
-
-    /*
-       90–100 SEKUND
-       FADE NOC → DZIEŃ
-    */
 
     else {
 
@@ -1709,6 +1819,208 @@ document.addEventListener(
     startMusic,
     { once: true }
 );
+
+
+/* ==================================================
+   ZOOM MAPY
+================================================== */
+
+let mapZoom = 1;
+
+let mapMoveX = 0;
+
+let mapMoveY = 0;
+
+
+function updateMapTransform() {
+
+    document
+        .getElementById("world")
+        .style.transform =
+        `
+        translate3d(
+            ${mapMoveX}px,
+            ${mapMoveY}px,
+            0
+        )
+        scale(${mapZoom})
+        `;
+
+}
+
+
+function zoomIn() {
+
+    mapZoom =
+        Math.min(
+            1.8,
+            mapZoom + 0.1
+        );
+
+    updateMapTransform();
+}
+
+
+function zoomOut() {
+
+    mapZoom =
+        Math.max(
+            0.8,
+            mapZoom - 0.1
+        );
+
+    updateMapTransform();
+}
+
+
+/* ==================================================
+   OVERVIEW
+================================================== */
+
+let overviewMode = false;
+
+
+function toggleOverview() {
+
+    overviewMode =
+        !overviewMode;
+
+    document.body.classList.toggle(
+        "overview-mode",
+        overviewMode
+    );
+
+}
+
+
+/* ==================================================
+   RESET CAŁEJ GRY
+================================================== */
+
+function resetGame() {
+
+    lives = 2;
+
+    lakeUnlocked = false;
+    castleUnlocked = false;
+    caveUnlocked = false;
+
+    currentLocation = "";
+
+    hintStage = 0;
+
+    overviewMode = false;
+
+    document.body.classList.remove(
+        "overview-mode"
+    );
+
+
+    mapZoom = 1;
+
+    mapMoveX = 0;
+
+    mapMoveY = 0;
+
+    updateMapTransform();
+
+
+    document
+        .getElementById("house")
+        .style.display =
+        "block";
+
+    document
+        .getElementById("forest")
+        .style.display =
+        "none";
+
+    document
+        .getElementById("lake")
+        .style.display =
+        "none";
+
+    document
+        .getElementById("castle")
+        .style.display =
+        "none";
+
+    document
+        .getElementById("cave")
+        .style.display =
+        "none";
+
+
+    document
+        .getElementById("puzzle-screen")
+        .style.display =
+        "none";
+
+    document
+        .getElementById("game-over")
+        .style.display =
+        "none";
+
+    document
+        .getElementById("cave-screen")
+        .style.display =
+        "none";
+
+    document
+        .getElementById("warning-screen")
+        .style.display =
+        "none";
+
+    document
+        .getElementById("message-screen")
+        .style.display =
+        "none";
+
+    document
+        .getElementById("final-screen")
+        .style.display =
+        "none";
+
+    document
+        .getElementById("game")
+        .style.display =
+        "block";
+
+    document
+        .getElementById("lives")
+        .style.display =
+        "flex";
+
+
+    document
+        .getElementById("message-line")
+        .classList.remove(
+            "visible"
+        );
+
+    document
+        .getElementById("message-line")
+        .textContent =
+        "";
+
+
+    resetPuzzle();
+
+    updateLives();
+
+
+    dayMusic.pause();
+    nightMusic.pause();
+
+    dayMusic.currentTime = 0;
+    nightMusic.currentTime = 0;
+
+    dayMusic.volume = 0;
+    nightMusic.volume = 0;
+
+    musicStarted = false;
+
+}
 
 
 /* ==================================================
@@ -1776,6 +2088,11 @@ function loseLife() {
             "none";
 
         document
+            .getElementById("map-controls")
+            .style.display =
+            "none";
+
+        document
             .getElementById("game-over")
             .style.display =
             "flex";
@@ -1793,6 +2110,24 @@ function openHouse() {
         "house";
 
     resetPuzzle();
+
+
+    /*
+       Po wejściu do domku
+       nie można już do niego wrócić.
+    */
+
+    document
+        .getElementById("house")
+        .style.display =
+        "none";
+
+
+    document
+        .getElementById("forest")
+        .style.display =
+        "block";
+
 
     document
         .getElementById("puzzle-title")
@@ -1842,11 +2177,6 @@ function openHouse() {
         "none";
 
     document
-        .getElementById("forest")
-        .style.display =
-        "block";
-
-    document
         .getElementById("puzzle-screen")
         .style.display =
         "flex";
@@ -1869,20 +2199,13 @@ document.addEventListener(
             (event.clientY /
             window.innerHeight) - 0.5;
 
-        const moveX =
+        mapMoveX =
             x * 28;
 
-        const moveY =
+        mapMoveY =
             y * 22;
 
-        document
-            .getElementById("world")
-            .style.transform =
-            `translate3d(
-                ${moveX}px,
-                ${moveY}px,
-                0
-            )`;
+        updateMapTransform();
     }
 );
 
@@ -2042,6 +2365,17 @@ function checkForestAnswer() {
         lakeUnlocked =
             true;
 
+
+        /*
+           Las zostaje za nami.
+        */
+
+        document
+            .getElementById("forest")
+            .style.display =
+            "none";
+
+
         document
             .getElementById("lake")
             .style.display =
@@ -2076,6 +2410,9 @@ function checkForestAnswer() {
 ================================================== */
 
 function openLake() {
+
+    if (!lakeUnlocked)
+        return;
 
     currentLocation =
         "lake";
@@ -2180,6 +2517,17 @@ function checkLakeAnswer(option) {
         castleUnlocked =
             true;
 
+
+        /*
+           Jezioro zostaje za nami.
+        */
+
+        document
+            .getElementById("lake")
+            .style.display =
+            "none";
+
+
         document
             .getElementById("castle")
             .style.display =
@@ -2214,6 +2562,9 @@ function checkLakeAnswer(option) {
 ================================================== */
 
 function openCastle() {
+
+    if (!castleUnlocked)
+        return;
 
     currentLocation =
         "castle";
@@ -2347,6 +2698,17 @@ function checkCastleAnswer() {
         caveUnlocked =
             true;
 
+
+        /*
+           Zamek zostaje za nami.
+        */
+
+        document
+            .getElementById("castle")
+            .style.display =
+            "none";
+
+
         document
             .getElementById("cave")
             .style.display =
@@ -2385,6 +2747,18 @@ function openCave() {
     if (!caveUnlocked)
         return;
 
+
+    /*
+       Jaskinia jest ostatnim miejscem.
+       Po wejściu mapa znika.
+    */
+
+    document
+        .getElementById("cave")
+        .style.display =
+        "none";
+
+
     document
         .getElementById("game")
         .style.display =
@@ -2396,14 +2770,15 @@ function openCave() {
         "none";
 
     document
+        .getElementById("map-controls")
+        .style.display =
+        "none";
+
+    document
         .getElementById("cave-screen")
         .style.display =
         "flex";
 
-
-    /* ==================================================
-       PŁYNNE WYCISZENIE MUZYKI
-    ================================================== */
 
     const fadeDuration = 5000;
     const fadeSteps = 50;
@@ -2457,6 +2832,8 @@ function openCave() {
 
                     dayMusic.volume = 0;
                     nightMusic.volume = 0;
+
+                    musicStarted = false;
                 }
 
             },
@@ -2954,6 +3331,8 @@ function closePuzzle() {
 ================================================== */
 
 updateLives();
+
+updateMapTransform();
 
 </script>
 
